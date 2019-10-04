@@ -1,20 +1,13 @@
-using System;
 
-/*
- moin World Programm
- Version 1.0
- letzte Aenderung 17.09.2019
- Kai Mecke
-*/
 
-namespace moin_World_Mecke
+namespace Hello_World_Mecke
 {
     class Program
     {
         static void Main(double[] args) // Hier beginnt das Hauptprogramm 
         {
             // Ausgabe Benutzer 1
-            Console.WriteLine("moin World von XXX");
+            Console.WriteLine("Hello World von XXX");
 
             // Ausgabe Benutzer 2
             Console.WriteLine("Nǐ hǎo, shìjiè");
