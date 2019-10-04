@@ -11,7 +11,7 @@ namespace Hello_World_Mecke
 {
     class Program
     {
-        static void Main(string[] args) // Hier beginnt das Hauptprogramm 
+        static void Main(double[] args) // Hier beginnt das Hauptprogramm 
         {
             // Ausgabe Benutzer 1
             Console.WriteLine("Hello World von XXX");
