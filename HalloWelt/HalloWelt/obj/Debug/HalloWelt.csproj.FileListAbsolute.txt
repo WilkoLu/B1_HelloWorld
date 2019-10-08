@@ -1,0 +1,7 @@
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\bin\Debug\HalloWelt.exe.config
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\bin\Debug\HalloWelt.exe
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\bin\Debug\HalloWelt.pdb
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\obj\Debug\HalloWelt.csprojAssemblyReference.cache
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\obj\Debug\HalloWelt.csproj.CoreCompileInputs.cache
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\obj\Debug\HalloWelt.exe
+C:\Users\wilko\source\repos\B1_HelloWorld\HalloWelt\HalloWelt\obj\Debug\HalloWelt.pdb
