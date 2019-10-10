@@ -1,0 +1,7 @@
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe.config
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\bin\Debug\Profilrechner.pdb
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csprojAssemblyReference.cache
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csproj.CoreCompileInputs.cache
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.exe
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.pdb
