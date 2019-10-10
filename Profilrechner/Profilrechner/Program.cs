@@ -12,20 +12,22 @@ namespace Profilrechner
         {
             Console.WriteLine("Profilrechner Rechteckprofil");
             Console.WriteLine();
-            Console.WriteLine("Querschnittsberechnung");
+            Console.WriteLine("Querschnittsberechnung:");
             Console.WriteLine();
-            Console.WriteLine("Eingabe Breite in mm");
+            Console.Write("Eingabe Breite in mm: ");
             string eingabebreite = Console.ReadLine();
             double breite = Convert.ToDouble(eingabebreite);
-            Console.WriteLine("Eingabe Hoehe in mm");
+            Console.Write("Eingabe Hoehe in mm: ");
             string eingabehoehe = Console.ReadLine();
+            Console.WriteLine();
             double hoehe = Convert.ToDouble(eingabehoehe);
             double qflaeche = breite * hoehe;
-            Console.WriteLine("Querschnittsflaeche");
+            Console.Write("Querschnittsflaeche = ");
             Console.Write(qflaeche);
             Console.WriteLine("mm²");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to close");
             Console.ReadKey();
-
         }
     }
 }
