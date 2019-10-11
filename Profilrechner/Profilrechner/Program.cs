@@ -19,8 +19,8 @@ namespace Profilrechner
             Console.Write("   Eingabe Breite in mm: ");
             string eingabebreite = Console.ReadLine();
             double breite;
-            bool echtebreite = double.TryParse(eingabebreite, out breite);
-            if(echtebreite == false)
+            bool echtebreite = double.TryParse(eingabebreite, out breite);                       //True wenn Zahl eingegeben wird False wenn nicht.
+            if(echtebreite == false)                                                             //Prüfung ob Zahl eingegeben wurde
                 {
                 Console.WriteLine();
                 Console.WriteLine("     Fehler in der Matrix!");
@@ -28,9 +28,9 @@ namespace Profilrechner
             Console.WriteLine();
             Console.Write("   Eingabe Hoehe in mm: ");
             string eingabehoehe = Console.ReadLine();
-            double hoehe;
-            bool echtehoehe = double.TryParse(eingabehoehe, out hoehe);
-            if(echtehoehe == false)
+            double hoehe; 
+            bool echtehoehe = double.TryParse(eingabehoehe, out hoehe);                          //True wenn Zahl eingegeben wird False wenn nicht.
+            if(echtehoehe == false)                                                              //Prüfung ob Zahl eingegeben wurde
                 {
                 Console.WriteLine();
                 Console.WriteLine("     Fehler in der Matrix!");
@@ -39,7 +39,7 @@ namespace Profilrechner
             Console.WriteLine("------------------------------------------------------");
             double qflaeche = breite * hoehe;
             Console.Write("   Querschnittsflaeche = ");
-            if (qflaeche <= 0)
+            if (qflaeche <= 0)                                                                   // Prüfung ob Flaeche real ist. Flaechen sind immer Positiv und nicht null.
                 {
                 Console.WriteLine ("Wert nicht real.");
                 }
