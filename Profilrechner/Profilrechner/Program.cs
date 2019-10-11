@@ -10,6 +10,7 @@ namespace Profilrechner
     {
         static void Main(string[] args)
         {
+            Begin:
             Console.WriteLine();
             Console.WriteLine("               Profilrechner Rechteckprofil");
             Console.WriteLine("----------------------------------------------------------");
@@ -43,11 +44,12 @@ namespace Profilrechner
             double qflaeche = breite * hoehe;
             if (breite < 0 & hoehe < 0)
                 {
-                Console.WriteLine("Hoehe und Breite sind negativ. Trotzdem darstellen? 1/0");     // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
-                string eingabe = Console.ReadLine();                                              // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
-                int entscheidung = Convert.ToInt32 (eingabe);
-                if (entscheidung == 0)
+                Console.Write("Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
+                ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
+                Console.WriteLine();
+                if (eingabekey.Key == ConsoleKey.N)
                     {
+                    Console.WriteLine();
                     goto Finish;
                     }
                 }
@@ -68,8 +70,19 @@ namespace Profilrechner
             Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("Press any key to close");
-            Console.ReadKey();
+            Console.WriteLine("Press b to return");
+            Abfrage:
+            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten
+            if (zurueck.Key == ConsoleKey.B)
+                {
+                Console.Clear();
+                goto Begin;
+                }
+            else 
+                {
+                goto Abfrage;
+                }
+
         }
     }
 }
