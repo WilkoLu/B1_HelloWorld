@@ -44,10 +44,10 @@ namespace Profilrechner
                 Console.WriteLine ("Wert nicht real.");
                 }
             else 
-                    {
+                {
                 Console.Write (qflaeche);
                 Console.WriteLine ("mm²");
-                    }
+                }
             Console.WriteLine("------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("Press any key to close");
