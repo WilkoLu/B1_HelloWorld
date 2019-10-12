@@ -1,0 +1,7 @@
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\bin\Debug\Profilberechnung.exe.config
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\bin\Debug\Profilberechnung.exe
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\bin\Debug\Profilberechnung.pdb
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\obj\Debug\Profilberechnung.csprojAssemblyReference.cache
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\obj\Debug\Profilberechnung.csproj.CoreCompileInputs.cache
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\obj\Debug\Profilberechnung.exe
+Z:\Dateien\Studium\Visual Studio\Hochsprachenprogrammierung\Profilberechnung\Profilberechnung\obj\Debug\Profilberechnung.pdb
