@@ -72,7 +72,7 @@ namespace Profilrechner
             Console.WriteLine();
             Console.WriteLine("Press B to return");
             Returnbefehl:
-            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten
+            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten.
             if (zurueck.Key == ConsoleKey.B)
                 {
                 Console.Clear();
