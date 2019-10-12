@@ -70,7 +70,7 @@ namespace Profilrechner
             Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("Press b to return");
+            Console.WriteLine("Press B to return");
             Abfrage:
             ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten
             if (zurueck.Key == ConsoleKey.B)
