@@ -1,0 +1,14 @@
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe.config
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\bin\Debug\Profilrechner.pdb
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csprojAssemblyReference.cache
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csproj.CoreCompileInputs.cache
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.exe
+C:\Users\wi2177\source\repos\Profilrechner\Profilrechner\obj\Debug\Profilrechner.pdb
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe.config
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.pdb
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csprojAssemblyReference.cache
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csproj.CoreCompileInputs.cache
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.exe
+C:\Users\wilko\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.pdb
