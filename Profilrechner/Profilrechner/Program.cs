@@ -12,7 +12,7 @@ namespace Profilrechner
         {
             Begin:
             Console.WriteLine();
-            Console.WriteLine("               Profilrechner Rechteckprofil");
+            Console.WriteLine("                     Rechteckprofil");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("                   Querschnittsflaeche");
             Console.WriteLine("----------------------------------------------------------");
@@ -55,6 +55,8 @@ namespace Profilrechner
                 }
             if (qflaeche <= 0)                                                                    // Prüfung ob Flaeche real ist. Flaechen sind immer Positiv und nicht null.
                 {
+                Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
                 Console.WriteLine ("   Wert nicht real.");
                 Console.WriteLine();
                 }
