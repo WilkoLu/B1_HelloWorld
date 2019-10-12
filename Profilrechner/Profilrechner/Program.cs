@@ -13,7 +13,6 @@ namespace Profilrechner
             Program p = new Program();
             int menue;
 
-            
             do
             {
                 Console.WriteLine();
@@ -41,7 +40,6 @@ namespace Profilrechner
                 {
                     Console.WriteLine("Fehler bei der Eingabe");
                 }
-
 
             } while (menue != 0);
             }
@@ -78,7 +76,6 @@ namespace Profilrechner
                 {
                     Console.WriteLine("Fehler bei der Eingabe");
                 }
-
 
             } while (menue != 0);
             }
@@ -172,7 +169,6 @@ namespace Profilrechner
                 }
             End:;
                        
-
         }
         void Flaechentraegheitsmoment()            
         {
@@ -197,8 +193,6 @@ namespace Profilrechner
             Console.Write("   Eingabe Hoehe: ");
             hoehe = Convert.ToDouble(Console.ReadLine());
             hoehe = p.Einheit(hoehe);
-
-
 
             flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
             flaechenmomentY = hoehe * breite * breite * breite / 12;
@@ -275,6 +269,7 @@ namespace Profilrechner
                 else
                 {
                     Console.WriteLine("Die eingegebene Einheit wird nicht unterstützt, andere wählen");
+                    Console.WriteLine();
                 }
 
             }
