@@ -158,7 +158,7 @@ namespace Profilrechner
             Console.WriteLine("Press R to calculate again");
             Console.WriteLine("Press ESC to exit Program");
             Returnbefehl:
-            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten.
+            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten. Zu Schließen oder zurück zu gehen.
             if (zurueck.Key == ConsoleKey.B)
                 {
                 Console.Clear();
