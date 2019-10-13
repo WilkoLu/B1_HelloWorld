@@ -99,7 +99,7 @@ namespace Profilrechner
             Console.Write("   Eingabe Breite: ");
             string eingabebreite = Console.ReadLine();
             bool echtebreite = double.TryParse(eingabebreite, out breite);                       //True wenn Zahl eingegeben wird False wenn nicht.
-            if(echtebreite == false || breite <= 0)                                              //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
+            if(echtebreite == false)                                              //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                 {
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
@@ -114,7 +114,7 @@ namespace Profilrechner
             Console.Write("   Eingabe Hoehe: ");
             string eingabehoehe = Console.ReadLine();
             bool echtehoehe = double.TryParse(eingabehoehe, out hoehe);                          //True wenn Zahl eingegeben wird False wenn nicht.
-            if(echtehoehe == false || hoehe <= 0)                                                //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
+            if(echtehoehe == false)                                                //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                 {
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
@@ -148,7 +148,7 @@ namespace Profilrechner
                 Console.WriteLine();
                 Console.Write ("   Querschnittsflaeche: ");
                 Console.Write (qflaeche);
-                Console.WriteLine ("mm²");
+                Console.WriteLine ("einheit");
                 Console.WriteLine ();
                 }
             Finish:
