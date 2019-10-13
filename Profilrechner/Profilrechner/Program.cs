@@ -85,15 +85,19 @@ namespace Profilrechner
 
             BeginQuerschnittsflaeche:
             Console.Clear();
+            Program p = new Program();
+            double breite;
+            double hoehe;
+            double qflaeche;
+
             Console.WriteLine();
             Console.WriteLine("                      Rechteckprofil");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("                   Querschnittsflaeche");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.Write("   Eingabe Breite in mm: ");
+            Console.Write("   Eingabe Breite: ");
             string eingabebreite = Console.ReadLine();
-            double breite;
             bool echtebreite = double.TryParse(eingabebreite, out breite);                       //True wenn Zahl eingegeben wird False wenn nicht.
             if(echtebreite == false || breite <= 0)                                              //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                 {
@@ -101,11 +105,14 @@ namespace Profilrechner
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine("                 !Fehler bei der Breite!");
                 Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
                 }
-            Console.WriteLine();
-            Console.Write("   Eingabe Hoehe in mm: ");
+            else if(breite <= 0 || echtebreite == true)
+                {
+                breite = p.Einheit(breite);
+                }
+            Console.Write("   Eingabe Hoehe: ");
             string eingabehoehe = Console.ReadLine();
-            double hoehe; 
             bool echtehoehe = double.TryParse(eingabehoehe, out hoehe);                          //True wenn Zahl eingegeben wird False wenn nicht.
             if(echtehoehe == false || hoehe <= 0)                                                //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                 {
@@ -114,8 +121,11 @@ namespace Profilrechner
                 Console.WriteLine("                 !Fehler bei der Hoehe!");
                 Console.WriteLine("----------------------------------------------------------");
                 }
-            Console.WriteLine();
-            double qflaeche = breite * hoehe;
+            else if(hoehe <=0 || echtehoehe == true)  
+                {
+                hoehe = p.Einheit(hoehe);
+                }
+            qflaeche = breite * hoehe;
             if (breite < 0 & hoehe < 0)
                 {
                 Console.Write("Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
@@ -268,7 +278,7 @@ namespace Profilrechner
                 }
                 else
                 {
-                    Console.WriteLine("Die eingegebene Einheit wird nicht unterstützt, andere wählen");
+                    Console.WriteLine("Die eingegebene Einheit wird nicht unterstützt, andere wählen!");
                     Console.WriteLine();
                 }
 
