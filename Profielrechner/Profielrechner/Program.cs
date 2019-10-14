@@ -97,35 +97,11 @@ namespace Profilrechner
             Console.WriteLine("                   Querschnittsflaeche");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.Write("   Eingabe Breite: ");
-            string eingabebreite = Console.ReadLine();
-            bool echtebreite = double.TryParse(eingabebreite, out breite);                       //True wenn Zahl eingegeben wird False wenn nicht.
-            if (echtebreite == false)                                              //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
-            {
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                 !Fehler bei der Breite!");
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine();
-            }
-            else if (breite <= 0 || echtebreite == true)
-            {
-                breite = p.Einheit(breite);
-            }
-            Console.Write("   Eingabe Hoehe: ");
-            string eingabehoehe = Console.ReadLine();
-            bool echtehoehe = double.TryParse(eingabehoehe, out hoehe);                          //True wenn Zahl eingegeben wird False wenn nicht.
-            if (echtehoehe == false)                                                //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
-            {
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                 !Fehler bei der Hoehe!");
-                Console.WriteLine("----------------------------------------------------------");
-            }
-            else if (hoehe <= 0 || echtehoehe == true)
-            {
-                hoehe = p.Einheit(hoehe);
-            }
+
+            breite = p.EingabeMitPrüfungQuerschnitt("Breite");
+
+            hoehe = p.EingabeMitPrüfungQuerschnitt("Hoehe");
+
             qflaeche = breite * hoehe;
             if (breite < 0 & hoehe < 0)
             {
@@ -252,11 +228,11 @@ namespace Profilrechner
                 Console.Write("   Eingabe {0} : ",definition);
                 string eingabe = Console.ReadLine();
                 echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
-                if (echteeingabe == false )                                              //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
+                if (echteeingabe == false )                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                    {
                     Console.WriteLine();
                     Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("                 !Fehler bei der Eingabe!");
+                    Console.WriteLine("                  Fehler bei der Eingabe!");
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
                    }
@@ -264,15 +240,15 @@ namespace Profilrechner
                 {
                     Console.WriteLine();
                     Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("!Fehler bei der Eingabe (negative Zahl oder null kann nicht verwendet werden)!");    //noch anpassen!
+                    Console.WriteLine("Fehler bei der Eingabe! (Negative Zahl oder null kann nicht verwendet werden)!");    
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
-                    echteeingabe = false;                        // um bei negativen zahlen in der schleife zu bleiben, damit die eingebae erneut abgefragt wird
+                    echteeingabe = false;                                                 // um bei negativen zahlen in der schleife zu bleiben, damit die eingebae erneut abgefragt wird
                 }
                 else
                 {
                     zahl = p.Einheit(zahl);
-                    if (zahl == -1)             //wenn nicht unterstützte einheit eingegeben wurde
+                    if (zahl == -1)                                                       //wenn nicht unterstützte einheit eingegeben wurde
                     {
                         echteeingabe = false;
                     }
@@ -312,7 +288,7 @@ namespace Profilrechner
               else
               {
                   Console.WriteLine("----------------------------------------------------------");
-                  Console.WriteLine("!Diese Einheit wird nicht unterstützt, bitte andere Wählen!");
+                  Console.WriteLine("Diese Einheit wird nicht unterstützt, bitte andere Wählen!");
                   Console.WriteLine("----------------------------------------------------------");
                   Console.WriteLine();
                   zahl = -1;
@@ -322,7 +298,40 @@ namespace Profilrechner
             return zahl;
         }
 
+        double EingabeMitPrüfungQuerschnitt(string definition)
+        {
+            Program p = new Program();
+            double zahl = 0;
+            bool echteeingabe = false;
+            
+            while (echteeingabe == false)
+            {
 
+                Console.Write("   Eingabe {0} : ",definition);
+                string eingabe = Console.ReadLine();
+                echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
+                if (echteeingabe == false )                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
+                   {
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("                  Fehler bei der Eingabe!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                   }
+                else
+                {
+                    zahl = p.Einheit(zahl);
+                    if (zahl == -1)                                                                    //wenn nicht unterstützte einheit eingegeben wurde
+                    {
+                        echteeingabe = false;
+                    }
+                }
+                
+
+            }
+
+            return zahl;
+        }
 
 
 
