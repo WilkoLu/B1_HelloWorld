@@ -20,12 +20,12 @@ namespace Profilrechner
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine("          Welches Profil wollen sie berechnen?");
                 Console.WriteLine();
-                Console.WriteLine("< 1 > Rechteckprofil");
+                Console.WriteLine(" < 1 > Rechteckprofil");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("Zum beenden des Programms drücken Sie 0");
+                Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
                 Console.WriteLine();
-                Console.Write("Auswahl: ");
+                Console.Write(" Auswahl: ");
                 menue = Convert.ToInt32(Console.ReadLine());
 
                 if (menue == 1)
@@ -38,7 +38,7 @@ namespace Profilrechner
                 }
                 else
                 {
-                    Console.WriteLine("Fehler bei der Eingabe");
+                    Console.WriteLine(" Fehler bei der Eingabe!");
                 }
 
             } while (menue != 0);
@@ -55,14 +55,14 @@ namespace Profilrechner
 
                 Console.WriteLine("              Was wollen Sie berechnen?");
                 Console.WriteLine();
-                Console.WriteLine("< 1 > Querschnittsflaeche");
-                Console.WriteLine("< 2 > Flaechentraegheitsmoment");
-                Console.WriteLine("< 3 > Volumen");
+                Console.WriteLine(" < 1 > Querschnittsflaeche");
+                Console.WriteLine(" < 2 > Flaechentraegheitsmoment");
+                Console.WriteLine(" < 3 > Volumen");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("Zum beenden des Programms drücken Sie 0");
+                Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
                 Console.WriteLine();
-                Console.Write("Auswahl: ");
+                Console.Write(" Auswahl: ");
                 menue = Convert.ToInt32(Console.ReadLine());
                 if (menue == 1)
                 {
@@ -105,14 +105,14 @@ namespace Profilrechner
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
 
-            breite = p.EingabeMitPrüfungQuerschnitt("Breite");
+            breite = p.EingabeMitPrüfungQuerschnittVolumen("Breite");
 
-            hoehe = p.EingabeMitPrüfungQuerschnitt("Hoehe");
+            hoehe = p.EingabeMitPrüfungQuerschnittVolumen("Hoehe");
 
             qflaeche = breite * hoehe;
             if (breite < 0 & hoehe < 0)
             {
-                Console.Write("Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
+                Console.Write(" Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
                 ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
                 Console.WriteLine();
                 if (eingabekey.Key == ConsoleKey.N)
@@ -138,9 +138,9 @@ namespace Profilrechner
         Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("Press B to go back to the main Menu");
-            Console.WriteLine("Press R to calculate again");
-            Console.WriteLine("Press ESC to exit Program");
+            Console.WriteLine(" Press B to go back to the main Menu");
+            Console.WriteLine(" Press R to calculate again");
+            Console.WriteLine(" Press ESC to exit Program");
         Returnbefehl:
             ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten. Zu Schließen oder zurück zu gehen.
             if (zurueck.Key == ConsoleKey.B)
@@ -191,15 +191,15 @@ namespace Profilrechner
             flaechenmomentY = hoehe * breite * breite * breite / 12;
 
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("Das Flächenträgheitsmoment über die x achse ist {0:0.00} mm^4",
+            Console.WriteLine(" Das Flächenträgheitsmoment über die x achse ist {0:0.00} mm^4",
             flaechenmomentX);
-            Console.WriteLine("Das Flächenträgheitsmoment über die y achse ist {0:0.00} mm^4",
+            Console.WriteLine(" Das Flächenträgheitsmoment über die y achse ist {0:0.00} mm^4",
             flaechenmomentY);
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("Press B to go back to the main Menu");
-            Console.WriteLine("Press R to calculate again");
-            Console.WriteLine("Press ESC to exit Program");
+            Console.WriteLine(" Press B to go back to the main Menu");
+            Console.WriteLine(" Press R to calculate again");
+            Console.WriteLine(" Press ESC to exit Program");
         Returnbefehl:
             ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten, menue oder beenden
             if (zurueck.Key == ConsoleKey.B)
@@ -244,16 +244,16 @@ namespace Profilrechner
             Console.WriteLine();
          
             
-            breite = p.EingabeMitPrüfungVolumen("Breite");
-            hoehe = p.EingabeMitPrüfungVolumen("Höhe");
-            laenge = p.EingabeMitPrüfungVolumen("Länge");
+            breite = p.EingabeMitPrüfungQuerschnittVolumen("Breite");
+            hoehe = p.EingabeMitPrüfungQuerschnittVolumen("Höhe");
+            laenge = p.EingabeMitPrüfungQuerschnittVolumen("Länge");
 
             qflaeche = hoehe * breite;
             volumen = qflaeche * laenge;
 
             if (qflaeche < 0 & laenge < 0)
             {
-                Console.Write("Querschnitt und Länge sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
+                Console.Write(" Querschnitt und Länge sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
                 ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
                 Console.WriteLine();
                 if (eingabekey.Key == ConsoleKey.N)
@@ -273,15 +273,15 @@ namespace Profilrechner
                 Console.WriteLine();
                 Console.Write("   Volumen: ");
                 Console.Write(volumen);
-                Console.WriteLine("mm3");
+                Console.WriteLine("mm³");
                 Console.WriteLine();
             }
         Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("Press B to go back to the main Menu");
-            Console.WriteLine("Press R to calculate again");
-            Console.WriteLine("Press ESC to exit Program");
+            Console.WriteLine(" Press B to go back to the main Menu");
+            Console.WriteLine(" Press R to calculate again");
+            Console.WriteLine(" Press ESC to exit Program");
         Returnbefehl:
             ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten. Zu Schließen oder zurück zu gehen.
             if (zurueck.Key == ConsoleKey.B)
@@ -329,7 +329,7 @@ namespace Profilrechner
                 {
                     Console.WriteLine();
                     Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("Fehler bei der Eingabe! (Negative Zahl oder null kann nicht verwendet werden)!");
+                    Console.WriteLine(" Fehler bei der Eingabe! (Negative Zahl oder null kann nicht verwendet werden)!");
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
                     echteeingabe = false;                                                 // um bei negativen zahlen in der schleife zu bleiben, damit die eingebae erneut abgefragt wird
@@ -377,7 +377,7 @@ namespace Profilrechner
             else
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("Diese Einheit wird nicht unterstützt, bitte andere Wählen!");
+                Console.WriteLine(" Diese Einheit wird nicht unterstützt, bitte andere Wählen!");
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
                 zahl = -1;
@@ -387,43 +387,7 @@ namespace Profilrechner
             return zahl;
         }
 
-        double EingabeMitPrüfungQuerschnitt(string definition)
-        {
-            Program p = new Program();
-            double zahl = 0;
-            bool echteeingabe = false;
-
-            while (echteeingabe == false)
-            {
-
-                Console.Write("   Eingabe {0} : ", definition);
-                string eingabe = Console.ReadLine();
-                echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
-                if (echteeingabe == false)                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("                  Fehler bei der Eingabe!");
-                    Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine();
-                }
-                else
-                {
-                    zahl = p.Einheit(zahl);
-                    if (zahl == -1)                                                                    //wenn nicht unterstützte einheit eingegeben wurde
-                    {
-                        echteeingabe = false;
-                    }
-                }
-
-
-            }
-
-            return zahl;
-        }
-
-
-        double EingabeMitPrüfungVolumen(string definition)
+        double EingabeMitPrüfungQuerschnittVolumen(string definition)
         {
             Program p = new Program();
             double zahl = 0;
