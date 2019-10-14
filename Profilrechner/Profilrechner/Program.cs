@@ -27,7 +27,7 @@ namespace Profilrechner
                 Console.WriteLine();
                 Console.Write("Auswahl: ");
                 menue = Convert.ToInt32(Console.ReadLine());
-                
+
                 if (menue == 1)
                 {
                     Console.Clear();
@@ -42,10 +42,10 @@ namespace Profilrechner
                 }
 
             } while (menue != 0);
-            }
+        }
 
         void Rechteckprofil()
-            {
+        {
             Program p = new Program();
             int menue;
 
@@ -69,21 +69,22 @@ namespace Profilrechner
                     menue = 0;
                 }
                 else if (menue == 2)
-                    {
+                {
                     p.Flaechentraegheitsmoment();
-                    }
+                    menue = 0;
+                }
                 else
                 {
                     Console.WriteLine("Fehler bei der Eingabe");
                 }
 
             } while (menue != 0);
-            }
-            void Querschnittsflaeche()
-            {
+        }
+        void Querschnittsflaeche()
+        {
 
 
-            BeginQuerschnittsflaeche:
+        BeginQuerschnittsflaeche:
             Console.Clear();
             Program p = new Program();
             double breite;
@@ -96,194 +97,244 @@ namespace Profilrechner
             Console.WriteLine("                   Querschnittsflaeche");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.Write("   Eingabe Breite: ");
-            string eingabebreite = Console.ReadLine();
-            bool echtebreite = double.TryParse(eingabebreite, out breite);                       //True wenn Zahl eingegeben wird False wenn nicht.
-            if(echtebreite == false)                                              //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
-                {
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                 !Fehler bei der Breite!");
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine();
-                }
-            else if(breite <= 0 || echtebreite == true)
-                {
-                breite = p.Einheit(breite);
-                }
-            Console.Write("   Eingabe Hoehe: ");
-            string eingabehoehe = Console.ReadLine();
-            bool echtehoehe = double.TryParse(eingabehoehe, out hoehe);                          //True wenn Zahl eingegeben wird False wenn nicht.
-            if(echtehoehe == false)                                                //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
-                {
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                 !Fehler bei der Hoehe!");
-                Console.WriteLine("----------------------------------------------------------");
-                }
-            else if(hoehe <=0 || echtehoehe == true)  
-                {
-                hoehe = p.Einheit(hoehe);
-                }
+
+            breite = p.EingabeMitPrüfungQuerschnitt("Breite");
+
+            hoehe = p.EingabeMitPrüfungQuerschnitt("Hoehe");
+
             qflaeche = breite * hoehe;
             if (breite < 0 & hoehe < 0)
-                {
+            {
                 Console.Write("Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
                 ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
                 Console.WriteLine();
                 if (eingabekey.Key == ConsoleKey.N)
-                    {
+                {
                     Console.WriteLine();
                     goto Finish;
-                    }
                 }
+            }
             if (qflaeche <= 0)                                                                    // Prüfung ob Flaeche real ist. Flaechen sind immer Positiv und nicht null.
-                {
+            {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine ("                  Flaeche nicht real.");
-                }
-            else 
-                {
+                Console.WriteLine("                  Flaeche nicht real.");
+            }
+            else
+            {
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
-                Console.Write ("   Querschnittsflaeche: ");
-                Console.Write (qflaeche);
-                Console.WriteLine ("einheit");
-                Console.WriteLine ();
-                }
-            Finish:
+                Console.Write("   Querschnittsflaeche: ");
+                Console.Write(qflaeche);
+                Console.WriteLine("mm²");
+                Console.WriteLine();
+            }
+        Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("Press B to go back to the main Menu");
             Console.WriteLine("Press R to calculate again");
             Console.WriteLine("Press ESC to exit Program");
-            Returnbefehl:
+        Returnbefehl:
             ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten. Zu Schließen oder zurück zu gehen.
             if (zurueck.Key == ConsoleKey.B)
-                {
+            {
                 Console.Clear();
                 goto End;
-                }
+            }
             else if (zurueck.Key == ConsoleKey.Escape)
-                {
+            {
                 Environment.Exit(0);
-                }
+            }
             else if (zurueck.Key == ConsoleKey.R)
-                {
+            {
                 Console.Clear();
                 goto BeginQuerschnittsflaeche;
-                }
-            else 
-                {
+            }
+            else
+            {
                 goto Returnbefehl;
-                }
-            End:;
-                       
+            }
+        End:;
+
         }
-        void Flaechentraegheitsmoment()            
+        void Flaechentraegheitsmoment()
         {
-            BeginFlaechentraegheitsmoment:
-            Console.Clear();
+        BeginFlaechentraegheitsmoment:
+
             Program p = new Program();
-            double flaechenmomentX = 0;
-            double flaechenmomentY = 0;
+            double flaechenmomentX ;
+            double flaechenmomentY ;
             double breite;
             double hoehe;
 
+            Console.Clear();
             Console.WriteLine();
             Console.WriteLine("                      Rechteckprofil");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("                 Flaechentraegheitsmoment");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.Write("   Eingabe Breite: ");
-            breite = Convert.ToDouble(Console.ReadLine());
-            breite = p.Einheit(breite);
 
-            Console.Write("   Eingabe Hoehe: ");
-            hoehe = Convert.ToDouble(Console.ReadLine());
-            hoehe = p.Einheit(hoehe);
+            breite = p.EingabeMitPrüfung("Breite");
+
+            hoehe = p.EingabeMitPrüfung("Hoehe");
+           
 
             flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
             flaechenmomentY = hoehe * breite * breite * breite / 12;
 
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("Das Flächenträgheitsmoment über die x achse ist {0} mm⁴",
+            Console.WriteLine("Das Flächenträgheitsmoment über die x achse ist {0:0.00} mm^4",
             flaechenmomentX);
-            Console.WriteLine("Das Flächenträgheitsmoment über die y achse ist {0} mm⁴",
+            Console.WriteLine("Das Flächenträgheitsmoment über die y achse ist {0:0.00} mm^4",
             flaechenmomentY);
-
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("Press B to go back to the main Menu");
             Console.WriteLine("Press R to calculate again");
             Console.WriteLine("Press ESC to exit Program");
-            Returnbefehl:
-            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten.
+        Returnbefehl:
+            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten, menue oder beenden
             if (zurueck.Key == ConsoleKey.B)
-                {
+            {
                 Console.Clear();
                 goto End;
-                }
+            }
             else if (zurueck.Key == ConsoleKey.Escape)
-                {
+            {
                 Environment.Exit(0);
-                }
+            }
             else if (zurueck.Key == ConsoleKey.R)
-                {
+            {
                 Console.Clear();
                 goto BeginFlaechentraegheitsmoment;
-                }
-            else 
-                {
+            }
+            else
+            {
                 goto Returnbefehl;
-                }
-            End:;
+            }
+        End:;
         }
 
-         double Einheit(double zahl)
+        double EingabeMitPrüfung(string definition)
         {
-
-            string einheit = "einheit";
-            int vergleich = 0; //Hilfsvariable für das vergleichen der einheiten
-
-            vergleich = 0;
-
-            while (vergleich == 0)
+            Program p = new Program();
+            double zahl = 0;
+            bool echteeingabe = false;
+            
+            while (echteeingabe == false)
             {
-                //Console.WriteLine("Bitte geben sie die Einheit ein:");
-                Console.Write("   Eingabe Einheit: ");
-                einheit = Console.ReadLine();
-                Console.WriteLine();
 
-                if (string.Compare(einheit, "mm") == 0)
+                Console.Write("   Eingabe {0} : ",definition);
+                string eingabe = Console.ReadLine();
+                echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
+                if (echteeingabe == false )                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
+                   {
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("                  Fehler bei der Eingabe!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                   }
+                else if (zahl <= 0)
                 {
-                    //es wird in mm erechnet, also keine umwandlung
-                    vergleich = 1;
-                }
-                else if (string.Compare(einheit, "cm") == 0)
-                {
-                    zahl = zahl * 10;
-                    vergleich = 1;
-                }
-                else if (string.Compare(einheit, "dm") == 0)
-                {
-                    zahl = zahl * 100;
-                    vergleich = 1;
-                }
-                else if (string.Compare(einheit, "m") == 0)
-                {
-                    zahl = zahl * 1000;
-                    vergleich = 1;
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("Fehler bei der Eingabe! (Negative Zahl oder null kann nicht verwendet werden)!");    
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                    echteeingabe = false;                                                 // um bei negativen zahlen in der schleife zu bleiben, damit die eingebae erneut abgefragt wird
                 }
                 else
                 {
-                    Console.WriteLine("Die eingegebene Einheit wird nicht unterstützt, andere wählen!");
-                    Console.WriteLine();
+                    zahl = p.Einheit(zahl);
+                    if (zahl == -1)                                                       //wenn nicht unterstützte einheit eingegeben wurde
+                    {
+                        echteeingabe = false;
+                    }
                 }
+                
 
             }
+
             return zahl;
+        }
+
+
+        double Einheit(double zahl)
+        {
+            string einheit /*= "einheit"*/;
+
+              Console.Write("   Eingabe Einheit: ");
+              einheit = Console.ReadLine();
+              Console.WriteLine();
+
+              if (string.Compare(einheit, "mm") == 0)
+              {
+                  //es wird in mm gerechnet, also keine umwandlung
+              }
+              else if (string.Compare(einheit, "cm") == 0)
+              {
+                  zahl = zahl * 10;
+              }
+              else if (string.Compare(einheit, "dm") == 0)
+              {
+                  zahl = zahl * 100;
+              }
+              else if (string.Compare(einheit, "m") == 0)
+              {
+                  zahl = zahl * 1000;
+              }
+              else
+              {
+                  Console.WriteLine("----------------------------------------------------------");
+                  Console.WriteLine("Diese Einheit wird nicht unterstützt, bitte andere Wählen!");
+                  Console.WriteLine("----------------------------------------------------------");
+                  Console.WriteLine();
+                  zahl = -1;
+              }
+
+            
+            return zahl;
+        }
+
+        double EingabeMitPrüfungQuerschnitt(string definition)
+        {
+            Program p = new Program();
+            double zahl = 0;
+            bool echteeingabe = false;
+            
+            while (echteeingabe == false)
+            {
+
+                Console.Write("   Eingabe {0} : ",definition);
+                string eingabe = Console.ReadLine();
+                echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
+                if (echteeingabe == false )                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
+                   {
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("                  Fehler bei der Eingabe!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                   }
+                else
+                {
+                    zahl = p.Einheit(zahl);
+                    if (zahl == -1)                                                                    //wenn nicht unterstützte einheit eingegeben wurde
+                    {
+                        echteeingabe = false;
+                    }
+                }
+                
+
             }
+
+            return zahl;
+        }
+
+
+
+
     }
 }
