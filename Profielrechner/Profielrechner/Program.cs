@@ -17,7 +17,7 @@ namespace Profilrechner
             {
                 Console.WriteLine();
                 Console.WriteLine("                       Profilrechner");
-                Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine("----------------------------------------------------------"); //test von einem komentar
                 Console.WriteLine("          Welches Profil wollen sie berechnen?");
                 Console.WriteLine();
                 Console.WriteLine("< 1 > Rechteckprofil");
