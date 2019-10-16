@@ -82,7 +82,7 @@ namespace Profilrechner
                 }
                 else
                 {
-                    Console.WriteLine("Fehler bei der Eingabe");
+                    Console.WriteLine("Fehler bei der Eingabe!");
                 }
 
             } while (menue != 0);
@@ -377,7 +377,7 @@ namespace Profilrechner
             else
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine(" Diese Einheit wird nicht unterstützt, bitte andere Wählen!");
+                Console.WriteLine(" Diese Einheit wird nicht unterstützt! Bitte andere Wählen!");
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
                 zahl = -69;
