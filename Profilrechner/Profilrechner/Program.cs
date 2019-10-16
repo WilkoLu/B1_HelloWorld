@@ -337,7 +337,7 @@ namespace Profilrechner
                 else
                 {
                     zahl = p.Einheit(zahl);
-                    if (zahl == -1)                                                       //wenn nicht unterstützte einheit eingegeben wurde
+                    if (zahl == -69)                                                       //wenn nicht unterstützte einheit eingegeben wurde
                     {
                         echteeingabe = false;
                     }
