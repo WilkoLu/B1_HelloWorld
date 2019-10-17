@@ -55,9 +55,8 @@ namespace Profilrechner
 
                 Console.WriteLine("              Was wollen Sie berechnen?");
                 Console.WriteLine();
-                Console.WriteLine(" < 1 > Querschnittsflaeche");
+                Console.WriteLine(" < 1 > Querschnittsflaeche und Volumen");
                 Console.WriteLine(" < 2 > Flaechentraegheitsmoment");
-                Console.WriteLine(" < 3 > Volumen");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
@@ -66,7 +65,7 @@ namespace Profilrechner
                 menue = Convert.ToInt32(Console.ReadLine());
                 if (menue == 1)
                 {
-                    p.Querschnittsflaeche();
+                    p.QuerschnittsflaecheVolumen();
                     menue = 0;
                 }
                 else if (menue == 2)
@@ -75,11 +74,6 @@ namespace Profilrechner
                     menue = 0;
                 }
 
-                else if (menue == 3)
-                {
-                    p.Volumen();
-                    menue = 0;
-                }
                 else
                 {
                     Console.WriteLine("Fehler bei der Eingabe!");
@@ -87,83 +81,7 @@ namespace Profilrechner
 
             } while (menue != 0);
         }
-        void Querschnittsflaeche()
-        {
-
-
-        BeginQuerschnittsflaeche:
-            Console.Clear();
-            Program p = new Program();
-            double breite;
-            double hoehe;
-            double qflaeche;
-
-            Console.WriteLine();
-            Console.WriteLine("                      Rechteckprofil");
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("                   Querschnittsflaeche");
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-
-            breite = p.EingabeMitPrüfungQuerschnittVolumen("Breite");
-
-            hoehe = p.EingabeMitPrüfungQuerschnittVolumen("Hoehe");
-
-            qflaeche = breite * hoehe;
-            if (breite < 0 & hoehe < 0)
-            {
-                Console.Write(" Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
-                ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
-                Console.WriteLine();
-                if (eingabekey.Key == ConsoleKey.N)
-                {
-                    Console.WriteLine();
-                    goto Finish;
-                }
-            }
-            if (qflaeche <= 0)                                                                    // Prüfung ob Flaeche real ist. Flaechen sind immer Positiv und nicht null.
-            {
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                  Flaeche nicht real.");
-            }
-            else
-            {
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine();
-                Console.Write("   Querschnittsflaeche: ");
-                Console.Write(qflaeche);
-                Console.WriteLine("mm²");
-                Console.WriteLine();
-            }
-        Finish:
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine(" Press B to go back to the main Menu");
-            Console.WriteLine(" Press R to calculate again");
-            Console.WriteLine(" Press ESC to exit Program");
-        Returnbefehl:
-            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten. Zu Schließen oder zurück zu gehen.
-            if (zurueck.Key == ConsoleKey.B)
-            {
-                Console.Clear();
-                goto End;
-            }
-            else if (zurueck.Key == ConsoleKey.Escape)
-            {
-                Environment.Exit(0);
-            }
-            else if (zurueck.Key == ConsoleKey.R)
-            {
-                Console.Clear();
-                goto BeginQuerschnittsflaeche;
-            }
-            else
-            {
-                goto Returnbefehl;
-            }
-        End:;
-
-        }
+        
         void Flaechentraegheitsmoment()
         {
         BeginFlaechentraegheitsmoment:
@@ -223,11 +141,11 @@ namespace Profilrechner
         End:;
         }
 
-        void Volumen()
+        void QuerschnittsflaecheVolumen()
         {
 
 
-        BeginVolumen:
+        BeginQuerschnittsflaecheVolumen:
             Console.Clear();
             Program p = new Program();
             double breite;
@@ -239,21 +157,18 @@ namespace Profilrechner
             Console.WriteLine();
             Console.WriteLine("                      Rechteckprofil");
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("                         Volumen");
+            Console.WriteLine("               Querschnittsflaeche und Volumen");
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
          
             
             breite = p.EingabeMitPrüfungQuerschnittVolumen("Breite");
             hoehe = p.EingabeMitPrüfungQuerschnittVolumen("Höhe");
-            laenge = p.EingabeMitPrüfungQuerschnittVolumen("Länge");
 
-            qflaeche = hoehe * breite;
-            volumen = qflaeche * laenge;
-
-            if (qflaeche < 0 & laenge < 0)
+            qflaeche = breite * hoehe;
+            if (breite < 0 & hoehe < 0)
             {
-                Console.Write(" Querschnitt und Länge sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
+                Console.Write(" Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
                 ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
                 Console.WriteLine();
                 if (eingabekey.Key == ConsoleKey.N)
@@ -262,20 +177,62 @@ namespace Profilrechner
                     goto Finish;
                 }
             }
-            if (volumen <= 0)                                                                    // Prüfung ob Volumen real ist. Volumen sind immer Positiv und nicht null.
+            if (qflaeche <= 0)                                                                    // Prüfung ob Flaeche real ist. Flaechen sind immer Positiv und nicht null.
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                  Volumen nicht real.");
+                Console.WriteLine("                  Flaeche nicht real.");
             }
             else
             {
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
-                Console.Write("   Volumen: ");
-                Console.Write(volumen);
-                Console.WriteLine("mm³");
+                Console.Write("   Querschnittsflaeche: ");
+                Console.Write(qflaeche);
+                Console.WriteLine("mm²");
                 Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
+                Console.Write(" Volumen berechnen? J/N: ");
+                ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
+                Console.WriteLine();
+                Console.WriteLine();
+                if (eingabekey.Key == ConsoleKey.J)
+                {
+                    laenge = p.EingabeMitPrüfungQuerschnittVolumen("Länge");
+
+                    qflaeche = hoehe * breite;
+                    volumen = qflaeche * laenge;
+
+                    if (qflaeche < 0 & laenge < 0)
+                    {
+                        Console.Write(" Querschnitt und Länge sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
+                        ConsoleKeyInfo eingabekey2 = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
+                        Console.WriteLine();
+                        if (eingabekey2.Key == ConsoleKey.N)
+                        {
+                            Console.WriteLine();
+                            goto Finish;
+                        }
+                    }
+                    if (volumen <= 0)                                                                    // Prüfung ob Volumen real ist. Volumen sind immer Positiv und nicht null.
+                    {
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine("                  Volumen nicht real.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine();
+                        Console.Write("   Volumen: ");
+                        Console.Write(volumen);
+                        Console.WriteLine("mm³");
+                        Console.WriteLine();
+                    }
+                }
+
             }
+
+            
         Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
@@ -296,7 +253,7 @@ namespace Profilrechner
             else if (zurueck.Key == ConsoleKey.R)
             {
                 Console.Clear();
-                goto BeginVolumen;
+                goto BeginQuerschnittsflaecheVolumen;
             }
             else
             {
