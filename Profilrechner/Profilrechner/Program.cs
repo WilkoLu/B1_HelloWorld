@@ -44,7 +44,7 @@ namespace Profilrechner
             } while (menue != 0);
         }
 
-        void Rechteckprofil()
+    /*    void Rechteckprofil()
         {
             Program p = new Program();
             int menue;
@@ -80,8 +80,9 @@ namespace Profilrechner
                 }
 
             } while (menue != 0);
-        }
-        
+        }*/
+
+            /*
         void Flaechentraegheitsmoment()
         {
         BeginFlaechentraegheitsmoment:
@@ -139,9 +140,9 @@ namespace Profilrechner
                 goto Returnbefehl;
             }
         End:;
-        }
+        }*/
 
-        void QuerschnittsflaecheVolumen()
+        void Rechteckprofil()
         {
 
 
@@ -153,19 +154,21 @@ namespace Profilrechner
             double volumen;
             double qflaeche;
             double hoehe;
+            double flaechenmomentX;
+            double flaechenmomentY;
 
             Console.WriteLine();
             Console.WriteLine("                      Rechteckprofil");
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("               Querschnittsflaeche und Volumen");
-            Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-         
-            
+
+
             breite = p.EingabeMitPrüfungQuerschnittVolumen("Breite");
             hoehe = p.EingabeMitPrüfungQuerschnittVolumen("Höhe");
 
             qflaeche = breite * hoehe;
+            flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
+            flaechenmomentY = hoehe * breite * breite * breite / 12;
             if (breite < 0 & hoehe < 0)
             {
                 Console.Write(" Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
@@ -190,6 +193,11 @@ namespace Profilrechner
                 Console.Write(qflaeche);
                 Console.WriteLine("mm²");
                 Console.WriteLine();
+                Console.WriteLine("   Das FTM der x-Achse: {0:0.00} mm^4",
+                flaechenmomentX);
+                Console.WriteLine("   Das FTM der y-Achse: {0:0.00} mm^4",
+                flaechenmomentY);
+                Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
                 Console.Write(" Volumen berechnen? J/N: ");
@@ -202,6 +210,7 @@ namespace Profilrechner
 
                     qflaeche = hoehe * breite;
                     volumen = qflaeche * laenge;
+
 
                     if (qflaeche < 0 & laenge < 0)
                     {
@@ -232,7 +241,7 @@ namespace Profilrechner
 
             }
 
-            
+
         Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
@@ -330,6 +339,10 @@ namespace Profilrechner
             else if (string.Compare(einheit, "m") == 0)
             {
                 zahl = zahl * 1000;
+            }
+            else if (string.Compare(einheit, "km") == 0)
+            {
+                zahl = zahl * 1000000;
             }
             else
             {
