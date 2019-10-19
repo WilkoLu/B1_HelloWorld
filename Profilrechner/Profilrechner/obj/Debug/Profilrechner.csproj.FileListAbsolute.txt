@@ -18,3 +18,9 @@ C:\Users\wi2177\Source\Repos\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug
 C:\Users\wi2177\Source\Repos\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.pdb
 C:\Users\wi2177\Source\Repos\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csprojResolveAssemblyReference.cache
 C:\Users\wi2177\Source\Repos\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.pdb
+\\Mac\Home\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe.config
+\\Mac\Home\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.exe
+\\Mac\Home\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\bin\Debug\Profilrechner.pdb
+\\Mac\Home\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.csprojAssemblyReference.cache
+\\Mac\Home\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.exe
+\\Mac\Home\Documents\GitHub\B1_HelloWorld\Profilrechner\Profilrechner\obj\Debug\Profilrechner.pdb

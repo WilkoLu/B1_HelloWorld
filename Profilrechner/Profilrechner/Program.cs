@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Profilrechner
 {
@@ -10,7 +11,6 @@ namespace Profilrechner
     {
         static void Main(string[] args)
         {
-            Program p = new Program();
             int menue;
 
             do
@@ -21,134 +21,61 @@ namespace Profilrechner
                 Console.WriteLine("          Welches Profil wollen sie berechnen?");
                 Console.WriteLine();
                 Console.WriteLine(" < 1 > Rechteckprofil");
+                Console.WriteLine(" < 2 > Rundprofil");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
                 Console.WriteLine();
                 Console.Write(" Auswahl: ");
-                menue = Convert.ToInt32(Console.ReadLine());
 
-                if (menue == 1)
+                string eingabe = Console.ReadLine();
+                bool zahlOderNicht = int.TryParse(eingabe, out menue);
+
+                if (zahlOderNicht == true)
                 {
-                    Console.Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("                      Rechteckprofil");
-                    Console.WriteLine("----------------------------------------------------------");
-                    p.Rechteckprofil();
+
+                    if (menue == 1)
+                    {
+                        Rechteckprofil();
+                    }
+                    else if (menue == 2)
+                    {
+                        Rundprofil();
+                    }
+                    else if (menue == 0)
+                    {
+                        //nichts damit kein fehler ausgegeben wird
+                    }
+                    else
+                    {
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine();
+                        Console.WriteLine("             !Fehler bei der Eingabe!");
+                        Thread.Sleep(2000);
+                        Console.Clear();
+                    }
                 }
                 else
                 {
-                    Console.WriteLine(" Fehler bei der Eingabe!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                    Console.WriteLine("             !Fehler bei der Eingabe!");
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    menue = -1;//damit das programm bei buchstaben nicht beendet wir
+
                 }
 
             } while (menue != 0);
         }
 
-    /*    void Rechteckprofil()
-        {
-            Program p = new Program();
-            int menue;
-
-            do
-            {
-
-
-                Console.WriteLine("              Was wollen Sie berechnen?");
-                Console.WriteLine();
-                Console.WriteLine(" < 1 > Querschnittsflaeche und Volumen");
-                Console.WriteLine(" < 2 > Flaechentraegheitsmoment");
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
-                Console.WriteLine();
-                Console.Write(" Auswahl: ");
-                menue = Convert.ToInt32(Console.ReadLine());
-                if (menue == 1)
-                {
-                    p.QuerschnittsflaecheVolumen();
-                    menue = 0;
-                }
-                else if (menue == 2)
-                {
-                    p.Flaechentraegheitsmoment();
-                    menue = 0;
-                }
-
-                else
-                {
-                    Console.WriteLine("Fehler bei der Eingabe!");
-                }
-
-            } while (menue != 0);
-        }*/
-
-            /*
-        void Flaechentraegheitsmoment()
-        {
-        BeginFlaechentraegheitsmoment:
-
-            Program p = new Program();
-            double flaechenmomentX;
-            double flaechenmomentY;
-            double breite;
-            double hoehe;
-
-            Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine("                      Rechteckprofil");
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("                 Flaechentraegheitsmoment");
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-
-            breite = p.EingabeMitPrüfung("Breite");
-
-            hoehe = p.EingabeMitPrüfung("Hoehe");
-
-
-            flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
-            flaechenmomentY = hoehe * breite * breite * breite / 12;
-
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine(" Das Flächenträgheitsmoment über die x achse ist {0:0.00} mm^4",
-            flaechenmomentX);
-            Console.WriteLine(" Das Flächenträgheitsmoment über die y achse ist {0:0.00} mm^4",
-            flaechenmomentY);
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine(" Press B to go back to the main Menu");
-            Console.WriteLine(" Press R to calculate again");
-            Console.WriteLine(" Press ESC to exit Program");
-        Returnbefehl:
-            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten, menue oder beenden
-            if (zurueck.Key == ConsoleKey.B)
-            {
-                Console.Clear();
-                goto End;
-            }
-            else if (zurueck.Key == ConsoleKey.Escape)
-            {
-                Environment.Exit(0);
-            }
-            else if (zurueck.Key == ConsoleKey.R)
-            {
-                Console.Clear();
-                goto BeginFlaechentraegheitsmoment;
-            }
-            else
-            {
-                goto Returnbefehl;
-            }
-        End:;
-        }*/
-
-        void Rechteckprofil()
+   
+        public static void Rechteckprofil()
         {
 
 
         BeginQuerschnittsflaecheVolumen:
             Console.Clear();
-            Program p = new Program();
             double breite;
             double laenge;
             double volumen;
@@ -163,30 +90,14 @@ namespace Profilrechner
             Console.WriteLine();
 
 
-            breite = p.EingabeMitPrüfungQuerschnittVolumen("Breite");
-            hoehe = p.EingabeMitPrüfungQuerschnittVolumen("Höhe");
+            breite = EingabeMitPrüfung("Breite");
+            hoehe = EingabeMitPrüfung("Höhe");
 
             qflaeche = breite * hoehe;
             flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
             flaechenmomentY = hoehe * breite * breite * breite / 12;
-            if (breite < 0 & hoehe < 0)
-            {
-                Console.Write(" Hoehe und Breite sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
-                ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
-                Console.WriteLine();
-                if (eingabekey.Key == ConsoleKey.N)
-                {
-                    Console.WriteLine();
-                    goto Finish;
-                }
-            }
-            if (qflaeche <= 0)                                                                    // Prüfung ob Flaeche real ist. Flaechen sind immer Positiv und nicht null.
-            {
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("                  Flaeche nicht real.");
-            }
-            else
-            {
+          
+
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
                 Console.Write("   Querschnittsflaeche: ");
@@ -206,40 +117,21 @@ namespace Profilrechner
                 Console.WriteLine();
                 if (eingabekey.Key == ConsoleKey.J)
                 {
-                    laenge = p.EingabeMitPrüfungQuerschnittVolumen("Länge");
+                    laenge = EingabeMitPrüfung("Länge");
 
-                    qflaeche = hoehe * breite;
                     volumen = qflaeche * laenge;
 
 
-                    if (qflaeche < 0 & laenge < 0)
-                    {
-                        Console.Write(" Querschnitt und Länge sind negativ. Trotzdem darstellen? J/N:");       // Falls beide Werte negativ sind kommt ein positives Ergebnis raus.
-                        ConsoleKeyInfo eingabekey2 = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
-                        Console.WriteLine();
-                        if (eingabekey2.Key == ConsoleKey.N)
-                        {
-                            Console.WriteLine();
-                            goto Finish;
-                        }
-                    }
-                    if (volumen <= 0)                                                                    // Prüfung ob Volumen real ist. Volumen sind immer Positiv und nicht null.
-                    {
-                        Console.WriteLine("----------------------------------------------------------");
-                        Console.WriteLine("                  Volumen nicht real.");
-                    }
-                    else
-                    {
                         Console.WriteLine("----------------------------------------------------------");
                         Console.WriteLine();
                         Console.Write("   Volumen: ");
                         Console.Write(volumen);
                         Console.WriteLine("mm³");
                         Console.WriteLine();
-                    }
+                    
                 }
 
-            }
+            
 
 
         Finish:
@@ -271,9 +163,124 @@ namespace Profilrechner
         End:;
 
         }
-        double EingabeMitPrüfung(string definition)
+
+
+        public static void Rundprofil()
         {
-            Program p = new Program();
+            double qflaeche;
+            double flaechentraegheitsmoment;
+            double volumen;
+            double masse;
+            double dichte = 0;
+
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("                      Rundprofil");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+
+            double durchmesser = EingabeMitPrüfung("Durchmesser");
+                
+            double laenge = EingabeMitPrüfung("Länge",1);
+
+            if (laenge > 0)
+            {
+                dichte = Material("Dichte");
+            }
+
+            qflaeche = Math.PI*Math.Pow(durchmesser,2)/4;
+            flaechentraegheitsmoment = Math.PI * Math.Pow(durchmesser, 4) / 64;
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("     Querschnittsfläche: {0:0.000} mm²", qflaeche);
+            Console.WriteLine();
+            Console.Write(" Flächenträgheitsmoment: {0:0.000} mm^4", flaechentraegheitsmoment);
+            Console.WriteLine();
+            if (volumen > 0)
+            {
+                Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
+            }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg", masse);
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static double Material(string eigenschaft)
+        {
+            int menue;
+            double rueckgabe = 0;
+
+            do
+            {
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine("         Aus welchem Material ist das Profil?");
+                Console.WriteLine();
+                Console.WriteLine(" < 1 > Stahl");
+                Console.WriteLine(" < 2 > Aluminium");
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
+                Console.Write(" Auswahl: ");
+
+                string eingabe = Console.ReadLine();
+                bool zahlOderNicht = int.TryParse(eingabe, out menue);
+
+                if (zahlOderNicht == true)
+                {
+                    if (menue == 1)//Stahl
+                    {
+                        if (string.Compare(eigenschaft, "Dichte") == 0 || string.Compare(eigenschaft, "dichte") == 0)
+                        {
+                            rueckgabe = 7.85 * Math.Pow(10, -6);
+                        }
+                        else if (string.Compare(eigenschaft, "Kosten") == 0 || string.Compare(eigenschaft, "kosten") == 0)
+                        {
+                            rueckgabe = 10;
+                        }
+                        menue = 0;
+                    }
+                    else if (menue == 2)//Aluminium
+                    {
+                        if (string.Compare(eigenschaft, "Dichte") == 0 || string.Compare(eigenschaft, "dichte") == 0)
+                        {
+                            rueckgabe = 2.7 * Math.Pow(10, -6);
+                        }
+                        else if (string.Compare(eigenschaft, "Kosten") == 0 || string.Compare(eigenschaft, "kosten") == 0)
+                        {
+                            rueckgabe = 11;
+                        }
+                        menue = 0;
+                    }
+                    else
+                    {
+                        menue = 0;
+                        rueckgabe = 0;
+                    }
+                }
+                else
+                {
+                    menue = 0;
+                    rueckgabe = 0;
+                }
+
+            } while (menue != 0);
+
+
+            return (rueckgabe);
+        }
+
+        public static double EingabeMitPrüfung(string definition, int eingabeErforderlich = 0)
+        {                  //wenn bei eingabeErforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben 
             double zahl = 0;
             bool echteeingabe = false;
 
@@ -285,25 +292,32 @@ namespace Profilrechner
                 echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
                 if (echteeingabe == false)                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                 {
+                    if (eingabeErforderlich==1) 
+                    {
+                        echteeingabe = true;
+                    }
+                    else
+                    { 
                     Console.WriteLine();
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine("                  Fehler bei der Eingabe!");
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
+                    }
                 }
                 else if (zahl <= 0)
                 {
                     Console.WriteLine();
                     Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine(" Fehler bei der Eingabe! (Negative Zahl oder null kann nicht verwendet werden)!");
+                    Console.WriteLine("!Fehler bei der Eingabe!(keine negativen Zahlen oder Null)");
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
                     echteeingabe = false;                                                 // um bei negativen zahlen in der schleife zu bleiben, damit die eingebae erneut abgefragt wird
                 }
                 else
                 {
-                    zahl = p.Einheit(zahl);
-                    if (zahl == -69)                                                       //wenn nicht unterstützte einheit eingegeben wurde
+                    zahl = Einheit(zahl);
+                    if (zahl == -1)                                                       //wenn nicht unterstützte einheit eingegeben wurde muss neu abgefragt werden
                     {
                         echteeingabe = false;
                     }
@@ -316,7 +330,7 @@ namespace Profilrechner
         }
 
 
-        double Einheit(double zahl)
+        public static double Einheit(double zahl)
         {
             string einheit /*= "einheit"*/;
 
@@ -344,52 +358,27 @@ namespace Profilrechner
             {
                 zahl = zahl * 1000000;
             }
+            else if (string.Compare(einheit, "inch") == 0 || string.Compare(einheit, "Inch") == 0 || string.Compare(einheit, "zoll") == 0 || string.Compare(einheit, "Zoll") == 0)
+            {
+                zahl = zahl * 25.4;
+            }
+            else if (string.Compare(einheit, "Fuß") == 0 || string.Compare(einheit, "fuß") == 0 || string.Compare(einheit, "foot") == 0 )
+            {
+                zahl = zahl * 304.8;
+            }
             else
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine(" Diese Einheit wird nicht unterstützt! Bitte andere Wählen!");
+                Console.WriteLine("Diese Einheit wird nicht unterstützt! Bitte andere Wählen!");
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
-                zahl = -69;
+                zahl = -1;
             }
 
 
             return zahl;
         }
 
-        double EingabeMitPrüfungQuerschnittVolumen(string definition)
-        {
-            Program p = new Program();
-            double zahl = 0;
-            bool echteeingabe = false;
-
-            while (echteeingabe == false)
-            {
-
-                Console.Write("   Eingabe {0} : ", definition);
-                string eingabe = Console.ReadLine();
-                echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
-                if (echteeingabe == false)                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("                  Fehler bei der Eingabe!");
-                    Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine();
-                }
-                else
-                {
-                    zahl = p.Einheit(zahl);
-                    if (zahl == -69)                                                                    //wenn nicht unterstützte einheit eingegeben wurde
-                    {
-                        echteeingabe = false;
-                    }
-                }
-
-
-            }
-
-            return zahl;
-        }
+      
     }
 }
