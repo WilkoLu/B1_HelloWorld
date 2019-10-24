@@ -18,6 +18,7 @@ namespace Profilrechner
                 Console.WriteLine();
                 Console.WriteLine("                       Profilrechner");
                 Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
                 Console.WriteLine("          Welches Profil wollen sie berechnen?");
                 Console.WriteLine();
                 Console.WriteLine(" < 1 > Rechteckprofil");
@@ -69,10 +70,9 @@ namespace Profilrechner
             } while (menue != 0);
         }
 
-   
+
         public static void Rechteckprofil()
         {
-
 
         BeginQuerschnittsflaecheVolumen:
             Console.Clear();
@@ -96,45 +96,86 @@ namespace Profilrechner
             qflaeche = breite * hoehe;
             flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
             flaechenmomentY = hoehe * breite * breite * breite / 12;
-          
+
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("   Querschnittsflaeche: ");
+            Console.Write(qflaeche);
+            Console.WriteLine("mm²");
+            Console.WriteLine();
+            Console.WriteLine("   Das horizontale FTM: {0:0.00} mm^4",
+            flaechenmomentX);
+            Console.WriteLine("     Das vertikale FTM: {0:0.00} mm^4",
+            flaechenmomentY);
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("   Volumen berechnen? J/N: ");
+            ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
+            Console.WriteLine();
+            Console.WriteLine();
+            if (eingabekey.Key == ConsoleKey.J)
+            {
+                laenge = EingabeMitPrüfung("Länge");
+
+                volumen = qflaeche * laenge;
+
 
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
-                Console.Write("   Querschnittsflaeche: ");
-                Console.Write(qflaeche);
-                Console.WriteLine("mm²");
+                Console.Write("   Volumen: ");
+                Console.Write(volumen);
+                Console.WriteLine("mm³");
                 Console.WriteLine();
-                Console.WriteLine("   Das FTM der x-Achse: {0:0.00} mm^4",
-                flaechenmomentX);
-                Console.WriteLine("   Das FTM der y-Achse: {0:0.00} mm^4",
-                flaechenmomentY);
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine();
-                Console.Write(" Volumen berechnen? J/N: ");
-                ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
-                Console.WriteLine();
-                Console.WriteLine();
-                if (eingabekey.Key == ConsoleKey.J)
-                {
-                    laenge = EingabeMitPrüfung("Länge");
-
-                    volumen = qflaeche * laenge;
-
-
-                        Console.WriteLine("----------------------------------------------------------");
-                        Console.WriteLine();
-                        Console.Write("   Volumen: ");
-                        Console.Write(volumen);
-                        Console.WriteLine("mm³");
-                        Console.WriteLine();
-                    
-                }
 
             
 
+            int menu;
+            double Gewicht;
+            Console.Write("   Gewicht berechnen J/N");
+            ConsoleKeyInfo eingabekey2 = Console.ReadKey();
+            Console.WriteLine();
+            Console.WriteLine();
+                if (eingabekey2.Key == ConsoleKey.J)
+                {
+                    Console.WriteLine("   Material:");
+                    Console.WriteLine();
+                    Console.WriteLine("   <1> Stahl");
+                    Console.WriteLine("   <2> Aluminium");
+                    Console.WriteLine();
+                    Console.Write("   Auswahl: ");
 
-        Finish:
+                    string eingabe = Console.ReadLine();
+                    bool zahlOderNicht = int.TryParse(eingabe, out menu);
+
+                    if (menu == 1)
+                    {
+                        Gewicht = 7.85 * volumen;
+
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine();
+                        Console.Write("   Gewicht: ");
+                        Console.Write(Gewicht);
+                        Console.WriteLine("kg");
+                        Console.WriteLine();
+                        
+
+                    }
+                    else if (menu == 2) 
+                    {
+                        Gewicht = 2.7 * volumen;
+
+                        Console.Write("   Gewicht: ");
+                        Console.Write(Gewicht);
+                        Console.WriteLine("kg");
+                        Console.WriteLine();
+                    }
+                }
+            }
+
+
+            Finish:
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine(" Press B to go back to the main Menu");
@@ -181,15 +222,15 @@ namespace Profilrechner
 
 
             double durchmesser = EingabeMitPrüfung("Durchmesser");
-                
-            double laenge = EingabeMitPrüfung("Länge",1);
+
+            double laenge = EingabeMitPrüfung("Länge", 1);
 
             if (laenge > 0)
             {
                 dichte = Material("Dichte");
             }
 
-            qflaeche = Math.PI*Math.Pow(durchmesser,2)/4;
+            qflaeche = Math.PI * Math.Pow(durchmesser, 2) / 4;
             flaechentraegheitsmoment = Math.PI * Math.Pow(durchmesser, 4) / 64;
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
@@ -198,7 +239,7 @@ namespace Profilrechner
             Console.WriteLine();
             Console.Write("     Querschnittsfläche: {0:0.000} mm²", qflaeche);
             Console.WriteLine();
-            Console.Write(" Flächenträgheitsmoment: {0:0.000} mm^4", flaechentraegheitsmoment);
+            Console.Write("                    FTM: {0:0.000} mm^4", flaechentraegheitsmoment);
             Console.WriteLine();
             if (volumen > 0)
             {
@@ -221,8 +262,9 @@ namespace Profilrechner
 
             do
             {
-                Console.WriteLine();
+                
                 Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
                 Console.WriteLine("         Aus welchem Material ist das Profil?");
                 Console.WriteLine();
                 Console.WriteLine(" < 1 > Stahl");
@@ -234,6 +276,8 @@ namespace Profilrechner
 
                 string eingabe = Console.ReadLine();
                 bool zahlOderNicht = int.TryParse(eingabe, out menue);
+
+                Console.WriteLine();
 
                 if (zahlOderNicht == true)
                 {
@@ -292,17 +336,17 @@ namespace Profilrechner
                 echteeingabe = double.TryParse(eingabe, out zahl);                                   //True wenn Zahl eingegeben wird False wenn nicht.
                 if (echteeingabe == false)                                                          //Prüfung ob Zahl eingegeben wurde oder die Zahl kleiner gleich 0 ist
                 {
-                    if (eingabeErforderlich==1) 
+                    if (eingabeErforderlich == 1)
                     {
                         echteeingabe = true;
                     }
                     else
-                    { 
-                    Console.WriteLine();
-                    Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("                  Fehler bei der Eingabe!");
-                    Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine();
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine("                  Fehler bei der Eingabe!");
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine();
                     }
                 }
                 else if (zahl <= 0)
@@ -362,7 +406,7 @@ namespace Profilrechner
             {
                 zahl = zahl * 25.4;
             }
-            else if (string.Compare(einheit, "Fuß") == 0 || string.Compare(einheit, "fuß") == 0 || string.Compare(einheit, "foot") == 0 )
+            else if (string.Compare(einheit, "ft") == 0)
             {
                 zahl = zahl * 304.8;
             }
@@ -379,6 +423,6 @@ namespace Profilrechner
             return zahl;
         }
 
-      
+
     }
 }
