@@ -23,6 +23,8 @@ namespace Profilrechner
                 Console.WriteLine();
                 Console.WriteLine(" < 1 > Rechteckprofil");
                 Console.WriteLine(" < 2 > Rundprofil");
+                Console.WriteLine(" < 3 > Vierkantprofil");
+                Console.WriteLine(" < 4 > Vierkantrohr");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
@@ -42,6 +44,14 @@ namespace Profilrechner
                     else if (menue == 2)
                     {
                         Rundprofil();
+                    }
+                    else if (menue == 3)
+                    {
+                        Vierkantprofil();
+                    }
+                    else if (menue == 4)
+                    {
+                        Vierkantrohr();
                     }
                     else if (menue == 0)
                     {
@@ -74,7 +84,6 @@ namespace Profilrechner
         public static void Rechteckprofil()
         {
 
-        BeginQuerschnittsflaecheVolumen:
             Console.Clear();
             double breite;
             double laenge;
@@ -120,12 +129,13 @@ namespace Profilrechner
             Console.WriteLine();
             if (volumen > 0)
 	        {
-                Console.Write("                   Volumen: {0:0.000} mm³",volumen);
+                Console.Write("                Volumen: {0:0.000} mm³",volumen);
                 Console.WriteLine();
 	        }
             if (masse > 0)
             {
-                Console.Write("                    Masse: {0:0.000} kg",masse);
+                Console.Write("                  Masse: {0:0.000} kg",masse);
+                Console.WriteLine();
                 Console.WriteLine();
 
             }
@@ -135,7 +145,6 @@ namespace Profilrechner
             Console.Clear();
 
         }
-
 
         public static void Rundprofil()
         {
@@ -181,9 +190,132 @@ namespace Profilrechner
             {
                 Console.Write("                  Masse: {0:0.000} kg", masse);
                 Console.WriteLine();
+                Console.WriteLine();
             }
+            Console.WriteLine("----------------------------------------------------------");
+
             Console.ReadKey();
             Console.Clear();
+        }
+
+        public static void Vierkantprofil()
+        {
+
+            Console.Clear();
+            double kantenlaenge;
+            double laenge;
+            double volumen;
+            double qflaeche;
+            double flaechenmomentX;
+            double masse;
+            double dichte = 0;
+
+            Console.WriteLine();
+            Console.WriteLine("                      Vierkantprofil");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+
+            kantenlaenge = EingabeMitPrüfung("Kantenlaenge");
+
+            laenge = EingabeMitPrüfung("Länge",1); 
+
+            //wenn bei eingabeErforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben
+            
+            if (laenge > 0)
+            {
+                dichte = Material ("Dichte");
+            }
+
+            qflaeche = kantenlaenge * kantenlaenge;
+            flaechenmomentX = kantenlaenge * kantenlaenge * kantenlaenge * kantenlaenge / 12;
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
+            Console.WriteLine();
+            Console.WriteLine("                    FTM: {0:0.000} mm^4",flaechenmomentX);
+            Console.WriteLine();
+            if (volumen > 0)
+	        {
+                Console.Write("                Volumen: {0:0.000} mm³",volumen);
+                Console.WriteLine();
+	        }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg",masse);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("----------------------------------------------------------");
+
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+
+        public static void Vierkantrohr()
+        {
+
+            Console.Clear();
+            double kantenlaenge;
+            double wandstaerke;
+            double laenge;
+            double volumen;
+            double qflaeche;
+            double flaechenmomentX;
+            double masse;
+            double dichte = 0;
+
+            Console.WriteLine();
+            Console.WriteLine("                      Vierkantrohr");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+
+            kantenlaenge = EingabeMitPrüfung("Kantenlaenge");
+            wandstaerke = EingabeMitPrüfung("Wandstaerke");
+
+            laenge = EingabeMitPrüfung("Länge",1); 
+
+            //wenn bei eingabeErforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben
+            
+            if (laenge > 0)
+            {
+                dichte = Material ("Dichte");
+            }
+
+            qflaeche = kantenlaenge * kantenlaenge - ((kantenlaenge - wandstaerke*2) * (kantenlaenge - wandstaerke*2));
+            flaechenmomentX = (kantenlaenge * kantenlaenge * kantenlaenge * kantenlaenge - ((kantenlaenge - wandstaerke*2) * (kantenlaenge - wandstaerke*2) * (kantenlaenge - wandstaerke*2) * (kantenlaenge - wandstaerke*2))) /12;
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
+            Console.WriteLine();
+            Console.WriteLine("                    FTM: {0:0.000} mm^4",flaechenmomentX);
+            Console.WriteLine();
+            if (volumen > 0)
+	        {
+                Console.Write("                Volumen: {0:0.000} mm³",volumen);
+                Console.WriteLine();
+	        }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg",masse);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("----------------------------------------------------------");
+
+            Console.ReadKey();
+            Console.Clear();
+
         }
 
         public static double Material(string eigenschaft)
