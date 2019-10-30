@@ -22,7 +22,9 @@ namespace Profilrechner
                 Console.WriteLine("          Welches Profil wollen sie berechnen?");
                 Console.WriteLine();
                 Console.WriteLine(" < 1 > Rechteckprofil");
-                Console.WriteLine(" < 2 > Rundprofil");
+                Console.WriteLine(" < 2 > Rechteckrohr");
+                Console.WriteLine(" < 3 > Rundprofil");
+                Console.WriteLine(" < 4 > Rundrohr");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
@@ -41,7 +43,15 @@ namespace Profilrechner
                     }
                     else if (menue == 2)
                     {
+                        //vorbereitet rechteckrohr
+                    }
+                    else if (menue == 3)
+                    {
                         Rundprofil();
+                    }
+                    else if (menue == 4)
+                    {
+                        Rundrohr();
                     }
                     else if (menue == 0)
                     {
@@ -73,8 +83,6 @@ namespace Profilrechner
 
         public static void Rechteckprofil()
         {
-
-        BeginQuerschnittsflaecheVolumen:
             Console.Clear();
             double breite;
             double laenge;
@@ -185,6 +193,98 @@ namespace Profilrechner
             Console.ReadKey();
             Console.Clear();
         }
+
+         public static void Rundrohr()
+        {
+            double qflaeche;
+            double flaechentraegheitsmoment;
+            double volumen;
+            double masse;
+            double dichte = 0;
+            double aussendurchmesser;
+            double innendurchmesser = 0;
+            int eingabeauswahl;
+
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("                      Rundrohr");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+            do
+            {
+            aussendurchmesser = EingabeMitPrüfung("Außendurchmesser");
+
+             Console.WriteLine("Womit wollen sie Rechnen?");
+             Console.WriteLine();
+             Console.WriteLine(" < 1 > Wandstärke");
+             Console.WriteLine(" < 2 > Innendurchmesser");
+
+
+             string eingabe = Console.ReadLine();
+             bool zahlOderNicht = int.TryParse(eingabe, out eingabeauswahl);
+                
+                if (zahlOderNicht == true)
+                {
+                    if(eingabeauswahl == 1)
+                    {
+                        double wandstaerke = EingabeMitPrüfung("Wandstärke");
+                        innendurchmesser = aussendurchmesser - 2 * wandstaerke;
+                    }
+                    else if (eingabeauswahl == 2)
+                    {
+                        innendurchmesser = EingabeMitPrüfung("Innendurchmesser");
+                    }
+                
+
+                }
+                
+
+            if (innendurchmesser >= aussendurchmesser)
+            {
+                Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
+                Console.WriteLine(" !Fehler bei der Eingabe! Innendurchmesser kann nicht größer oder gleich dem Außendurchmesser sein!");
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------");
+            }
+
+            } while (innendurchmesser >= aussendurchmesser);
+            
+
+            double laenge = EingabeMitPrüfung("Länge", 1);
+
+            if (laenge > 0)
+            {
+                dichte = Material("Dichte");
+            }
+
+            qflaeche = Math.PI * (Math.Pow(aussendurchmesser, 2) - Math.Pow(innendurchmesser, 2)) / 4;
+            flaechentraegheitsmoment = Math.PI * (Math.Pow(aussendurchmesser/2, 4) - Math.Pow(innendurchmesser / 2, 4)) / 4;
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("     Querschnittsfläche: {0:0.000} mm²", qflaeche);
+            Console.WriteLine();
+            Console.Write("                    FTM: {0:0.000} mm^4", flaechentraegheitsmoment);
+            Console.WriteLine();
+            if (volumen > 0)
+            {
+                Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
+            }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg", masse);
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+
 
         public static double Material(string eigenschaft)
         {
