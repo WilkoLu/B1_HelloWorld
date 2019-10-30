@@ -78,11 +78,13 @@ namespace Profilrechner
             Console.Clear();
             double breite;
             double laenge;
+            double hoehe;
             double volumen;
             double qflaeche;
-            double hoehe;
             double flaechenmomentX;
             double flaechenmomentY;
+            double masse;
+            double dichte = 0;
 
             Console.WriteLine();
             Console.WriteLine("                      Rechteckprofil");
@@ -93,115 +95,44 @@ namespace Profilrechner
             breite = EingabeMitPrüfung("Breite");
             hoehe = EingabeMitPrüfung("Höhe");
 
+            laenge = EingabeMitPrüfung("Länge",1); 
+            //wenn bei eingabeErforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben
+            if (laenge > 0)
+            {
+                dichte = Material ("Dichte");
+            
+            }
+
             qflaeche = breite * hoehe;
             flaechenmomentX = breite * hoehe * hoehe * hoehe / 12;
             flaechenmomentY = hoehe * breite * breite * breite / 12;
-
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
 
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
-            Console.Write("   Querschnittsflaeche: ");
-            Console.Write(qflaeche);
-            Console.WriteLine("mm²");
+            Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
             Console.WriteLine();
-            Console.WriteLine("   Das horizontale FTM: {0:0.00} mm^4",
+            Console.WriteLine("       horizontales FTM: {0:0.000} mm^4",
             flaechenmomentX);
-            Console.WriteLine("     Das vertikale FTM: {0:0.00} mm^4",
+            Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
             Console.WriteLine();
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-            Console.Write("   Volumen berechnen? J/N: ");
-            ConsoleKeyInfo eingabekey = Console.ReadKey();                                   // Ist das der Fall kann der Benutzer sich entscheiden ob es weitergeht.
-            Console.WriteLine();
-            Console.WriteLine();
-            if (eingabekey.Key == ConsoleKey.J)
-            {
-                laenge = EingabeMitPrüfung("Länge");
-
-                volumen = qflaeche * laenge;
-
-
-                Console.WriteLine("----------------------------------------------------------");
+            if (volumen > 0)
+	        {
+                Console.Write("                   Volumen: {0:0.000} mm³",volumen);
                 Console.WriteLine();
-                Console.Write("   Volumen: ");
-                Console.Write(volumen);
-                Console.WriteLine("mm³");
+	        }
+            if (masse > 0)
+            {
+                Console.Write("                    Masse: {0:0.000} kg",masse);
                 Console.WriteLine();
 
-            
-
-            int menu;
-            double Gewicht;
-            Console.Write("   Gewicht berechnen J/N");
-            ConsoleKeyInfo eingabekey2 = Console.ReadKey();
-            Console.WriteLine();
-            Console.WriteLine();
-                if (eingabekey2.Key == ConsoleKey.J)
-                {
-                    Console.WriteLine("   Material:");
-                    Console.WriteLine();
-                    Console.WriteLine("   <1> Stahl");
-                    Console.WriteLine("   <2> Aluminium");
-                    Console.WriteLine();
-                    Console.Write("   Auswahl: ");
-
-                    string eingabe = Console.ReadLine();
-                    bool zahlOderNicht = int.TryParse(eingabe, out menu);
-
-                    if (menu == 1)
-                    {
-                        Gewicht = 7.85 * volumen;
-
-                        Console.WriteLine("----------------------------------------------------------");
-                        Console.WriteLine();
-                        Console.Write("   Gewicht: ");
-                        Console.Write(Gewicht);
-                        Console.WriteLine("kg");
-                        Console.WriteLine();
-                        
-
-                    }
-                    else if (menu == 2) 
-                    {
-                        Gewicht = 2.7 * volumen;
-
-                        Console.Write("   Gewicht: ");
-                        Console.Write(Gewicht);
-                        Console.WriteLine("kg");
-                        Console.WriteLine();
-                    }
-                }
             }
-
-
-            Finish:
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine(" Press B to go back to the main Menu");
-            Console.WriteLine(" Press R to calculate again");
-            Console.WriteLine(" Press ESC to exit Program");
-        Returnbefehl:
-            ConsoleKeyInfo zurueck = Console.ReadKey();                                            // Tastendruck um neu zu starten. Zu Schließen oder zurück zu gehen.
-            if (zurueck.Key == ConsoleKey.B)
-            {
-                Console.Clear();
-                goto End;
-            }
-            else if (zurueck.Key == ConsoleKey.Escape)
-            {
-                Environment.Exit(0);
-            }
-            else if (zurueck.Key == ConsoleKey.R)
-            {
-                Console.Clear();
-                goto BeginQuerschnittsflaecheVolumen;
-            }
-            else
-            {
-                goto Returnbefehl;
-            }
-        End:;
+
+            Console.ReadKey();
+            Console.Clear();
 
         }
 
