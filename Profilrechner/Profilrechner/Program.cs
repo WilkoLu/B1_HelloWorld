@@ -150,7 +150,9 @@ namespace Profilrechner
 
             }
             Console.WriteLine("----------------------------------------------------------");
-
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
 
@@ -203,7 +205,9 @@ namespace Profilrechner
                 Console.WriteLine();
             }
             Console.WriteLine("----------------------------------------------------------");
-
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
         }
@@ -260,7 +264,7 @@ namespace Profilrechner
             if (innendurchmesser >= aussendurchmesser ||innendurchmesser <= 0)
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine("Innen-Ø kann nicht größer oder gleich dem Außen-Ø sein!");
+                Console.WriteLine(" Innen-Ø kann nicht größer oder gleich dem Außen-Ø sein!");
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine();
             }
@@ -295,7 +299,13 @@ namespace Profilrechner
             {
                 Console.Write("                  Masse: {0:0.000} kg", masse);
                 Console.WriteLine();
+                Console.WriteLine();
             }
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
         }
@@ -354,7 +364,9 @@ namespace Profilrechner
             }
 
             Console.WriteLine("----------------------------------------------------------");
-
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
 
@@ -378,15 +390,16 @@ namespace Profilrechner
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
 
+            kantenlaenge = EingabeMitPrüfung("Kantenlaenge");
+
             do
             {
-                kantenlaenge = EingabeMitPrüfung("Kantenlaenge");
                 wandstaerke = EingabeMitPrüfung("Wandstaerke");
 
                 if (wandstaerke >= kantenlaenge / 2)
                 {
                     Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("!Wandstärke kann nicht größer oder gleich Kantenlänge sein!");
+                    Console.WriteLine(" !Wandstärke kann nicht größer oder gleich Kantenlänge sein!");
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
 
@@ -429,7 +442,9 @@ namespace Profilrechner
             }
 
             Console.WriteLine("----------------------------------------------------------");
-
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
 
@@ -496,7 +511,9 @@ namespace Profilrechner
 
             }
             Console.WriteLine("----------------------------------------------------------");
-
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
 
