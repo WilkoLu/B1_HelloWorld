@@ -229,6 +229,7 @@ namespace Profilrechner
             {
             aussendurchmesser = EingabeMitPrüfung("Außendurchmesser");
 
+             Console.WriteLine("----------------------------------------------------------");
              Console.WriteLine(" Womit wollen Sie rechnen?");
              Console.WriteLine();
              Console.WriteLine(" < 1 > Wandstärke");
@@ -239,6 +240,7 @@ namespace Profilrechner
 
              string eingabe = Console.ReadLine();
              bool zahlOderNicht = int.TryParse(eingabe, out eingabeauswahl);
+             Console.WriteLine("----------------------------------------------------------");
              Console.WriteLine();
 
                 if (zahlOderNicht == true)
@@ -255,16 +257,15 @@ namespace Profilrechner
                 }
 
 
-            if (innendurchmesser >= aussendurchmesser)
+            if (innendurchmesser >= aussendurchmesser ||innendurchmesser <= 0)
             {
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine();
-                Console.WriteLine(" !Fehler bei der Eingabe! Innendurchmesser kann nicht größer oder gleich dem Außendurchmesser sein!");
-                Console.WriteLine();
+                Console.WriteLine("Innen-Ø kann nicht größer oder gleich dem Außen-Ø sein!");
                 Console.WriteLine("----------------------------------------------------------");
+                Console.WriteLine();
             }
 
-            } while (innendurchmesser >= aussendurchmesser);
+            } while (innendurchmesser >= aussendurchmesser || innendurchmesser <= 0);
 
 
             double laenge = EingabeMitPrüfung("Länge", 1);
@@ -377,9 +378,23 @@ namespace Profilrechner
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
 
+            do
+            {
+                kantenlaenge = EingabeMitPrüfung("Kantenlaenge");
+                wandstaerke = EingabeMitPrüfung("Wandstaerke");
 
-            kantenlaenge = EingabeMitPrüfung("Kantenlaenge");
-            wandstaerke = EingabeMitPrüfung("Wandstaerke");
+                if (wandstaerke >= kantenlaenge / 2)
+                {
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("!Wandstärke kann nicht größer oder gleich Kantenlänge sein!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+
+                }
+
+            } while (wandstaerke >= kantenlaenge / 2);
+            
+
 
             laenge = EingabeMitPrüfung("Länge",1); 
 
