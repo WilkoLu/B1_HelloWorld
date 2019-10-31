@@ -22,15 +22,16 @@ namespace Profilrechner
                 Console.WriteLine("          Welches Profil wollen sie berechnen?");
                 Console.WriteLine();
                 Console.WriteLine(" < 1 > Rechteckprofil");
-                Console.WriteLine(" < 2 > Rundprofil");
-                Console.WriteLine(" < 3 > Rohrprofil");
-                Console.WriteLine(" < 4 > Vierkantprofil");
-                Console.WriteLine(" < 5 > Vierkantrohr");
-                Console.WriteLine(" < 6 > Doppel T Träger");
-		Console.WriteLine(" < 7 > Rechteckrohr");
+                Console.WriteLine(" < 2 > Rechteckrohr");
+                Console.WriteLine(" < 3 > Rundprofil");
+                Console.WriteLine(" < 4 > Rohrprofil");
+                Console.WriteLine(" < 5 > Vierkantprofil");
+                Console.WriteLine(" < 6 > Vierkantrohr");
+                Console.WriteLine(" < 7 > Doppel T Träger");
+		        Console.WriteLine(" < 8 > Winkelprofil");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
-                Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
+                Console.WriteLine(" 0 zum beenden des Programms");
                 Console.WriteLine();
                 Console.Write(" Auswahl: ");
 
@@ -46,27 +47,31 @@ namespace Profilrechner
                     }
                     else if (menue == 2)
                     {
-                        Rundprofil();
+                        Rechteckrohr();
                     }
                     else if (menue == 3)
                     {
-                        Rohrprofil();
+                        Rundprofil();
                     }
                     else if (menue == 4)
                     {
-                        Vierkantprofil();
+                        Rohrprofil();
                     }
                     else if (menue == 5)
                     {
-                        Vierkantrohr();
+                        Vierkantprofil();
                     }
                     else if (menue == 6)
                     {
+                        Vierkantrohr();
+                    }
+                    else if (menue == 7)
+                    {
                         iprofil();
                     }
-		    else if (menue == 7)
+		            else if (menue == 8)
                     {
-                        Rechteckrohr();
+                        Winkelprofil();
                     }
                     else if (menue == 0)
                     {
@@ -217,7 +222,7 @@ namespace Profilrechner
             Console.Clear();
         }
 
-         public static void Rohrprofil()
+        public static void Rohrprofil()
         {
             double qflaeche;
             double flaechentraegheitsmoment;
@@ -314,7 +319,6 @@ namespace Profilrechner
             Console.ReadKey();
             Console.Clear();
         }
-
 
         public static void Vierkantprofil()
         {
@@ -455,7 +459,7 @@ namespace Profilrechner
 
         }
 
-         public static void iprofil()
+        public static void iprofil()
 
             {
             Console.Clear();
@@ -524,7 +528,7 @@ namespace Profilrechner
 
         }
    
-	 public static void Rechteckrohr()
+	    public static void Rechteckrohr()
         {
 
             Console.Clear();
@@ -591,7 +595,97 @@ namespace Profilrechner
             Console.Clear();
 
         }
-	        
+
+        public static void Winkelprofil()
+        {
+
+            Console.Clear();
+            double breite;
+            double laenge;
+            double hoehe;
+            double wandstaerke;
+            double volumen;
+            double qflaeche;
+            double flaechenmomentX;
+            double flaechenmomentY;
+            double schwerpunktX;
+            double schwerpunktY;
+            double masse;
+            double dichte = 0;
+
+            Console.WriteLine();
+            Console.WriteLine("                      Winkelprofil");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+            do
+            {
+                hoehe = EingabeMitPrüfung("Höhe");
+                breite = EingabeMitPrüfung("Breite");
+                wandstaerke = EingabeMitPrüfung("Wandstärke");
+
+
+                if (wandstaerke >= hoehe || wandstaerke <= breite)
+                {
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("Wandstärke kann nicht größer oder gleich Höhe/Breite sein!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                }
+
+            } while (wandstaerke >= hoehe || wandstaerke <= breite);
+
+            
+
+            laenge = EingabeMitPrüfung("Länge", 1);
+            //wenn bei eingabeErforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben
+            if (laenge > 0)
+            {
+                dichte = Material("Dichte");
+
+            }
+
+            qflaeche = wandstaerke * (hoehe + breite - wandstaerke);
+            schwerpunktX = wandstaerke * 0.5 * (breite * breite + hoehe * wandstaerke - wandstaerke * wandstaerke) / qflaeche;
+            schwerpunktY = wandstaerke * 0.5 * (hoehe * hoehe + breite * wandstaerke - wandstaerke * wandstaerke) / qflaeche;
+            flaechenmomentX = wandstaerke * hoehe * (hoehe * hoehe / 12 + Math.Pow (hoehe / 2 - schwerpunktY ,2)) + wandstaerke * (breite - wandstaerke) * (wandstaerke * wandstaerke / 12 + Math.Pow(schwerpunktY - wandstaerke / 2 ,2)) ;
+            flaechenmomentY = wandstaerke * hoehe * (wandstaerke * wandstaerke / 12 + Math.Pow(schwerpunktX - wandstaerke / 2 ,2)) + wandstaerke * (breite - wandstaerke) * (Math.Pow(breite - wandstaerke ,2) / 12 + Math.Pow((breite + wandstaerke) / 2 - schwerpunktX ,2));
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²", qflaeche);
+            Console.WriteLine();
+            Console.WriteLine("       horizontales FTM: {0:0.000} mm^4",
+            flaechenmomentX);
+            Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
+            flaechenmomentY);
+            Console.WriteLine("    bezogen auf den Schwerpunkt:");
+            Console.WriteLine("             horizontal: {0} mm",schwerpunktX);
+            Console.WriteLine("               vertikal: {0} mm",schwerpunktY);
+            Console.WriteLine();
+            if (volumen > 0)
+            {
+                Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
+            }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg", masse);
+                Console.WriteLine();
+                Console.WriteLine();
+
+            }
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+
         public static double Material(string eigenschaft)
         {
             int menue;
