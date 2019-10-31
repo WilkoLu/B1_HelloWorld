@@ -27,6 +27,7 @@ namespace Profilrechner
                 Console.WriteLine(" < 4 > Vierkantprofil");
                 Console.WriteLine(" < 5 > Vierkantrohr");
                 Console.WriteLine(" < 6 > Doppel T Träger");
+		Console.WriteLine(" < 7 > Rechteckrohr");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine(" Zum beenden des Programms drücken Sie 0");
@@ -62,6 +63,10 @@ namespace Profilrechner
                     else if (menue == 6)
                     {
                         iprofil();
+                    }
+		    else if (menue == 7)
+                    {
+                        Rechteckrohr();
                     }
                     else if (menue == 0)
                     {
@@ -518,7 +523,75 @@ namespace Profilrechner
             Console.Clear();
 
         }
+   
+	 public static void Rechteckrohr()
+        {
 
+            Console.Clear();
+            double breite;
+            double hoehe;
+            double wandstaerke;
+            double laenge;
+            double volumen;
+            double qflaeche;
+            double flaechenmomentX;
+            double flaechenmomentY;
+            double masse;
+            double dichte = 0;
+
+            Console.WriteLine();
+            Console.WriteLine("                      Rechteckrohr");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+
+            breite = EingabeMitPrüfung("Breite");
+            hoehe = EingabeMitPrüfung("Höhe");
+            wandstaerke = EingabeMitPrüfung("Wandstaerke");
+
+            laenge = EingabeMitPrüfung("Länge", 1);
+
+            //wenn bei eingabe Erforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben
+
+            if (laenge > 0)
+            {
+                dichte = Material("Dichte");
+            }
+
+            qflaeche = breite * hoehe - ((breite - wandstaerke * 2) * (hoehe - wandstaerke * 2));
+            flaechenmomentX = (breite * hoehe * hoehe * hoehe - ((breite - wandstaerke * 2) * (hoehe - wandstaerke * 2) * (hoehe - wandstaerke * 2) * (hoehe - wandstaerke * 2))) / 12;
+            flaechenmomentY = (hoehe * breite * breite * breite - ((hoehe - wandstaerke * 2) * (breite - wandstaerke * 2) * (breite - wandstaerke * 2) * (breite - wandstaerke * 2))) / 12;
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²", qflaeche);
+            Console.WriteLine();
+            Console.WriteLine("       horizontales FTM: {0:0.000} mm^4",
+            flaechenmomentX);
+            Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
+            flaechenmomentY);
+            Console.WriteLine();
+            if (volumen > 0)
+            {
+                Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
+            }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg", masse);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("----------------------------------------------------------");
+
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+	        
         public static double Material(string eigenschaft)
         {
             int menue;
