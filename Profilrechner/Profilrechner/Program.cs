@@ -494,7 +494,7 @@ namespace Profilrechner
 
             qflaeche = breite * steg * 2 + (hoehe - steg * 2) * steg;
             flaechenmomentX = ((breite * hoehe * hoehe * hoehe) - (breite-steg)*(hoehe-steg*2)*(hoehe-steg*2)*(hoehe-steg*2)) /12;
-            flaechenmomentY = ((hoehe * breite* breite* breite)- (hoehe-steg)*(breite-steg*2)*(breite-steg*2)*(breite-steg*2)) /12;
+            flaechenmomentY = ((2 * steg * breite* breite* breite) + (hoehe-steg*2)*(steg)*(steg)*(steg)) /12;
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
