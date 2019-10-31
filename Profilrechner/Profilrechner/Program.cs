@@ -28,7 +28,8 @@ namespace Profilrechner
                 Console.WriteLine(" < 5 > Vierkantprofil");
                 Console.WriteLine(" < 6 > Vierkantrohr");
                 Console.WriteLine(" < 7 > Doppel T Träger");
-		        Console.WriteLine(" < 8 > Winkelprofil");
+                Console.WriteLine(" < 8 > T-Profil");
+                Console.WriteLine(" < 9 > Winkelprofil");
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine(" 0 zum beenden des Programms");
@@ -69,7 +70,11 @@ namespace Profilrechner
                     {
                         iprofil();
                     }
-		            else if (menue == 8)
+                    else if (menue == 8)
+                    {
+                        Tprofil();
+                    }
+                    else if (menue == 9)
                     {
                         Winkelprofil();
                     }
@@ -662,8 +667,91 @@ namespace Profilrechner
             Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
             Console.WriteLine("    bezogen auf den Schwerpunkt:");
-            Console.WriteLine("             horizontal: {0} mm",schwerpunktX);
-            Console.WriteLine("               vertikal: {0} mm",schwerpunktY);
+            Console.WriteLine("             horizontal: {0:0.000} mm",schwerpunktX);
+            Console.WriteLine("               vertikal: {0:0.000} mm",schwerpunktY);
+            Console.WriteLine();
+            if (volumen > 0)
+            {
+                Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
+            }
+            if (masse > 0)
+            {
+                Console.Write("                  Masse: {0:0.000} kg", masse);
+                Console.WriteLine();
+                Console.WriteLine();
+
+            }
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+
+        public static void Tprofil()
+        {
+            Console.Clear();
+            double breiteundhoehe;
+            double laenge;
+            double steg;
+            double volumen;
+            double qflaeche;
+            double flaechenmomentX;
+            double flaechenmomentY;
+            double schwerpunkt;
+            double masse;
+            double dichte = 0;
+
+            Console.WriteLine();
+            Console.WriteLine("                      T-Profil");
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+
+            do
+            {
+                breiteundhoehe = EingabeMitPrüfung("Höhe/Breite");
+                steg = EingabeMitPrüfung("Stegbreite");
+
+
+                if (steg >= breiteundhoehe )
+                {
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("Stegbreite kann nicht größer oder gleich Höhe/Breite sein!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+                }
+
+            } while (steg >= breiteundhoehe);
+
+
+
+            laenge = EingabeMitPrüfung("Länge", 1);
+            //wenn bei eingabeErforderlich 1 mitgegeben wird muss keine zahl eingegeben werden und null wird zurückgegeben
+            if (laenge > 0)
+            {
+                dichte = Material("Dichte");
+
+            }
+
+            qflaeche = steg * (2 * breiteundhoehe - steg);
+            schwerpunkt = steg * 0.5 * (breiteundhoehe * steg + breiteundhoehe * breiteundhoehe - steg * steg) / qflaeche;
+            flaechenmomentX = breiteundhoehe * steg * (steg * steg / 12 + Math.Pow(schwerpunkt - steg / 2 ,2)) + steg * (breiteundhoehe - steg) * (Math.Pow(breiteundhoehe - steg ,2) / 12 +  Math.Pow((breiteundhoehe + steg) / 2 - schwerpunkt ,2));
+            flaechenmomentY = (steg * Math.Pow(breiteundhoehe ,3)  + (breiteundhoehe - steg) * Math.Pow(steg ,3)) / 12;
+            volumen = qflaeche * laenge;
+            masse = volumen * dichte;
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²", qflaeche);
+            Console.WriteLine();
+            Console.WriteLine("       horizontales FTM: {0:0.000} mm^4",
+            flaechenmomentX);
+            Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
+            flaechenmomentY);
+            Console.WriteLine(" bezogen auf den Schwerpunkt: {0:0.000} mm", schwerpunkt);
             Console.WriteLine();
             if (volumen > 0)
             {
