@@ -153,9 +153,11 @@ namespace Profilrechner
             Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
 	        {
                 Console.Write("                Volumen: {0:0.000} mm³",volumen);
+                Console.WriteLine();
                 Console.WriteLine();
 	        }
             if (masse > 0)
@@ -210,9 +212,11 @@ namespace Profilrechner
             Console.WriteLine();
             Console.Write("                    FTM: {0:0.000} mm^4", flaechentraegheitsmoment);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
             {
                 Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
                 Console.WriteLine();
             }
             if (masse > 0)
@@ -308,9 +312,11 @@ namespace Profilrechner
             Console.WriteLine();
             Console.Write("                    FTM: {0:0.000} mm^4", flaechentraegheitsmoment);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
             {
                 Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
                 Console.WriteLine();
             }
             if (masse > 0)
@@ -369,9 +375,11 @@ namespace Profilrechner
             Console.WriteLine();
             Console.WriteLine("                    FTM: {0:0.000} mm^4",flaechenmomentX);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
 	        {
                 Console.Write("                Volumen: {0:0.000} mm³",volumen);
+                Console.WriteLine();
                 Console.WriteLine();
 	        }
             if (masse > 0)
@@ -448,9 +456,11 @@ namespace Profilrechner
             Console.WriteLine();
             Console.WriteLine("                    FTM: {0:0.000} mm^4",flaechenmomentX);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
 	        {
                 Console.Write("                Volumen: {0:0.000} mm³",volumen);
+                Console.WriteLine();
                 Console.WriteLine();
 	        }
             if (masse > 0)
@@ -518,9 +528,11 @@ namespace Profilrechner
             Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
 	        {
                 Console.Write("                Volumen: {0:0.000} mm³",volumen);
+                Console.WriteLine();
                 Console.WriteLine();
 	        }
             if (masse > 0)
@@ -604,9 +616,11 @@ namespace Profilrechner
             Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
             {
                 Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
                 Console.WriteLine();
             }
             if (masse > 0)
@@ -698,9 +712,11 @@ namespace Profilrechner
             Console.WriteLine("             horizontal: {0:0.000} mm",schwerpunktX);
             Console.WriteLine("               vertikal: {0:0.000} mm",schwerpunktY);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
             {
                 Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
                 Console.WriteLine();
             }
             if (masse > 0)
@@ -782,9 +798,11 @@ namespace Profilrechner
             flaechenmomentY);
             Console.WriteLine("            Schwerpunkt: {0:0.000} mm", schwerpunkt);
             Console.WriteLine();
+            Console.WriteLine();
             if (volumen > 0)
             {
                 Console.Write("                Volumen: {0:0.000} mm³", volumen);
+                Console.WriteLine();
                 Console.WriteLine();
             }
             if (masse > 0)
