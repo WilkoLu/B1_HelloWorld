@@ -648,22 +648,24 @@ namespace Profilrechner
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
 
+             hoehe = EingabeMitPrüfung("Höhe");
+             breite = EingabeMitPrüfung("Breite");
+
             do
             {
-                hoehe = EingabeMitPrüfung("Höhe");
-                breite = EingabeMitPrüfung("Breite");
-                wandstaerke = EingabeMitPrüfung("Wandstärke");
+                
+                wandstaerke = EingabeMitPrüfung("Stärke");
 
 
-                if (wandstaerke >= hoehe || wandstaerke <= breite)
+                if (wandstaerke >= hoehe || wandstaerke >= breite)
                 {
                     Console.WriteLine("----------------------------------------------------------");
-                    Console.WriteLine("Wandstärke kann nicht größer oder gleich Höhe/Breite sein!");
+                    Console.WriteLine(" Stärke kann nicht größer oder gleich Höhe/Breite sein!");
                     Console.WriteLine("----------------------------------------------------------");
                     Console.WriteLine();
                 }
 
-            } while (wandstaerke >= hoehe || wandstaerke <= breite);
+            } while (wandstaerke >= hoehe || wandstaerke >= breite);
 
             
 
@@ -692,7 +694,7 @@ namespace Profilrechner
             flaechenmomentX);
             Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
-            Console.WriteLine("    bezogen auf den Schwerpunkt:");
+            Console.WriteLine("            Schwerpunkt:");
             Console.WriteLine("             horizontal: {0:0.000} mm",schwerpunktX);
             Console.WriteLine("               vertikal: {0:0.000} mm",schwerpunktY);
             Console.WriteLine();
@@ -778,7 +780,7 @@ namespace Profilrechner
             flaechenmomentX);
             Console.WriteLine("         vertikales FTM: {0:0.000} mm^4",
             flaechenmomentY);
-            Console.WriteLine(" bezogen auf den Schwerpunkt: {0:0.000} mm", schwerpunkt);
+            Console.WriteLine("            Schwerpunkt: {0:0.000} mm", schwerpunkt);
             Console.WriteLine();
             if (volumen > 0)
             {
