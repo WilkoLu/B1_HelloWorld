@@ -143,6 +143,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
@@ -202,6 +203,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.Write("     Querschnittsfläche: {0:0.000} mm²", qflaeche);
@@ -299,6 +301,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.Write("     Querschnittsfläche: {0:0.000} mm²", qflaeche);
@@ -359,6 +362,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
@@ -437,6 +441,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
@@ -503,6 +508,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²",qflaeche);
@@ -556,7 +562,22 @@ namespace Profilrechner
 
             breite = EingabeMitPrüfung("Breite");
             hoehe = EingabeMitPrüfung("Höhe");
-            wandstaerke = EingabeMitPrüfung("Wandstaerke");
+
+            do
+            {
+                wandstaerke = EingabeMitPrüfung("Wandstaerke");
+                
+                if (wandstaerke >= breite / 2 || wandstaerke >= hoehe / 2)
+                {
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine(" !Wandstärke kann nicht größer oder gleich Kantenlänge sein!");
+                    Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine();
+
+                }
+
+            } while (wandstaerke >= breite / 2 || wandstaerke >= hoehe / 2);
+            
 
             laenge = EingabeMitPrüfung("Länge", 1);
 
@@ -573,6 +594,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²", qflaeche);
@@ -596,6 +618,9 @@ namespace Profilrechner
 
             Console.WriteLine("----------------------------------------------------------");
 
+            Console.WriteLine();
+            Console.Write("    Press any key to go back");
+            Console.WriteLine();
             Console.ReadKey();
             Console.Clear();
 
@@ -658,6 +683,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²", qflaeche);
@@ -743,6 +769,7 @@ namespace Profilrechner
             volumen = qflaeche * laenge;
             masse = volumen * dichte;
 
+            Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("    Querschnittsflaeche: {0:0.000} mm²", qflaeche);
@@ -795,8 +822,6 @@ namespace Profilrechner
 
                 string eingabe = Console.ReadLine();
                 bool zahlOderNicht = int.TryParse(eingabe, out menue);
-
-                Console.WriteLine();
 
                 if (zahlOderNicht == true)
                 {
