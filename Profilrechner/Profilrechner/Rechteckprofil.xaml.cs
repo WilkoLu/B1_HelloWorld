@@ -48,9 +48,9 @@ namespace Profilrechner
             qflaeche = hoehe * breite;
             lbl_qflaeche.Content = qflaeche + " mm²";
             flaechenträgheitsmomentX = breite * Math.Pow(hoehe, 3) / 12;
-            lbl_flaechentraegheitsmomentX.Content = flaechenträgheitsmomentX + " mm^4";
+            lbl_flaechentraegheitsmomentX.Content = flaechenträgheitsmomentX + " mm⁴";
             flaechenträgheitsmomentY = hoehe * Math.Pow(breite, 3) / 12;
-            lbl_flaechentraegheitsmomentY.Content = flaechenträgheitsmomentY + " mm^4";
+            lbl_flaechentraegheitsmomentY.Content = flaechenträgheitsmomentY + " mm⁴";
             volumen = laenge * qflaeche;
             lbl_volumen.Content = volumen + " mm³";
 
