@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:Profilrechner"
         mc:Ignorable="d"
         Title="Profilrechner" Height="500" Width="300"
-        MinHeight="240" MinWidth="200">
+        MinHeight="240" MinWidth="200"
+        >
     <Grid>
+
+        
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>

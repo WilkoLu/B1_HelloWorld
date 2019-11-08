@@ -6,70 +6,148 @@
         xmlns:local="clr-namespace:Profilrechner"
         mc:Ignorable="d"
         Title="Rechteckprofil" Height="600" Width="600"
-        MinHeight="600" MinWidth="600"
-        MaxHeight="600" MaxWidth="600">
+        MinHeight="450" MinWidth="325">
+        
     <Grid>
-        <Label>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4">
             <Image Source="/Bilder/Rechteckprofil.png" Width="450" />
         </Label>
-        <StackPanel Margin="450,110,0,0">
+        
+        <Button x:Name="zuruek" Margin="5" MaxHeight="20" MaxWidth="40" HorizontalAlignment="Left" VerticalAlignment="Top" Click="zuruek_Click">Menü</Button>
+        
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="5">
             <Label>Höhe:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeHoehe" Width="65" ></TextBox>
-                <TextBox x:Name="einheitHoehe" Width="35" >mm</TextBox>
+                <ComboBox x:Name="einheitHoehe" Width="50" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Margin="160,230,0,0">
+        <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
             <Label>Breite:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeBreite" Width="65" ></TextBox>
-                <TextBox x:Name="einheitBreite" Width="35" >mm</TextBox>
+                <ComboBox x:Name="einheitBreite" Width="50" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Margin="430,240,0,0">
+        <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="5">
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeLaenge" Width="65" ></TextBox>
-                <TextBox x:Name="einheitLaenge" Width="35" >mm</TextBox>
+                <ComboBox x:Name="einheitLaenge" Width="50" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Margin="430,300,0,0">
+
+        <StackPanel Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="5">
             <Label>Material:</Label>
-            <RadioButton GroupName="Material" x:Name="rb_stahl" IsChecked="True">Stahl</RadioButton>
-            <RadioButton GroupName="Material" x:Name="rb_aluminium" >Aluminium</RadioButton>
+            <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left">
+                <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
+                <ComboBoxItem >Aluminium</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
-        
-        <StackPanel Margin="50,370,50,20">
-            <Button Height="20" Margin="10" Click="Berechnen">Berechnen</Button>
+
+
+        <Grid Grid.Row="6" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="5">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
             
-            <StackPanel Orientation="Horizontal">
+            <Button Height="20" Margin="10,0" Click="Berechnen" Grid.Row="0" VerticalAlignment="Top">Berechnen</Button>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
                 <Label x:Name="lbl_qflaeche"></Label>
             </StackPanel>
-            
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
                 <Label Width="150" HorizontalContentAlignment="Right" >horizontales FTM:</Label>
                 <Label x:Name="lbl_flaechentraegheitsmomentX"></Label>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
                 <Label Width="150" HorizontalContentAlignment="Right" >vertikales FTM:</Label>
                 <Label x:Name="lbl_flaechentraegheitsmomentY"></Label>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Grid.Row="4">
+                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt X:</Label>
+                <Label x:Name="lbl_schwerpunktX"></Label>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt Y:</Label>
+                <Label x:Name="lbl_schwerpunktY"></Label>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="6">
                 <Label Width="150" HorizontalContentAlignment="Right" >Volumen:</Label>
                 <Label x:Name="lbl_volumen"></Label>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Grid.Row="7">
                 <Label Width="150" HorizontalContentAlignment="Right" >Masse:</Label>
                 <Label x:Name="lbl_masse"></Label>
             </StackPanel>
-        </StackPanel>
+            
+        </Grid>
+        
         
     </Grid>
 </Window>
