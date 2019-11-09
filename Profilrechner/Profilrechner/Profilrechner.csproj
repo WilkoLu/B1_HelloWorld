@@ -56,6 +56,7 @@
     <Compile Include="eingabeMitPruefung.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="MainProgramm.cs" />
+    <Compile Include="Rechteckprofil.cs" />
     <Compile Include="Rechteckprofil.xaml.cs">
       <DependentUpon>Rechteckprofil.xaml</DependentUpon>
     </Compile>

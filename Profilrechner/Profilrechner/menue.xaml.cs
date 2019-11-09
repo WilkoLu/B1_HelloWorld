@@ -25,15 +25,15 @@ namespace Profilrechner
         }
         private void Rechteckprofil_Click(object sender, RoutedEventArgs e)
         {
-            Rechteckprofil wnd = new Rechteckprofil();
-            wnd.Show();
-            this.Hide();
+            Wnd_Rechteckprofil wndRechteckprofil = new Wnd_Rechteckprofil();
+            wndRechteckprofil.Show();
+            //this.Hide();
             
         }
 
         private void Rechteckrohr_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            Environment.Exit(0);
         }
     }
 }
