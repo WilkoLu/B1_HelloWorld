@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1024px-Cuboid_abcd.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="doppel_ttraeger_grafik.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

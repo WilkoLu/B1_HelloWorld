@@ -24,5 +24,24 @@ namespace Profilrechner_mit_Benutzeroberfläche
         {
             InitializeComponent();
         }
+
+        private void TreeViewItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            doppeltträger.Visibility = Visibility.Visible;
+            lbl_hoehe.Visibility = Visibility.Visible;
+            tbx_hoehe.Visibility = Visibility.Visible;
+            tbx_breite.Visibility = Visibility.Visible;
+            lbl_breite.Visibility = Visibility.Visible;
+        }
+
+        private void Rechteckrohr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Rechteckrohr.Header = "Test";
+        }
+
+        private void Rohrprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Rohrprofil.Header = "Test";
+        }
     }
 }
