@@ -5,18 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Profilrechner_mit_Benutzeroberfläche"
         mc:Ignorable="d"
-        Title="Profilrechner" Height="450" Width="800" Margin="10" ResizeMode="CanResizeWithGrip" MinWidth="400" MinHeight="225">
-    <Grid Margin="10">
-        <TreeView>
-            <TreeViewItem Header="Level 1" IsExpanded="True">
-                <TreeViewItem Header="Level 2.1" />
-                <TreeViewItem Header="Level 2.2" IsExpanded="True">
-                    <TreeViewItem Header="Level 3.1" />
-                    <TreeViewItem Header="Level 3.2" />
-                </TreeViewItem>
-                <TreeViewItem Header="Level 2.3" />
-            </TreeViewItem>
-        </TreeView>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        
     </Grid>
-
 </Window>
