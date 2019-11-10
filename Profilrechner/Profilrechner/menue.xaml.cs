@@ -17,23 +17,24 @@ namespace Profilrechner
     /// <summary>
     /// Interaktionslogik für Window1.xaml
     /// </summary>
-    public partial class Menue : Window
+    public partial class Menue : UserControl
     {
         public Menue()
         {
             InitializeComponent();
         }
+
         private void Rechteckprofil_Click(object sender, RoutedEventArgs e)
         {
             Wnd_Rechteckprofil wndRechteckprofil = new Wnd_Rechteckprofil();
             wndRechteckprofil.Show();
             //this.Hide();
-            
         }
 
         private void Rechteckrohr_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
+
     }
 }

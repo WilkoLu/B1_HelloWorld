@@ -27,19 +27,43 @@ namespace Profilrechner
 
         private void Berechnen(object sender, RoutedEventArgs e)
         {
+            int ausgabe = 0;
+
             Rechteckprofil meinRechteckprofil = new Rechteckprofil();
 
             meinRechteckprofil.setHoehe ( eingabeMitEinheit.eingabeMitPruefung(eingabeHoehe.Text, einheitHoehe.Text));
             meinRechteckprofil.setBreite ( eingabeMitEinheit.eingabeMitPruefung(eingabeBreite.Text, einheitBreite.Text));
             meinRechteckprofil.setLaenge ( eingabeMitEinheit.eingabeMitPruefung(eingabeLaenge.Text, einheitLaenge.Text));
 
-            lbl_qflaeche.Content = Math.Round(meinRechteckprofil.getQflaeche() ,3)  + " mm²" ; 
-            lbl_flaechentraegheitsmomentX.Content = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentX() , 3) + " mm⁴";
-            lbl_flaechentraegheitsmomentY.Content = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentY() , 3) + " mm⁴";
-            lbl_volumen.Content = Math.Round(meinRechteckprofil.getVolumen() , 3) + " mm³";
-            lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(cb_Material.Text) , 3) + " kg";
+            if (meinRechteckprofil.getQflaeche() == 0)
+            {
+                meinRechteckprofil.berechneUnbekannte(eingabeMitEinheit.eingabeMitPruefung(lbl_flaechentraegheitsmomentX.Text, "mm") , eingabeMitEinheit.eingabeMitPruefung(lbl_flaechentraegheitsmomentY.Text, "mm"));
+                eingabeBreite.Text = Convert.ToString( meinRechteckprofil.getBreite() );
+                eingabeHoehe.Text = Convert.ToString(meinRechteckprofil.getHoehe());
+            }
+
+            if (ausgabe == 0)
+            {
+               lbl_qflaeche.Content = Math.Round(meinRechteckprofil.getQflaeche(), 3) + " mm²";
+               lbl_flaechentraegheitsmomentX.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
+               lbl_flaechentraegheitsmomentY.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
+               lbl_schwerpunktX.Content = Math.Round(meinRechteckprofil.getSchwerpunktX(), 3) + "mm";
+               lbl_schwerpunktY.Content = Math.Round(meinRechteckprofil.getSchwerpunktY(), 3) + "mm";
+
+               if (meinRechteckprofil.getVolumen() > 0)
+               {
+                 lbl_volumen.Content = Math.Round(meinRechteckprofil.getVolumen(), 3) + " mm³";
+                 lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(cb_Material.Text), 3) + " kg";
+               }
+            }
+            else if (ausgabe == 1)
+            {
+                //nix
+            }
             
+
         }
+
 
         private void zuruek_Click(object sender, RoutedEventArgs e)
         {

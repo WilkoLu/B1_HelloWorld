@@ -25,22 +25,22 @@ namespace Profilrechner
             Window fenster = new Window();
             Menue hauptfenster = new Menue();
 
-            fenster.Content = hauptfenster.Content;
+            fenster.Content = hauptfenster;
+            fenster.Title = "Rechteckprofil";
 
             notifyIcon();
 
+            fenster.SizeToContent = SizeToContent.WidthAndHeight;
             fenster.Width = hauptfenster.Width;
             fenster.Height = hauptfenster.Height;
 
-            hauptfenster.ShowDialog();
-            //fenster.ShowDialog();
+            fenster.ShowDialog();
+            fenster.Hide();
             
+           
         }
 
-        public void h()
-        {
-            
-        }
+        
 
         public void notifyIcon()
         {

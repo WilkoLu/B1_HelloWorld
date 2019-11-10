@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Profilrechner"
         mc:Ignorable="d"
         Title="Rechteckprofil" Height="600" Width="600"
-        MinHeight="450" MinWidth="325">
+        MinHeight="450" MinWidth="330">
         
     <Grid>
 
@@ -111,40 +111,40 @@
             
             <Button Height="20" Margin="10,0" Click="Berechnen" Grid.Row="0" VerticalAlignment="Top">Berechnen</Button>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <DockPanel Grid.Row="1">
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
                 <Label x:Name="lbl_qflaeche"></Label>
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <DockPanel Grid.Row="2">
                 <Label Width="150" HorizontalContentAlignment="Right" >horizontales FTM:</Label>
-                <Label x:Name="lbl_flaechentraegheitsmomentX"></Label>
-            </StackPanel>
+                <TextBox x:Name="lbl_flaechentraegheitsmomentX" Margin="5"></TextBox>
+            </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <DockPanel Grid.Row="3">
                 <Label Width="150" HorizontalContentAlignment="Right" >vertikales FTM:</Label>
-                <Label x:Name="lbl_flaechentraegheitsmomentY"></Label>
-            </StackPanel>
+                <TextBox x:Name="lbl_flaechentraegheitsmomentY" Margin="5"></TextBox>
+            </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <DockPanel Grid.Row="4">
                 <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt X:</Label>
                 <Label x:Name="lbl_schwerpunktX"></Label>
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="5">
+            <DockPanel Grid.Row="5">
                 <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt Y:</Label>
                 <Label x:Name="lbl_schwerpunktY"></Label>
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="6">
+            <DockPanel Grid.Row="6">
                 <Label Width="150" HorizontalContentAlignment="Right" >Volumen:</Label>
                 <Label x:Name="lbl_volumen"></Label>
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="7">
+            <DockPanel Grid.Row="7">
                 <Label Width="150" HorizontalContentAlignment="Right" >Masse:</Label>
                 <Label x:Name="lbl_masse"></Label>
-            </StackPanel>
+            </DockPanel>
             
         </Grid>
         

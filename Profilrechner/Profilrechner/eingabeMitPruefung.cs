@@ -9,16 +9,24 @@ namespace Profilrechner
 {
         class eingabeMitEinheit
         {
-            public static double eingabeMitPruefung(string zahl, string einheit)
-            {
+            public static double eingabeMitPruefung(string zahl, string einheit) 
+            { 
                 double rueckgabewert;
 
-                string eingabe = zahl;
-                bool zahlOderNicht = double.TryParse(eingabe, out rueckgabewert);
-                if (zahlOderNicht == true)
+                
+                bool zahlOderNicht = double.TryParse(zahl, out rueckgabewert);
+                if (zahlOderNicht == true && rueckgabewert > 0)
                 {
                     rueckgabewert = Einheitenrechner(rueckgabewert, einheit);
                 }
+                else if (zahlOderNicht == true && rueckgabewert < 0)
+                {
+                    MessageBox.Show("Mit negativen Zahlen kann nicht gerechnet werden. Bitte geben sie eine positive Zahl ein.", "Einheitenfehler",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                    );
+                }
+                
 
                 if (rueckgabewert == -1)
                 {
