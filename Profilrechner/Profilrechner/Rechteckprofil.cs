@@ -13,7 +13,7 @@ namespace Profilrechner
         private double breite;
         
 
-        Rechteckprofil()
+        public Rechteckprofil()
         {
             laenge = 0;
             breite = 0;
