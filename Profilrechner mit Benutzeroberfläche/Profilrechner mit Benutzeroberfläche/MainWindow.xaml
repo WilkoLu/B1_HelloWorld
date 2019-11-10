@@ -8,7 +8,11 @@
         mc:Ignorable="d"
         Title="Profilrechner" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid Margin="10,10,3.6,10">
-        <TreeView Margin="0,0,594,50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="133*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView Margin="0,0,194.824,50">
             <TreeViewItem Header="Menu" IsExpanded="True">
                 <TreeViewItem Header="Vollprofile" IsExpanded="True" >
                     <TreeViewItem x:Name="Doppel_T_Träger" Header="Doppel T Träger" MouseLeftButtonUp="TreeViewItem_MouseLeftButtonUp" />
@@ -20,11 +24,32 @@
                 <TreeViewItem Header="Sonstige" />
             </TreeViewItem>
         </TreeView>
-        <Image x:Name="doppeltträger" Margin="0,-30,289,0" Source="doppel_ttraeger_grafik.jpg" Stretch="Fill" HorizontalAlignment="Right" Width="300" Height="262" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="tbx_hoehe" HorizontalAlignment="Left" Height="23" Margin="566,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <Label x:Name="lbl_hoehe" Content="H:" HorizontalAlignment="Left" Margin="538,48,0,0" VerticalAlignment="Top" Height="23" Width="28" Visibility="Hidden"/>
-        <Label x:Name="lbl_breite" Content="B:" HorizontalAlignment="Left" Margin="229,237,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="tbx_breite" HorizontalAlignment="Left" Height="23" Margin="253,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Image x:Name="doppeltträger" Margin="0,-30,289,0" Source="doppel_ttraeger_grafik.jpg" Stretch="Fill" HorizontalAlignment="Right" Width="300" Height="262" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbx_hoehe" HorizontalAlignment="Left" Height="23" Margin="185.176,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="lbl_hoehe" Content="H:" HorizontalAlignment="Left" Margin="157.176,48,0,0" VerticalAlignment="Top" Height="23" Width="28" Grid.Column="1"/>
+        <ComboBox x:Name="einheitHoehe" Width="50" Margin="305.176,48,44,329" Grid.Column="1" >
+            <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+            <ComboBoxItem >cm</ComboBoxItem>
+            <ComboBoxItem >dm</ComboBoxItem>
+            <ComboBoxItem >m</ComboBoxItem>
+            <ComboBoxItem >km</ComboBoxItem>
+            <ComboBoxItem >Zoll</ComboBoxItem>
+            <ComboBoxItem >ft</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="lbl_breite" Content="B:" HorizontalAlignment="Left" Margin="229,237,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbx_breite" HorizontalAlignment="Left" Height="23" Margin="253,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="einheitBreite" Margin="373,241,359,136" Grid.ColumnSpan="2" >
+            <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+            <ComboBoxItem >cm</ComboBoxItem>
+            <ComboBoxItem >dm</ComboBoxItem>
+            <ComboBoxItem >m</ComboBoxItem>
+            <ComboBoxItem >km</ComboBoxItem>
+            <ComboBoxItem >Zoll</ComboBoxItem>
+            <ComboBoxItem >ft</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="lbl_qflaeche" Content="" HorizontalAlignment="Left" Margin="229,304,0,0" VerticalAlignment="Top"/>
+        <Button Height="20" Margin="185.2,237,84,0" Click="Berechnen" Grid.Row="0" VerticalAlignment="Top" Grid.Column="1">Berechnen</Button>
+
 
 
     </Grid>
