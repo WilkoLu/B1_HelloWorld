@@ -38,8 +38,35 @@ namespace Profilrechner
             if (meinRechteckprofil.getQflaeche() == 0)
             {
                 meinRechteckprofil.berechneUnbekannte(eingabeMitEinheit.eingabeMitPruefung(lbl_flaechentraegheitsmomentX.Text, "mm") , eingabeMitEinheit.eingabeMitPruefung(lbl_flaechentraegheitsmomentY.Text, "mm"));
+                if (meinRechteckprofil.getQflaeche() > 0)
+                { 
                 eingabeBreite.Text = Convert.ToString( meinRechteckprofil.getBreite() );
                 eingabeHoehe.Text = Convert.ToString(meinRechteckprofil.getHoehe());
+                }
+                else
+                {
+                    ausgabe = 1;
+
+                    if (meinRechteckprofil.getHoehe() == 0)
+                    {
+                        MessageBox.Show("Mit " + eingabeHoehe.Text + " kann nicht gerechnet werden. Bitte geben sie eine Zahl ein.", "Einheitenfehler",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning
+                        );
+                        
+                        FocusManager.SetFocusedElement(this, eingabeHoehe);
+                        eingabeHoehe.SelectAll();
+                    }
+                    else if (meinRechteckprofil.getBreite() == 0)
+                    {
+                        MessageBox.Show("Mit " + eingabeBreite.Text + " kann nicht gerechnet werden. Bitte geben sie eine Zahl ein.", "Einheitenfehler",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning
+                        );
+                        FocusManager.SetFocusedElement(this, eingabeBreite);
+                        eingabeBreite.SelectAll();
+                    }
+                }
             }
 
             if (ausgabe == 0)
