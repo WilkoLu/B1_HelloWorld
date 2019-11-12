@@ -59,7 +59,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="22" Margin="35,0,0,0">
+        <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="35,0,0,0">
             <Label>Breite:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeBreite" Width="65" ></TextBox>
