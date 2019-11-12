@@ -98,8 +98,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Bilder\" />
+    <Resource Include="Bilder\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\Rechteckprofil.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
