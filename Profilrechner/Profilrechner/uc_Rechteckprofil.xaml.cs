@@ -25,24 +25,24 @@ namespace Profilrechner
             InitializeComponent();
         }
 
-        private void Berechnen(object sender, RoutedEventArgs e)
+        private void btn_Berechnen_Click(object sender, RoutedEventArgs e)
         {
             
-            int ausgabe = 0;
+            int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
 
             Rechteckprofil meinRechteckprofil = new Rechteckprofil();
 
-            meinRechteckprofil.setHoehe(eingabeMitEinheit.eingabeMitPruefung(eingabeHoehe.Text, einheitHoehe.Text));
-            meinRechteckprofil.setBreite(eingabeMitEinheit.eingabeMitPruefung(eingabeBreite.Text, einheitBreite.Text));
-            meinRechteckprofil.setLaenge(eingabeMitEinheit.eingabeMitPruefung(eingabeLaenge.Text, einheitLaenge.Text));
+            meinRechteckprofil.setHoehe(eingabeMitEinheit.eingabeMitPruefung(tb_Hoehe.Text, cb_einheitHoehe.Text));
+            meinRechteckprofil.setBreite(eingabeMitEinheit.eingabeMitPruefung(tb_Breite.Text, cb_einheitBreite.Text));
+            meinRechteckprofil.setLaenge(eingabeMitEinheit.eingabeMitPruefung(tb_Laenge.Text, cb_einheitLaenge.Text));
 
             if (meinRechteckprofil.getQflaeche() == 0)
             {
-                meinRechteckprofil.berechneUnbekannte(eingabeMitEinheit.eingabeMitPruefung(lbl_flaechentraegheitsmomentX.Text, "mm"), eingabeMitEinheit.eingabeMitPruefung(lbl_flaechentraegheitsmomentY.Text, "mm"));
+                meinRechteckprofil.berechneUnbekannte(eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentX.Text, "mm"), eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentY.Text, "mm"));
                 if (meinRechteckprofil.getQflaeche() > 0)
                 {
-                    eingabeBreite.Text = Convert.ToString(meinRechteckprofil.getBreite());
-                    eingabeHoehe.Text = Convert.ToString(meinRechteckprofil.getHoehe());
+                    tb_Breite.Text = Convert.ToString(meinRechteckprofil.getBreite());
+                    tb_Hoehe.Text = Convert.ToString(meinRechteckprofil.getHoehe());
                 }
                 else
                 {
@@ -50,34 +50,34 @@ namespace Profilrechner
 
                     if (meinRechteckprofil.getHoehe() == 0)
                     {
-                        eingabeMitEinheit.Fehlerausgabe(eingabeHoehe.Text);
-                        FocusManager.SetFocusedElement(this, eingabeHoehe);
-                        eingabeHoehe.SelectAll();
+                        eingabeMitEinheit.Fehlerausgabe(tb_Hoehe.Text);
+                        FocusManager.SetFocusedElement(this, tb_Hoehe);
+                        tb_Hoehe.SelectAll();
                     }
                     else if (meinRechteckprofil.getBreite() == 0)
                     {
-                        eingabeMitEinheit.Fehlerausgabe(eingabeBreite.Text);
-                        FocusManager.SetFocusedElement(this, eingabeBreite);
-                        eingabeBreite.SelectAll();
+                        eingabeMitEinheit.Fehlerausgabe(tb_Breite.Text);
+                        FocusManager.SetFocusedElement(this, tb_Breite);
+                        tb_Breite.SelectAll();
                     }
                 }
             }
 
             if (meinRechteckprofil.getVolumen() == 0 && meinRechteckprofil.getQflaeche() > 0)
             {
-                eingabeMitEinheit.Fehlerausgabe(eingabeLaenge.Text, 0);
-                if (eingabeLaenge.Text.Equals("") == false)
+                eingabeMitEinheit.Fehlerausgabe(tb_Laenge.Text, 0);
+                if (tb_Laenge.Text.Equals("") == false)
                 { 
-                FocusManager.SetFocusedElement(this, eingabeLaenge);
-                eingabeLaenge.SelectAll();
+                FocusManager.SetFocusedElement(this, tb_Laenge);
+                tb_Laenge.SelectAll();
                 }
             }
             
             if (ausgabe == 0)
             {
                 lbl_qflaeche.Content = Math.Round(meinRechteckprofil.getQflaeche(), 3) + " mm²";
-                lbl_flaechentraegheitsmomentX.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
-                lbl_flaechentraegheitsmomentY.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentX.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentY.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
                 lbl_schwerpunktX.Content = Math.Round(meinRechteckprofil.getSchwerpunktX(), 3) + "mm";
                 lbl_schwerpunktY.Content = Math.Round(meinRechteckprofil.getSchwerpunktY(), 3) + "mm";
 
