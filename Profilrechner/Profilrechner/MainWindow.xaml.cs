@@ -30,6 +30,7 @@ namespace Profilrechner
             InitializeComponent();
             Width = 215;
             TabControl.Visibility = Visibility.Hidden;
+            btn_CloseTab.Visibility = Visibility.Hidden;
             MinHeight = 200;
             MinWidth = 215;
         }
@@ -60,7 +61,13 @@ namespace Profilrechner
             }
             MinWidth = 575;
             MinHeight = 500;
+            
+            if (indexVomTab == 0)
+            {
             TabControl.Visibility = Visibility.Visible;
+            btn_CloseTab.Visibility = Visibility.Visible;
+            }
+            
 
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;
@@ -85,10 +92,24 @@ namespace Profilrechner
 
         private void btn_closeTab(object sender, RoutedEventArgs e)
         {
+            //nix
+        }
+
+        private void btn_CloseTab_Click(object sender, RoutedEventArgs e)
+        {
             int test = TabControl.Items.IndexOf(TabControl.SelectedItem);
             Button.Content = test;
             TabControl.Items.Remove(TabControl.SelectedItem);
             indexVomTab--;
+            if (indexVomTab == 0)
+            {
+                TabControl.Visibility = Visibility.Hidden;
+                btn_CloseTab.Visibility = Visibility.Hidden;
+                MinHeight = 200;
+                MinWidth = 215;
+                Width = 215;
+            }
         }
+
     }
 }

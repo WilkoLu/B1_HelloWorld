@@ -12,8 +12,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        
-         <TreeView Margin="5" Name="test">
+
+        <TreeView Margin="5" Name="test">
             <TreeViewItem Header="Menu" IsExpanded="True">
                 <TreeViewItem Header="Vollprofile" IsExpanded="True" >
                     <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp"  />
@@ -31,7 +31,9 @@
             
         </TabControl>
 
-
+        <Button Content="X" Name="btn_CloseTab"  Click="btn_CloseTab_Click" 
+                Margin="0,37,10,0" Height="14" Width="14" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1"
+                Background="Red" FontSize="7" FontWeight="Bold"/>
 
     </Grid>
 </Window>
