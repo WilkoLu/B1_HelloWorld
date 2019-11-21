@@ -19,10 +19,12 @@ namespace Profilrechner
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
     /// 
-
+    
 
     public partial class MainWindow : Window
     {
+        private int indexVomTab = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,17 +50,23 @@ namespace Profilrechner
             TabControl.Items.Add(newTabItem);
             TabControl.SelectedItem = TabControl.Items.CurrentItem;
 
-            if (Width < 400)
+            if (Width < 575)
             { 
                 Width = 600;
             }
-            MinWidth = 550;
-            MinHeight = 475;
+            if (Height < 500)
+            {
+                Height = 525;
+            }
+            MinWidth = 575;
+            MinHeight = 500;
             TabControl.Visibility = Visibility.Visible;
 
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;
 
+            TabControl.SelectedIndex = indexVomTab;
+            indexVomTab++;
         }
 
         public void aendereHaeder()
@@ -68,16 +76,19 @@ namespace Profilrechner
             TabControl.Items.Remove(TabControl.SelectedItem);
         }
 
+
         public void closeTab(int indexVomTab)
         {
             TabControl.Items.Remove(indexVomTab);
         }
+
 
         private void btn_closeTab(object sender, RoutedEventArgs e)
         {
             int test = TabControl.Items.IndexOf(TabControl.SelectedItem);
             Button.Content = test;
             TabControl.Items.Remove(TabControl.SelectedItem);
+            indexVomTab--;
         }
     }
 }
