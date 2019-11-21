@@ -27,6 +27,7 @@ namespace Profilrechner
 
         private void Berechnen(object sender, RoutedEventArgs e)
         {
+            
             int ausgabe = 0;
 
             Rechteckprofil meinRechteckprofil = new Rechteckprofil();
@@ -85,6 +86,8 @@ namespace Profilrechner
                     lbl_volumen.Content = Math.Round(meinRechteckprofil.getVolumen(), 3) + " mm³";
                     lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(cb_Material.Text), 3) + " kg";
                 }
+
+                
             }
             
         }

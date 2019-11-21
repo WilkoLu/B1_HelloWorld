@@ -40,9 +40,9 @@ namespace Profilrechner
             //ClosableTab newTabItem = new ClosableTab();
 
             TabItem newTabItem = new TabItem();
-            ClosableHeader closableHeader = new ClosableHeader();
-            closableHeader.lbl_TabTitle.Content = "Rechteckprofilsuperlang";
-            newTabItem.Header = closableHeader;
+            ClosableHeader myClosableHeader = new ClosableHeader();
+            myClosableHeader.lbl_TabTitle.Content = "Rechteckprofil";
+            newTabItem.Header = myClosableHeader;
 
 
             TabControl.Items.Add(newTabItem);
@@ -59,6 +59,25 @@ namespace Profilrechner
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;
 
+        }
+
+        public void aendereHaeder()
+        {
+            int test = TabControl.Items.IndexOf(TabControl.SelectedItem);
+            Button.Content = test;
+            TabControl.Items.Remove(TabControl.SelectedItem);
+        }
+
+        public void closeTab(int indexVomTab)
+        {
+            TabControl.Items.Remove(indexVomTab);
+        }
+
+        private void btn_closeTab(object sender, RoutedEventArgs e)
+        {
+            int test = TabControl.Items.IndexOf(TabControl.SelectedItem);
+            Button.Content = test;
+            TabControl.Items.Remove(TabControl.SelectedItem);
         }
     }
 }

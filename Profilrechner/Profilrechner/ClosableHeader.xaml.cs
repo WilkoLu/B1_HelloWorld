@@ -27,8 +27,9 @@ namespace Profilrechner
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
-            
-
+            MainWindow test = new MainWindow();
+            test.TabControl.Items.Remove(1);
+            //MainWindow.closeTab(1);
         }
     }
 }
