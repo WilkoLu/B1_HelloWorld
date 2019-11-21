@@ -6,38 +6,27 @@
              xmlns:local="clr-namespace:Profilrechner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-            <Image Source="/Bilder/Rechteckprofil.png" />
-        </Label>
+        <Rectangle Grid.Row="0"  Grid.Column="0"  Margin="30" Fill="LightBlue">
+        </Rectangle>
+        <Line  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
+        <Line  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.Row="0" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
 
-
-        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="5">
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Höhe:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeHoehe" Width="65" ></TextBox>
@@ -53,7 +42,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="35,0,0,0">
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
             <Label>Breite:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeBreite" Width="65" ></TextBox>
@@ -69,7 +58,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="5">
+        <StackPanel Grid.Row="1" Grid.Column="1" >
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="eingabeLaenge" Width="65" ></TextBox>
@@ -86,7 +75,7 @@
         </StackPanel>
 
 
-        <StackPanel Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="5">
+        <StackPanel Grid.Row="2" Grid.Column="1"  >
             <Label>Material:</Label>
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
@@ -95,19 +84,10 @@
         </StackPanel>
 
 
-        <Grid Grid.Row="6" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="5">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
 
-            <Button Height="20" Margin="10,0" Click="Berechnen" Grid.Row="0" VerticalAlignment="Top">Berechnen</Button>
+
+            <Button Height="20" Margin="10,10,10,0" Click="Berechnen" Grid.Row="0" VerticalAlignment="Top">Berechnen</Button>
 
             <DockPanel Grid.Row="1">
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
@@ -144,7 +124,8 @@
                 <Label x:Name="lbl_masse"></Label>
             </DockPanel>
 
-        </Grid>
+        </StackPanel>
+
 
 
     </Grid>
