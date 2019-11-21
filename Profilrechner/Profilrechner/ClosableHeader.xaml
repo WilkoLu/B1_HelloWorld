@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Profilrechner.ClosableHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Profilrechner"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="lbl_TabTitle" VerticalAlignment="Center"
+                   FontSize="10" FontFamily="Courier" 
+                >
+            </Label>
+
+            <Button Name="btn_close" Width="14" Height="14" Click="btn_close_Click"
+                     ToolTip="Close" FontWeight="Bold" FontFamily="Courier" VerticalAlignment="Center"
+                    FontSize="9"  Content="X" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="Gray" />
+
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
