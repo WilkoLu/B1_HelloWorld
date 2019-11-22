@@ -27,7 +27,8 @@ namespace Profilrechner
 
         private void btn_Berechnen_Click(object sender, RoutedEventArgs e)
         {
-            
+
+
             int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
 
             Rechteckprofil meinRechteckprofil = new Rechteckprofil();
@@ -68,12 +69,12 @@ namespace Profilrechner
             {
                 eingabeMitEinheit.Fehlerausgabe(tb_Laenge.Text, 0);
                 if (tb_Laenge.Text.Equals("") == false)
-                { 
-                FocusManager.SetFocusedElement(this, tb_Laenge);
-                tb_Laenge.SelectAll();
+                {
+                    FocusManager.SetFocusedElement(this, tb_Laenge);
+                    tb_Laenge.SelectAll();
                 }
             }
-            
+
             if (ausgabe == 0)
             {
                 lbl_qflaeche.Content = Math.Round(meinRechteckprofil.getQflaeche(), 3) + " mm²";
@@ -88,12 +89,65 @@ namespace Profilrechner
                     lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(), 3) + " kg";
                 }
 
-                
+
             }
-            
+
         }
 
-        
-        
+
+        private void berechnen()
+        {
+            int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
+
+            Rechteckprofil meinRechteckprofil = new Rechteckprofil();
+
+            meinRechteckprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
+            meinRechteckprofil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
+            meinRechteckprofil.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
+            meinRechteckprofil.setMaterial(cb_Material.Text);
+
+            if (meinRechteckprofil.getQflaeche() == 0)
+            {
+                meinRechteckprofil.berechneUnbekannte(eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentX.Text, "mm"), eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentY.Text, "mm"));
+                if (meinRechteckprofil.getQflaeche() > 0)
+                {
+                    tb_Breite.Text = Convert.ToString(meinRechteckprofil.getBreite());
+                    tb_Hoehe.Text = Convert.ToString(meinRechteckprofil.getHoehe());
+                }
+                else
+                {
+                    ausgabe = 1;
+
+                }
+            }
+
+
+            if (ausgabe == 0)
+            {
+                lbl_qflaeche.Content = Math.Round(meinRechteckprofil.getQflaeche(), 3) + " mm²";
+                tb_flaechentraegheitsmomentX.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentY.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
+                lbl_schwerpunktX.Content = Math.Round(meinRechteckprofil.getSchwerpunktX(), 3) + "mm";
+                lbl_schwerpunktY.Content = Math.Round(meinRechteckprofil.getSchwerpunktY(), 3) + "mm";
+
+                if (meinRechteckprofil.getVolumen() > 0)
+                {
+                    lbl_volumen.Content = Math.Round(meinRechteckprofil.getVolumen(), 3) + " mm³";
+                    lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(), 3) + " kg";
+                }
+
+
+            }
+        }
+
+        private void aendernTextBox(object sender, KeyEventArgs e)
+        {
+            berechnen();
+        }
+
+        private void aendernComboBox(object sender, EventArgs e)
+        {
+            berechnen();
+        }
     }
 }

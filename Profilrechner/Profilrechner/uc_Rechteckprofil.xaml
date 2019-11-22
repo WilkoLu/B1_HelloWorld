@@ -29,8 +29,8 @@
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Höhe:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Hoehe" Width="65" ></TextBox>
-                <ComboBox x:Name="cb_einheitHoehe" Width="50" >
+                <TextBox x:Name="tb_Hoehe" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitHoehe" Width="50" DropDownClosed="aendernComboBox" >
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -45,8 +45,8 @@
         <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
             <Label>Breite:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Breite" Width="65" ></TextBox>
-                <ComboBox x:Name="cb_einheitBreite" Width="50" >
+                <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"></TextBox>
+                <ComboBox x:Name="cb_einheitBreite" Width="50" DropDownClosed="aendernComboBox">
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -61,8 +61,8 @@
         <StackPanel Grid.Row="1" Grid.Column="1" >
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Laenge" Width="65" ></TextBox>
-                <ComboBox x:Name="cb_einheitLaenge" Width="50" >
+                <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"></TextBox>
+                <ComboBox x:Name="cb_einheitLaenge" Width="50" DropDownClosed="aendernComboBox">
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -77,7 +77,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1"  >
             <Label>Material:</Label>
-            <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left">
+            <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
                 <ComboBoxItem >Aluminium</ComboBoxItem>
             </ComboBox>
@@ -87,8 +87,6 @@
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
 
 
-            <Button x:Name="btn_Berechnen" Height="20" Margin="10,10,10,0" Click="btn_Berechnen_Click" Grid.Row="0" VerticalAlignment="Top">Berechnen</Button>
-
             <DockPanel Grid.Row="1">
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
                 <Label x:Name="lbl_qflaeche"></Label>
@@ -96,12 +94,12 @@
 
             <DockPanel Grid.Row="2">
                 <Label Width="150" HorizontalContentAlignment="Right" >horizontales FTM:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
             </DockPanel>
 
             <DockPanel Grid.Row="3">
                 <Label Width="150" HorizontalContentAlignment="Right" >vertikales FTM:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
             </DockPanel>
 
             <DockPanel Grid.Row="4">
