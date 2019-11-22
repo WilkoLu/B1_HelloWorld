@@ -68,8 +68,11 @@ namespace Profilrechner
             return getVolumen() * Material.dichte(material);
         }
 
-        public void berechneUnbekannte(double FTMX, double FTMY)
+        public void berechneUnbekannte(string eingabeFTMX, string eingabeFTMY)
         {
+            double FTMX = eingabeMitEinheit.eingabeMitPruefung(eingabeFTMX , "mm");
+            double FTMY = eingabeMitEinheit.eingabeMitPruefung(eingabeFTMY, "mm");
+
             if (breite > 0)
             {
                 if (FTMY > 0)
@@ -112,6 +115,10 @@ namespace Profilrechner
         public double getHoehe()
         {
             return hoehe;
+        }
+        public double getLaenge()
+        {
+            return laenge;
         }
 
     }

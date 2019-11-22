@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Profilrechner
 {
@@ -67,43 +68,34 @@ namespace Profilrechner
                 return zahl;
             }
 
-            public static void Fehlerausgabe(string eingabe , int pflichteingabe = 1)
+            public static bool Fehlerpruefung(string eingabe , int pflichteingabe = 1)
             { //pflichteingabe 0 mitübergeben wenn keine fehlermeldung kommen soll ohne eingabe
-
-                double negativ;//unnötig braucht tryParse aber
-
-                bool zahlOderNicht = double.TryParse(eingabe, out negativ);
-                if (zahlOderNicht == true)
-                { 
-                    MessageBox.Show("Mit negativen Zahlen kann nicht gerechnet werden. Bitte geben sie eine positive Zahl ein.", "Einheitenfehler",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning
-                    );
-                }
-                else
-                { 
-                    if (eingabe.Equals(""))
+                
+                if (pflichteingabe == 1)
+                {
+                    bool zahlOderNicht = double.TryParse(eingabe, out double negativ);
+                    if (zahlOderNicht == true)
                     {
-                        if (pflichteingabe == 1)
+                        return true;
+                    }
+                    else 
+                    {
+                        if (eingabe.Equals(""))
                         {
-                        MessageBox.Show("Bitte geben sie mindestens Höhe und Breite ein.", "Eingabefehler",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning
-                        );
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
                         }
                     }
-                    else
-                    {
-                    MessageBox.Show("Mit " + eingabe + " kann nicht gerechnet werden. Bitte geben sie eine Zahl ein.", "Eingabefehler",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning
-                    );
-                    }
-                }
 
+                }   
+
+             return true;
             }
 
-
+            
 
         }
     
