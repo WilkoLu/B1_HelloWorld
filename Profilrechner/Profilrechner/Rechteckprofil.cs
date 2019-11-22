@@ -11,6 +11,7 @@ namespace Profilrechner
         private double hoehe;
         private double laenge;
         private double breite;
+        private string material;
 
 
         public Rechteckprofil()
@@ -21,17 +22,21 @@ namespace Profilrechner
         }
 
 
-        public void setLaenge(double zahl)
+        public void setLaenge(string zahl , string einheit)
         {
-            laenge = zahl;
+            laenge = eingabeMitEinheit.eingabeMitPruefung(zahl , einheit);
         }
-        public void setBreite(double zahl)
+        public void setBreite(string zahl, string einheit)
         {
-            breite = zahl;
+            breite = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
-        public void setHoehe(double zahl)
+        public void setHoehe(string zahl, string einheit)
         {
-            hoehe = zahl;
+            hoehe = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
+        }
+        public void setMaterial(string gewaehltesmaterial)
+        {
+            material = gewaehltesmaterial;
         }
 
         public double getQflaeche()
@@ -58,9 +63,9 @@ namespace Profilrechner
         {
             return getQflaeche() * laenge;
         }
-        public double getMasse(string gewaeltesmaterial)
+        public double getMasse()
         {
-            return getVolumen() * Material.dichte(gewaeltesmaterial);
+            return getVolumen() * Material.dichte(material);
         }
 
         public void berechneUnbekannte(double FTMX, double FTMY)

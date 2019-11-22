@@ -32,9 +32,10 @@ namespace Profilrechner
 
             Rechteckprofil meinRechteckprofil = new Rechteckprofil();
 
-            meinRechteckprofil.setHoehe(eingabeMitEinheit.eingabeMitPruefung(tb_Hoehe.Text, cb_einheitHoehe.Text));
-            meinRechteckprofil.setBreite(eingabeMitEinheit.eingabeMitPruefung(tb_Breite.Text, cb_einheitBreite.Text));
-            meinRechteckprofil.setLaenge(eingabeMitEinheit.eingabeMitPruefung(tb_Laenge.Text, cb_einheitLaenge.Text));
+            meinRechteckprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
+            meinRechteckprofil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
+            meinRechteckprofil.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
+            meinRechteckprofil.setMaterial(cb_Material.Text);
 
             if (meinRechteckprofil.getQflaeche() == 0)
             {
@@ -84,7 +85,7 @@ namespace Profilrechner
                 if (meinRechteckprofil.getVolumen() > 0)
                 {
                     lbl_volumen.Content = Math.Round(meinRechteckprofil.getVolumen(), 3) + " mm³";
-                    lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(cb_Material.Text), 3) + " kg";
+                    lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(), 3) + " kg";
                 }
 
                 
