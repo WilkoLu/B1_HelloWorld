@@ -66,6 +66,8 @@ namespace Profilrechner
                 }
                 else
                 {
+                    fehlerprüfungMitFarbe(eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentX.Text , "mm"), tb_flaechentraegheitsmomentX); 
+                    fehlerprüfungMitFarbe(eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentY.Text, "mm"), tb_flaechentraegheitsmomentY); 
                     ausgabe = 1;
                 }
 
@@ -77,6 +79,9 @@ namespace Profilrechner
 
             if (ausgabe == 0)
             {
+                tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
+                tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
+
                 lbl_qflaeche.Content = Math.Round(meinRechteckprofil.getQflaeche(), 3) + " mm²";
                 tb_flaechentraegheitsmomentX.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
                 tb_flaechentraegheitsmomentY.Text = Math.Round(meinRechteckprofil.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
