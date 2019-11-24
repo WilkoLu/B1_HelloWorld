@@ -23,14 +23,13 @@ namespace Profilrechner
 
     public partial class MainWindow : Window
     {
-        private int indexVomTab = 0;
+        public int indexVomTab = 0;
 
         public MainWindow()
         {
             InitializeComponent();
             Width = 215;
             TabControl.Visibility = Visibility.Hidden;
-            btn_CloseTab.Visibility = Visibility.Hidden;
             MinHeight = 200;
             MinWidth = 215;
         }
@@ -60,7 +59,6 @@ namespace Profilrechner
             if (indexVomTab == 0)
             {
                 TabControl.Visibility = Visibility.Visible;
-                btn_CloseTab.Visibility = Visibility.Visible;
             }
 
             newTabItem.Focus();
@@ -70,35 +68,15 @@ namespace Profilrechner
 
         }
 
-        public void aendereHaeder()
-        {
-            int test = TabControl.Items.IndexOf(TabControl.SelectedItem);
-            Button.Content = test;
-            TabControl.Items.Remove(TabControl.SelectedItem);
-        }
 
-
-        public void closeTab(int indexVomTab)
-        {
-            TabControl.Items.Remove(indexVomTab);
-        }
-
-
-        private void btn_closeTab(object sender, RoutedEventArgs e)
-        {
-            //nix
-        }
 
         private void btn_CloseTab_Click(object sender, RoutedEventArgs e)
         {
-            int test = TabControl.Items.IndexOf(TabControl.SelectedItem);
-            Button.Content = test;
             TabControl.Items.Remove(TabControl.SelectedItem);
             indexVomTab--;
             if (indexVomTab == 0)
             {
                 TabControl.Visibility = Visibility.Hidden;
-                btn_CloseTab.Visibility = Visibility.Hidden;
                 MinHeight = 200;
                 MinWidth = 215;
                 Width = 215;

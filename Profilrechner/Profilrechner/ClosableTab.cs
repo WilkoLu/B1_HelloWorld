@@ -114,6 +114,7 @@ namespace Profilrechner
         void btn_close_Click(object sender, RoutedEventArgs e)
         {
             ((TabControl)this.Parent).Items.Remove(this);
+            
         }
 
 
