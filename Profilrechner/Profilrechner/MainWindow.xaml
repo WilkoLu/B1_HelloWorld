@@ -12,8 +12,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <DockPanel>
+            <Label Content="Profile" FontSize="20" FontWeight="Black" Margin="5,0" DockPanel.Dock="Top"/>
 
-        <TreeView Margin="5" Name="trv_Profilauswahl">
+            <TreeView Margin="5" Name="trv_Profilauswahl">
                 <TreeViewItem Header="Vollprofile" IsExpanded="True" >
                     <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp"  />
                 </TreeViewItem>
@@ -22,7 +24,9 @@
                     <TreeViewItem x:Name="Rechteckrohr" Header="Rechteckrohr"  />
                 </TreeViewItem>
                 <TreeViewItem Header="Sonstige" />
-        </TreeView>
+            </TreeView>
+        </DockPanel>
+        
 
         <TabControl Grid.Column="1" Name="TabControl" Margin="0,5,5,5" >
             
