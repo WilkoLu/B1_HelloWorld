@@ -40,19 +40,14 @@ namespace Profilrechner
 
         private void tvi_Rechteckprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            //ClosableTab newTabItem = new ClosableTab();
-
-            TabItem newTabItem = new TabItem();
-            ClosableHeader myClosableHeader = new ClosableHeader();
-            myClosableHeader.lbl_TabTitle.Content = "Rechteckprofil";
-            newTabItem.Header = myClosableHeader;
-
-
+            ClosableTab newTabItem = new ClosableTab();
+            newTabItem.Title = "Rechteckprofil";
             TabControl.Items.Add(newTabItem);
-            TabControl.SelectedItem = TabControl.Items.CurrentItem;
+            
+
 
             if (Width < 575)
-            { 
+            {
                 Width = 600;
             }
             if (Height < 500)
@@ -61,19 +56,18 @@ namespace Profilrechner
             }
             MinWidth = 575;
             MinHeight = 500;
-            
+
             if (indexVomTab == 0)
             {
-            TabControl.Visibility = Visibility.Visible;
-            btn_CloseTab.Visibility = Visibility.Visible;
+                TabControl.Visibility = Visibility.Visible;
+                btn_CloseTab.Visibility = Visibility.Visible;
             }
-            
+
+            newTabItem.Focus();
 
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;
 
-            TabControl.SelectedIndex = indexVomTab;
-            indexVomTab++;
         }
 
         public void aendereHaeder()

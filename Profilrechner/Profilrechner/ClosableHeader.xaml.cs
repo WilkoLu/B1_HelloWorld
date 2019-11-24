@@ -26,11 +26,6 @@ namespace Profilrechner
 
         }
 
-        private void btn_close_Click(object sender, RoutedEventArgs e)
-        {
-            //MainWindow.closeTab(1);
-        }
-
 
     }
 }
