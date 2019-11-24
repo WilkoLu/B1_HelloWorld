@@ -28,10 +28,10 @@ namespace Profilrechner
         public MainWindow()
         {
             InitializeComponent();
-            Width = 215;
+            Width = 193;
             TabControl.Visibility = Visibility.Hidden;
             MinHeight = 200;
-            MinWidth = 215;
+            MinWidth = 193;
         }
 
         
@@ -61,12 +61,12 @@ namespace Profilrechner
             {
                 Width = 600;
             }
-            if (Height < 500)
+            if (Height < 475)
             {
-                Height = 525;
+                Height = 475;
             }
             MinWidth = 575;
-            MinHeight = 500;
+            MinHeight = 475;
 
             if (indexVomTab == 0)
             {
@@ -86,8 +86,8 @@ namespace Profilrechner
             {
                 TabControl.Visibility = Visibility.Hidden;
                 MinHeight = 200;
-                MinWidth = 215;
-                Width = 215;
+                MinWidth = 193;
+                Width = 193;
             }
         }
 

@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Profilrechner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="600">
+        Title="MainWindow" Height="475" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="180"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
 
         <TreeView Margin="5" Name="trv_Profilauswahl">
-            <TreeViewItem Header="Menu" IsExpanded="True">
                 <TreeViewItem Header="Vollprofile" IsExpanded="True" >
                     <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp"  />
                 </TreeViewItem>
@@ -23,7 +22,6 @@
                     <TreeViewItem x:Name="Rechteckrohr" Header="Rechteckrohr"  />
                 </TreeViewItem>
                 <TreeViewItem Header="Sonstige" />
-            </TreeViewItem>
         </TreeView>
 
         <TabControl Grid.Column="1" Name="TabControl" Margin="0,5,5,5" >
