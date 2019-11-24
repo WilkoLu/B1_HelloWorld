@@ -39,8 +39,11 @@ namespace Profilrechner
 
         private void tvi_Rechteckprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            ClosableTab newTabItem = new ClosableTab();
-            newTabItem.Title = "Rechteckprofil";
+            ClosableTab newTabItem = new ClosableTab()
+            {
+                Title = "Rechteckprofil"
+            };
+            
             TabControl.Items.Add(newTabItem);
             
 
