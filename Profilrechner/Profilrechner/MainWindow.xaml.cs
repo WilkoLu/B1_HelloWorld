@@ -34,8 +34,6 @@ namespace Profilrechner
             MinWidth = 193;
         }
 
-        
-
 
         private void tvi_Rechteckprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -43,7 +41,7 @@ namespace Profilrechner
 
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;
-
+            
         }
 
         public ClosableTab neuenTab(object sender)
@@ -54,7 +52,7 @@ namespace Profilrechner
             {
                 Title = Convert.ToString(tvi.Header)
             };
-
+            
             TabControl.Items.Add(newTabItem);
 
             if (Width < 575)
@@ -74,7 +72,7 @@ namespace Profilrechner
             }
 
             newTabItem.Focus();
-
+            
             return newTabItem;
         }
 

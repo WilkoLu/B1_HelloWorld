@@ -94,8 +94,9 @@ namespace Profilrechner
                     lbl_masse.Content = Math.Round(meinRechteckprofil.getMasse(), 3) + " kg";
                 }
 
-
             }
+
+
         }
 
         private void aendernTextBox(object sender, KeyEventArgs e)
