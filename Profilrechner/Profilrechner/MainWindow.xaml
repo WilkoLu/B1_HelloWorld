@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <TreeView Margin="5" Name="test">
+        <TreeView Margin="5" Name="trv_Profilauswahl">
             <TreeViewItem Header="Menu" IsExpanded="True">
                 <TreeViewItem Header="Vollprofile" IsExpanded="True" >
                     <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp"  />
@@ -26,7 +26,7 @@
             </TreeViewItem>
         </TreeView>
 
-        <TabControl Grid.Column="1" Name="TabControl" Margin="0,5,5,5">
+        <TabControl Grid.Column="1" Name="TabControl" Margin="0,5,5,5" >
             
         </TabControl>
 

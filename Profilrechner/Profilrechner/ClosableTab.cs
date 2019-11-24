@@ -15,7 +15,7 @@ namespace Profilrechner
 
 
 
-    class ClosableTab : TabItem
+    public class ClosableTab : TabItem
     {
 
         

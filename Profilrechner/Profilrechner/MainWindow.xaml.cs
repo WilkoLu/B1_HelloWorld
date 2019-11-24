@@ -39,14 +39,23 @@ namespace Profilrechner
 
         private void tvi_Rechteckprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            ClosableTab newTabItem = neuenTab(sender);
+
+            uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
+            newTabItem.Content = meinTabRechteckprofil.Content;
+
+        }
+
+        public ClosableTab neuenTab(object sender)
+        {
+            TreeViewItem tvi = (TreeViewItem)trv_Profilauswahl.SelectedItem;
+
             ClosableTab newTabItem = new ClosableTab()
             {
-                Title = "Rechteckprofil"
+                Title = Convert.ToString(tvi.Header)
             };
-            
-            TabControl.Items.Add(newTabItem);
-            
 
+            TabControl.Items.Add(newTabItem);
 
             if (Width < 575)
             {
@@ -66,12 +75,8 @@ namespace Profilrechner
 
             newTabItem.Focus();
 
-            uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-
+            return newTabItem;
         }
-
-
 
         private void btn_CloseTab_Click(object sender, RoutedEventArgs e)
         {
@@ -85,6 +90,7 @@ namespace Profilrechner
                 Width = 215;
             }
         }
+
 
     }
 }
