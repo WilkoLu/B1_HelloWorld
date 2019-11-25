@@ -32,6 +32,7 @@ namespace Profilrechner
             TabControl.Visibility = Visibility.Hidden;
             MinHeight = 200;
             MinWidth = 193;
+
         }
 
 
