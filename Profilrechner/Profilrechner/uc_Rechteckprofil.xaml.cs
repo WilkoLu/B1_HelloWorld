@@ -61,8 +61,8 @@ namespace Profilrechner
                 meinRechteckprofil.berechneUnbekannte(tb_flaechentraegheitsmomentX.Text, tb_flaechentraegheitsmomentY.Text);
                 if (meinRechteckprofil.getQflaeche() > 0)
                 {
-                    tb_Breite.Text = Convert.ToString(meinRechteckprofil.getBreite());
-                    tb_Hoehe.Text = Convert.ToString(meinRechteckprofil.getHoehe());
+                    tb_Breite.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRechteckprofil.getBreite(), cb_einheitBreite.Text), 3) );
+                    tb_Hoehe.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRechteckprofil.getHoehe(), cb_einheitHoehe.Text), 3) );
                 }
                 else
                 {

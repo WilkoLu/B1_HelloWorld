@@ -54,7 +54,7 @@ namespace Profilrechner
                 Title = Convert.ToString(tvi.Header)
             };
             index++;
-            newTabItem.Title = Convert.ToString(tvi.Header) + " " + index;
+            newTabItem.Title = Convert.ToString(tvi.Header) + " (" + index + ")";
             
             TabControl.Items.Add(newTabItem);
 
@@ -94,7 +94,10 @@ namespace Profilrechner
 
         private void tvi_Rundprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            ClosableTab newTabItem = neuenTab(sender);
 
+            uc_Rundprofil meinTabRundprofil = new uc_Rundprofil();
+            newTabItem.Content = meinTabRundprofil.Content;
         }
     }
 }

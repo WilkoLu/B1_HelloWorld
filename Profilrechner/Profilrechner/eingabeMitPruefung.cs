@@ -68,7 +68,48 @@ namespace Profilrechner
                 return zahl;
             }
 
-            public static bool Fehlerpruefung(string eingabe , int pflichteingabe = 1)
+        public static double Einheitenrueckrechner(double zahl, string einheit)
+        {
+
+            if (einheit.Equals("mm"))
+            {
+                //es wird in mm gerechnet, also keine umwandlung
+            }
+            else if (einheit.Equals("cm"))
+            {
+                zahl = zahl / 10;
+            }
+            else if (einheit.Equals("dm"))
+            {
+                zahl = zahl / 100;
+            }
+            else if (einheit.Equals("m"))
+            {
+                zahl = zahl / 1000;
+            }
+            else if (einheit.Equals("km"))
+            {
+                zahl = zahl / 1000000;
+            }
+            else if (einheit.Equals("inch") || einheit.Equals("Inch") || einheit.Equals("zoll") || einheit.Equals("Zoll"))
+            {
+                zahl = zahl / 25.4;
+            }
+            else if (einheit.Equals("ft"))
+            {
+                zahl = zahl / 304.8;
+            }
+            else
+            {
+                zahl = -1;
+            }
+
+
+            return zahl;
+        }
+
+
+        public static bool Fehlerpruefung(string eingabe , int pflichteingabe = 1)
             { //pflichteingabe 0 mitübergeben wenn keine fehlermeldung kommen soll ohne eingabe
                 
                 if (pflichteingabe == 1)

@@ -90,7 +90,7 @@
 
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Flächenträgheitsmoment:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmoment" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
             </DockPanel>
 
             <DockPanel>

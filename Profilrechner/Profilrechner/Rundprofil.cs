@@ -23,7 +23,7 @@ namespace Profilrechner
         }
         public void setRadius(string zahl, string einheit)
         {
-            durchmesser = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit) / 2;
+            durchmesser = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit) * 2;
         }
         public void setLaenge(string zahl , string einheit)
         {
@@ -41,6 +41,10 @@ namespace Profilrechner
         public double getDurchmesser()
         {
             return durchmesser;
+        }
+        public double getLaenge()
+        {
+            return laenge;
         }
         public double getQflaeche()
         {
