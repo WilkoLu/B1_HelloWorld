@@ -41,7 +41,6 @@ namespace Profilrechner
 
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;
-            
         }
 
         public ClosableTab neuenTab(object sender)
@@ -89,6 +88,9 @@ namespace Profilrechner
             }
         }
 
+        private void tvi_Rundprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
 
+        }
     }
 }

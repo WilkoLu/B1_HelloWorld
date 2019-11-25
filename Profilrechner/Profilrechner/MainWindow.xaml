@@ -17,7 +17,8 @@
 
             <TreeView Margin="5" Name="trv_Profilauswahl">
                 <TreeViewItem Header="Vollprofile" IsExpanded="True" >
-                    <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp"  />
+                    <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp" />
+                    <TreeViewItem x:Name="tvi_Rundprofil" Header="Rundprofil" MouseLeftButtonUp="tvi_Rundprofil_MouseLeftButtonUp" />
                 </TreeViewItem>
                 <TreeViewItem Header="Rohrprofile" IsExpanded="True">
                     <TreeViewItem x:Name="Rohrprofil" Header="Rohrprofil"  />

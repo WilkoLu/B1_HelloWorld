@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Rechteckprofil.cs" />
+    <Compile Include="Rundprofil.cs" />
     <Compile Include="uc_Rechteckprofil.xaml.cs">
       <DependentUpon>uc_Rechteckprofil.xaml</DependentUpon>
     </Compile>

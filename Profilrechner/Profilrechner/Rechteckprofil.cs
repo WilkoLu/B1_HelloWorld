@@ -34,9 +34,9 @@ namespace Profilrechner
         {
             hoehe = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
-        public void setMaterial(string gewaehltesmaterial)
+        public void setMaterial(string gewaehltesMaterial)
         {
-            material = gewaehltesmaterial;
+            material = gewaehltesMaterial;
         }
 
         public double getQflaeche()
