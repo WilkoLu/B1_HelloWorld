@@ -60,6 +60,9 @@
     <Compile Include="uc_Rechteckprofil.xaml.cs">
       <DependentUpon>uc_Rechteckprofil.xaml</DependentUpon>
     </Compile>
+    <Compile Include="uc_Rundprofil.xaml.cs">
+      <DependentUpon>uc_Rundprofil.xaml</DependentUpon>
+    </Compile>
     <Page Include="ClosableHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +85,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="uc_Rechteckprofil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="uc_Rundprofil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
