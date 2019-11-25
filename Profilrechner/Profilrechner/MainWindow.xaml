@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Profilrechner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="475" Width="600">
+        Title="" Height="475" Width="600" Name="hauptfenster" Icon="icon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
@@ -13,10 +13,10 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel>
-            <Label Content="Profile" Height="29" FontSize="17" FontWeight="Black" Margin="5,0" DockPanel.Dock="Top"/>
+            <Label Height="29" FontSize="17" FontWeight="Black" Margin="5,0" DockPanel.Dock="Top" Visibility="Hidden"/>
 
-            <TreeView Margin="5" Name="trv_Profilauswahl">
-                <TreeViewItem Header="Vollprofile" IsExpanded="True" >
+            <TreeView Margin="6.8,65.2,6.8,6" Name="trv_Profilauswahl">
+                <TreeViewItem Header="Vollprofile" IsExpanded="True" Height="48" RenderTransformOrigin="0.5,0.5" >
                     <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp" />
                     <TreeViewItem x:Name="tvi_Rundprofil" Header="Rundprofil" MouseLeftButtonUp="tvi_Rundprofil_MouseLeftButtonUp" />
                 </TreeViewItem>
@@ -27,11 +27,12 @@
                 <TreeViewItem Header="Sonstige" />
             </TreeView>
         </DockPanel>
-        
 
-        <TabControl Grid.Column="1" Name="TabControl" Margin="0,5,5,5" >
-            
+
+        <TabControl Grid.Column="1" Name="TabControl" Margin="6,6" >
+
         </TabControl>
+        <Image x:Name="logo_png" Margin="0,-60,0,0" Source="logo.png" Stretch="Fill" HorizontalAlignment="Left" Width="175" Height="178" VerticalAlignment="Top"/>
 
 
     </Grid>

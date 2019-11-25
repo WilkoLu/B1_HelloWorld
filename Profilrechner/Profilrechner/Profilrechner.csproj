@@ -123,5 +123,17 @@
   <ItemGroup>
     <Resource Include="Bilder\Rechteckprofil.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
