@@ -24,6 +24,7 @@ namespace Profilrechner
     public partial class MainWindow : Window
     {
         public int indexVomTab = 0;
+        int index = 0;
 
         public MainWindow()
         {
@@ -52,6 +53,8 @@ namespace Profilrechner
             {
                 Title = Convert.ToString(tvi.Header)
             };
+            index++;
+            newTabItem.Title = Convert.ToString(tvi.Header) + " " + index;
             
             TabControl.Items.Add(newTabItem);
 
