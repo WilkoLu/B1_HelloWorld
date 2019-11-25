@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Profilrechner.uc_Rechteckprofil"
+﻿<UserControl x:Class="Profilrechner.uc_Rundprofil"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,31 +6,30 @@
              xmlns:local="clr-namespace:Profilrechner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="125"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Grid.Row="0"  Grid.Column="0"  Margin="30" Fill="LightBlue">
-        </Rectangle>
-        <Line  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
-        <Line  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.Row="0" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
+        <Ellipse Fill="LightBlue" Margin="30" Grid.RowSpan="4" Stretch="Uniform" />
+        <Line Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="4"/>
+        <Line Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="4"/>
 
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
-            <Label>Höhe:</Label>
+            <Label>Durchmesser:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Hoehe" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitHoehe" Width="50" DropDownClosed="aendernComboBox" >
+                <TextBox x:Name="tb_Durchmsser" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitDurchmesser" Width="50" DropDownClosed="aendernComboBox" >
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -42,11 +41,11 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
-            <Label>Breite:</Label>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
+            <Label>Radius:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"></TextBox>
-                <ComboBox x:Name="cb_einheitBreite" Width="50" DropDownClosed="aendernComboBox">
+                <TextBox x:Name="tb_Radius" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitRadius" Width="50" DropDownClosed="aendernComboBox" >
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -58,11 +57,11 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" >
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"></TextBox>
-                <ComboBox x:Name="cb_einheitLaenge" Width="50" DropDownClosed="aendernComboBox">
+                <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitLaenge" Width="50" DropDownClosed="aendernComboBox" >
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -74,8 +73,7 @@
             </StackPanel>
         </StackPanel>
 
-
-        <StackPanel Grid.Row="2" Grid.Column="1"  >
+        <StackPanel Grid.Row="3" Grid.Column="1"  >
             <Label>Material:</Label>
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
@@ -83,9 +81,7 @@
             </ComboBox>
         </StackPanel>
 
-
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
-
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
@@ -93,23 +89,8 @@
             </DockPanel>
 
             <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >horizontales FTM:</Label>
+                <Label Width="150" HorizontalContentAlignment="Right" >Flächenträgheitsmoment:</Label>
                 <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
-            </DockPanel>
-
-            <DockPanel Grid.Row="3">
-                <Label Width="150" HorizontalContentAlignment="Right" >vertikales FTM:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
-            </DockPanel>
-
-            <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt X:</Label>
-                <Label x:Name="lbl_schwerpunktX"></Label>
-            </DockPanel>
-
-            <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt Y:</Label>
-                <Label x:Name="lbl_schwerpunktY"></Label>
             </DockPanel>
 
             <DockPanel>
@@ -123,7 +104,6 @@
             </DockPanel>
 
         </StackPanel>
-
 
     </Grid>
 </UserControl>
