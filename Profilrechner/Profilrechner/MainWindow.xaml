@@ -15,8 +15,8 @@
         <DockPanel>
             <Image x:Name="logo_png" Margin="0,-60,0,-25" Source="logo.png" Stretch="Fill" HorizontalAlignment="Left" Width="175" Height="178" VerticalAlignment="Top" DockPanel.Dock="Top"/>
 
-            <TreeView Name="trv_Profilauswahl" Margin="5">
-                <TreeViewItem Header="Vollprofile" IsExpanded="True" Height="48" >
+            <TreeView Name="trv_Profilauswahl" Margin="5" FontSize="14">
+                <TreeViewItem Header="Vollprofile" IsExpanded="True" >
                     <TreeViewItem x:Name="tvi_Rechteckprofil" Header="Rechteckprofil" MouseLeftButtonUp="tvi_Rechteckprofil_MouseLeftButtonUp" />
                     <TreeViewItem x:Name="tvi_Rundprofil" Header="Rundprofil" MouseLeftButtonUp="tvi_Rundprofil_MouseLeftButtonUp" />
                 </TreeViewItem>
