@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="Profilrechner.uc_Winkelprofil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Profilrechner"
+             mc:Ignorable="d" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="185"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
+            <Label>Höhe:</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="tb_Hoehe" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitHoehe" Width="50" DropDownClosed="aendernComboBox" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" >
+            <Label>Breite:</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitBreite" Width="50" DropDownClosed="aendernComboBox" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
+            <Label>Wandstärke:</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="tb_Wandstaerke" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitWandstaerke" Width="50" DropDownClosed="aendernComboBox" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" >
+            <Label>Länge:</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitLaenge" Width="50" DropDownClosed="aendernComboBox" >
+                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                    <ComboBoxItem >cm</ComboBoxItem>
+                    <ComboBoxItem >dm</ComboBoxItem>
+                    <ComboBoxItem >m</ComboBoxItem>
+                    <ComboBoxItem >km</ComboBoxItem>
+                    <ComboBoxItem >Zoll</ComboBoxItem>
+                    <ComboBoxItem >ft</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+            <Label>Material:</Label>
+            <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
+                <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
+                <ComboBoxItem >Aluminium</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
+                <Label x:Name="lbl_qflaeche"></Label>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >FTM Ix:</Label>
+                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >FTM Iy:</Label>
+                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt x:</Label>
+                <Label x:Name="lbl_SchwerppunktX"></Label>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt y:</Label>
+                <Label x:Name="lbl_SchwerppunktY"></Label>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >Volumen:</Label>
+                <Label x:Name="lbl_volumen"></Label>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >Masse:</Label>
+                <Label x:Name="lbl_masse"></Label>
+            </DockPanel>
+
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+</UserControl>

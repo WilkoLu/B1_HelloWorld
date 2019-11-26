@@ -69,6 +69,9 @@
     <Compile Include="uc_Rundprofil.xaml.cs">
       <DependentUpon>uc_Rundprofil.xaml</DependentUpon>
     </Compile>
+    <Compile Include="uc_Winkelprofil.xaml.cs">
+      <DependentUpon>uc_Winkelprofil.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Winkelprofil.cs" />
     <Page Include="ClosableHeader.xaml">
       <SubType>Designer</SubType>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="uc_Rundprofil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="uc_Winkelprofil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
