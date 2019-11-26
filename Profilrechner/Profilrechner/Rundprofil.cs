@@ -33,7 +33,7 @@ namespace Profilrechner
         {
             material = gewaeltesMaterial;
         }
-
+        
         public double getRadius()
         {
             return durchmesser / 2;
