@@ -60,6 +60,7 @@
     <Compile Include="Rechteckprofil.cs" />
     <Compile Include="Rohrprofil.cs" />
     <Compile Include="Rundprofil.cs" />
+    <Compile Include="TProfil.cs" />
     <Compile Include="uc_Rechteckprofil.xaml.cs">
       <DependentUpon>uc_Rechteckprofil.xaml</DependentUpon>
     </Compile>
