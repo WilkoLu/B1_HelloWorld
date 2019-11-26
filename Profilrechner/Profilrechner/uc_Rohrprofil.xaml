@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Profilrechner.uc_Rundprofil"
+﻿<UserControl x:Class="Profilrechner.uc_Rohrprofil"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -21,15 +21,17 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Ellipse Fill="LightBlue" Margin="30" Grid.RowSpan="4" Stretch="Uniform" />
+        <Ellipse Fill="LightBlue" Margin="30" Grid.RowSpan="4" Stretch="Uniform"/>
+        <Ellipse Fill="White" Margin="40" Grid.RowSpan="4" Stretch="Uniform"/>
         <Line Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="4"/>
         <Line Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="4"/>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
-            <Label>Durchmesser:</Label>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Durchmsser" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitDurchmesser" Width="50" DropDownClosed="aendernComboBox" >
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+            <StackPanel>
+                <Label>Aussendurchmesser:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_aussendurchmesser" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitAussendurchmesser" Width="50" DropDownClosed="aendernComboBox" >
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
@@ -38,24 +40,63 @@
                     <ComboBoxItem >Zoll</ComboBoxItem>
                     <ComboBoxItem >ft</ComboBoxItem>
                 </ComboBox>
+                </StackPanel>
             </StackPanel>
+
+            <StackPanel Margin="10,0,0,0">
+                <Label>Aussenradius:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_aussenradius" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitAussenradius" Width="50" DropDownClosed="aendernComboBox" >
+                        <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                        <ComboBoxItem >cm</ComboBoxItem>
+                        <ComboBoxItem >dm</ComboBoxItem>
+                        <ComboBoxItem >m</ComboBoxItem>
+                        <ComboBoxItem >km</ComboBoxItem>
+                        <ComboBoxItem >Zoll</ComboBoxItem>
+                        <ComboBoxItem >ft</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
-            <Label>Radius:</Label>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Radius" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitRadius" Width="50" DropDownClosed="aendernComboBox" >
-                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
-                    <ComboBoxItem >cm</ComboBoxItem>
-                    <ComboBoxItem >dm</ComboBoxItem>
-                    <ComboBoxItem >m</ComboBoxItem>
-                    <ComboBoxItem >km</ComboBoxItem>
-                    <ComboBoxItem >Zoll</ComboBoxItem>
-                    <ComboBoxItem >ft</ComboBoxItem>
-                </ComboBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal">
+            <StackPanel>
+                <Label>Aussendurchmesser:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_innendurchmesser" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitInnendurchmesser" Width="50" DropDownClosed="aendernComboBox" >
+                        <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                        <ComboBoxItem >cm</ComboBoxItem>
+                        <ComboBoxItem >dm</ComboBoxItem>
+                        <ComboBoxItem >m</ComboBoxItem>
+                        <ComboBoxItem >km</ComboBoxItem>
+                        <ComboBoxItem >Zoll</ComboBoxItem>
+                        <ComboBoxItem >ft</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
+
+            <StackPanel Margin="10,0,0,0">
+                <Label>Aussenradius:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_innenradius" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitInnenradius" Width="50" DropDownClosed="aendernComboBox" >
+                        <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                        <ComboBoxItem >cm</ComboBoxItem>
+                        <ComboBoxItem >dm</ComboBoxItem>
+                        <ComboBoxItem >m</ComboBoxItem>
+                        <ComboBoxItem >km</ComboBoxItem>
+                        <ComboBoxItem >Zoll</ComboBoxItem>
+                        <ComboBoxItem >ft</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
         </StackPanel>
+
 
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Länge:</Label>
