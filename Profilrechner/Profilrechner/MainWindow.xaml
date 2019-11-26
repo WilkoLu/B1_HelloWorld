@@ -26,6 +26,7 @@
                 </TreeViewItem>
                 <TreeViewItem Header="Sonstige" IsExpanded="True">
                     <TreeViewItem x:Name="Winkelprofil" Header="Winkelprofil" MouseLeftButtonUp="Winkelprofil_MouseLeftButtonUp"/>
+                    <TreeViewItem x:Name="TProfil" Header="T-Profil" MouseLeftButtonUp="TProfil_MouseLeftButtonUp"/>
                 </TreeViewItem>
             </TreeView>
         </DockPanel>

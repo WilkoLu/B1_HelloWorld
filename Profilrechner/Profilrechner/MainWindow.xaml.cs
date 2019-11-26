@@ -115,5 +115,13 @@ namespace Profilrechner
             uc_Winkelprofil meinTabWinkelprofil = new uc_Winkelprofil();
             newTabItem.Content = meinTabWinkelprofil.Content;
         }
+
+        private void TProfil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClosableTab newTabItem = neuenTab(sender);
+
+            uc_TProfil meinTProfil = new uc_TProfil();
+            newTabItem.Content = meinTProfil.Content;
+        }
     }
 }
