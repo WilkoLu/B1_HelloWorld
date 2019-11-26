@@ -43,11 +43,27 @@ namespace Profilrechner
 
             meinWikelprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
             meinWikelprofil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
+            meinWikelprofil.setWandstaerke(tb_Wandstaerke.Text, cb_einheitWandstaerke.Text);
             meinWikelprofil.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
             meinWikelprofil.setMaterial(cb_Material.Text);
 
+            if(meinWikelprofil.getBreite() == 0 || meinWikelprofil.getHoehe() == 0 || meinWikelprofil.getWandstaerke() == 0)
+            {
+                //meinWikelprofil.berechneUnbekannte();
+
+                if(meinWikelprofil.getBreite() > 0 && meinWikelprofil.getHoehe() > 0 && meinWikelprofil.getWandstaerke() > 0)
+                {
+                    //später
+                }
+                else
+                {
+                    ausgabe = 1;
+                }
+            }
+
 
             fehlerprüfungMitFarbe(meinWikelprofil.getLaenge(), tb_Laenge);
+            fehlerprüfungMitFarbe(meinWikelprofil.getWandstaerke(), tb_Wandstaerke);
             fehlerprüfungMitFarbe(meinWikelprofil.getBreite(), tb_Breite);
             fehlerprüfungMitFarbe(meinWikelprofil.getHoehe(), tb_Hoehe);
 
