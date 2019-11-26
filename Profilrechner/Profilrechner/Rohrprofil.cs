@@ -68,7 +68,7 @@ namespace Profilrechner
         {
             return Math.PI / 4 * (Math.Pow(aussendurchmesser, 2) - Math.Pow(innendurchmesser, 2));
         }
-        public double getFlaechentraegheitsmmoment()
+        public double getFlaechentraegheitsmoment()
         {
             return Math.PI / 64 * (Math.Pow(aussendurchmesser, 4) - Math.Pow(innendurchmesser, 4));
         }

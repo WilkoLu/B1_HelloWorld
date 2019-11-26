@@ -99,5 +99,13 @@ namespace Profilrechner
             uc_Rundprofil meinTabRundprofil = new uc_Rundprofil();
             newTabItem.Content = meinTabRundprofil.Content;
         }
+
+        private void Rohrprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClosableTab newTabItem = neuenTab(sender);
+
+            uc_Rohrprofil meinTabRohrprofil = new uc_Rohrprofil();
+            newTabItem.Content = meinTabRohrprofil.Content;
+        }
     }
 }

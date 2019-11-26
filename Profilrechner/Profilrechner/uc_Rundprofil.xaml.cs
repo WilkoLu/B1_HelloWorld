@@ -23,6 +23,7 @@ namespace Profilrechner
         public uc_Rundprofil()
         {
             InitializeComponent();
+
         }
 
         private void aendernTextBox(object sender, KeyEventArgs e)
@@ -65,8 +66,8 @@ namespace Profilrechner
 
                 if(meinRundprofil.getQflaeche() > 0)
                 {
-                    tb_Durchmsser.Text = Convert.ToString(meinRundprofil.getDurchmesser());
-                    tb_Radius.Text = Convert.ToString(meinRundprofil.getRadius());
+                    tb_Durchmsser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRundprofil.getDurchmesser(), cb_einheitDurchmesser.Text), 3));
+                    tb_Radius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRundprofil.getRadius(), cb_einheitRadius.Text), 3));
                 }
                 else
                 {

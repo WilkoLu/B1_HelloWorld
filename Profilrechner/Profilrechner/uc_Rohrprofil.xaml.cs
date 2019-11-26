@@ -27,12 +27,107 @@ namespace Profilrechner
 
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
-
+            berechnen(((TextBox)sender).Name);
         }
 
         private void aendernComboBox(object sender, EventArgs e)
         {
+            berechnen(((ComboBox)sender).Name);
+        }
+
+        private void berechnen(string welcheEingabe)
+        {
+            int ausgebe = 0;
+
+            Rohrprofil meinRohrprofil = new Rohrprofil();
+
+            if (welcheEingabe.Equals("tb_aussendurchmesser") || welcheEingabe.Equals("cb_einheitAussendurchmesser"))
+            {
+                meinRohrprofil.setAussendurchmesser(tb_aussendurchmesser.Text, cb_einheitAussendurchmesser.Text);
+                tb_aussenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussenradius() , cb_einheitAussenradius.Text)));
+            }
+            else if(welcheEingabe.Equals("tb_aussenradius") || welcheEingabe.Equals("cb_einheitAussenradius"))
+            {
+                meinRohrprofil.setAussenradius(tb_aussenradius.Text, cb_einheitAussenradius.Text);
+                tb_aussenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussenradius(), cb_einheitAussenradius.Text)));
+            }
+            else if (welcheEingabe.Equals("tb_innendurchmesser") || welcheEingabe.Equals("cb_einheitInnendurchmesser"))
+            {
+                meinRohrprofil.setInnendurchmesser(tb_innendurchmesser.Text, cb_einheitInnendurchmesser.Text);
+                tb_innenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitInnenradius.Text)));
+            }
+            else if (welcheEingabe.Equals("tb_innenradius") || welcheEingabe.Equals("cb_einheitInnenradius"))
+            {
+                meinRohrprofil.setInnenradius(tb_innenradius.Text, cb_einheitInnenradius.Text);
+                tb_innendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnendurchmesser(), cb_einheitInnendurchmesser.Text)));
+            }
+            
+            meinRohrprofil.setAussendurchmesser(tb_aussendurchmesser.Text , cb_einheitAussendurchmesser.Text);
+            meinRohrprofil.setInnendurchmesser(tb_innendurchmesser.Text, cb_einheitInnendurchmesser.Text);
+            
+
+            meinRohrprofil.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
+            meinRohrprofil.setMaterial(cb_Material.Text);
+
+            if (meinRohrprofil.getInnendurchmesser() == 0 || meinRohrprofil.getAussendurchmesser() == 0)
+            {
+                //meinRohrprofil.berechneUnbekannte()
+
+                if (meinRohrprofil.getInnendurchmesser() > 0 && meinRohrprofil.getAussendurchmesser() > 0)
+                {
+                    tb_innendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitInnendurchmesser.Text), 3));
+                    tb_innenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitInnenradius.Text), 3));
+                    tb_aussendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitAussendurchmesser.Text), 3));
+                    tb_aussendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitAussenradius.Text), 3));
+                }
+                else
+                {
+                    ausgebe = 1;
+                }
+            }
+
+            fehlerprüfungMitFarbe(meinRohrprofil.getLaenge(), tb_Laenge);
+            fehlerprüfungMitFarbe(meinRohrprofil.getInnenradius(), tb_innenradius);
+            fehlerprüfungMitFarbe(meinRohrprofil.getInnendurchmesser(), tb_innendurchmesser);
+            fehlerprüfungMitFarbe(meinRohrprofil.getAussenradius(), tb_aussenradius);
+            fehlerprüfungMitFarbe(meinRohrprofil.getAussendurchmesser(), tb_aussendurchmesser);
+
+            if (ausgebe == 0)
+            {
+                tb_flaechentraegheitsmoment.Background = Brushes.White;
+                lbl_qflaeche.Content = Math.Round(meinRohrprofil.getQflaeche(), 3) + " mm²";
+                tb_flaechentraegheitsmoment.Text = Math.Round(meinRohrprofil.getFlaechentraegheitsmoment(), 3) + " mm⁴";
+                if (meinRohrprofil.getVolumen() > 0)
+                {
+                    lbl_volumen.Content = Math.Round(meinRohrprofil.getVolumen(), 3) + " mm³";
+                    lbl_masse.Content = Math.Round(meinRohrprofil.getMasse(), 3) + " kg";
+                }
+            }
 
         }
+
+
+
+        private void fehlerprüfungMitFarbe(double pruefzahl, TextBox eingabebox)
+        {
+            if (pruefzahl == 0)
+            {
+                if (eingabeMitEinheit.Fehlerpruefung(eingabebox.Text))
+                {
+                    FocusManager.SetFocusedElement(this, eingabebox);
+                    eingabebox.SelectAll();
+                    eingabebox.Background = Brushes.IndianRed;
+                }
+
+            }
+            else
+            {
+                eingabebox.Background = Brushes.Transparent;
+            }
+        }
+
+
+
+
     }
 }

@@ -21,7 +21,7 @@
                     <TreeViewItem x:Name="tvi_Rundprofil" Header="Rundprofil" MouseLeftButtonUp="tvi_Rundprofil_MouseLeftButtonUp" />
                 </TreeViewItem>
                 <TreeViewItem Header="Rohrprofile" IsExpanded="True">
-                    <TreeViewItem x:Name="Rohrprofil" Header="Rohrprofil"  />
+                    <TreeViewItem x:Name="Rohrprofil" Header="Rohrprofil" MouseLeftButtonUp="Rohrprofil_MouseLeftButtonUp"/>
                     <TreeViewItem x:Name="Rechteckrohr" Header="Rechteckrohr"  />
                 </TreeViewItem>
                 <TreeViewItem Header="Sonstige" />
