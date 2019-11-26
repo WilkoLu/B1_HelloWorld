@@ -58,15 +58,15 @@ namespace Profilrechner
             
             TabControl.Items.Add(newTabItem);
 
-            if (Width < 575)
+            if (Width < 700)
             {
-                Width = 600;
+                Width = 700;
             }
             if (Height < 475)
             {
                 Height = 475;
             }
-            MinWidth = 575;
+            MinWidth = 700;
             MinHeight = 475;
 
             if (indexVomTab == 0)
