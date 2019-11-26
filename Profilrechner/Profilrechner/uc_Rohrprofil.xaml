@@ -63,7 +63,7 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal">
             <StackPanel>
-                <Label>Aussendurchmesser:</Label>
+                <Label>Innendurchmesser:</Label>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="tb_innendurchmesser" Width="65" KeyUp="aendernTextBox"/>
                     <ComboBox x:Name="cb_einheitInnendurchmesser" Width="50" DropDownClosed="aendernComboBox" >
@@ -79,7 +79,7 @@
             </StackPanel>
 
             <StackPanel Margin="10,0,0,0">
-                <Label>Aussenradius:</Label>
+                <Label>Innenradius:</Label>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="tb_innenradius" Width="65" KeyUp="aendernTextBox"/>
                     <ComboBox x:Name="cb_einheitInnenradius" Width="50" DropDownClosed="aendernComboBox" >

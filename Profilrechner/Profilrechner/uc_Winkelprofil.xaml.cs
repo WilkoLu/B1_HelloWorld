@@ -67,6 +67,19 @@ namespace Profilrechner
             fehlerprüfungMitFarbe(meinWikelprofil.getBreite(), tb_Breite);
             fehlerprüfungMitFarbe(meinWikelprofil.getHoehe(), tb_Hoehe);
 
+            if(meinWikelprofil.getWandstaerke() > meinWikelprofil.getHoehe() )
+            {
+                FocusManager.SetFocusedElement(this, tb_Hoehe);
+                tb_Hoehe.SelectAll();
+                tb_Hoehe.Background = Brushes.IndianRed;
+                tb_Wandstaerke.Background = Brushes.IndianRed;
+            }
+            else if(meinWikelprofil.getWandstaerke() > meinWikelprofil.getBreite() )
+            {
+                tb_Breite.Background = Brushes.IndianRed;
+                tb_Wandstaerke.Background = Brushes.IndianRed;
+            }
+
             if(ausgabe == 0)
             {
                 tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;

@@ -65,6 +65,13 @@ namespace Profilrechner
             fehlerprüfungMitFarbe(meinTProfil.getWandstaerke(), tb_Wandstaerke);
             fehlerprüfungMitFarbe(meinTProfil.getBreiteUndHoehe(), tb_BreiteUndHoehe);
 
+            if(meinTProfil.getWandstaerke() > meinTProfil.getBreiteUndHoehe())
+            {
+                tb_BreiteUndHoehe.Background = Brushes.IndianRed;
+                tb_Wandstaerke.Background = Brushes.IndianRed;
+                ausgebe = 1;
+            }
+
             if(ausgebe == 0)
             {
                 tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;

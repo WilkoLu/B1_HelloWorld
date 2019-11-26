@@ -49,7 +49,7 @@ namespace Profilrechner
             else if(welcheEingabe.Equals("tb_aussenradius") || welcheEingabe.Equals("cb_einheitAussenradius"))
             {
                 meinRohrprofil.setAussenradius(tb_aussenradius.Text, cb_einheitAussenradius.Text);
-                tb_aussenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussenradius(), cb_einheitAussenradius.Text)));
+                tb_aussendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussendurchmesser(), cb_einheitAussendurchmesser.Text)));
             }
             else if (welcheEingabe.Equals("tb_innendurchmesser") || welcheEingabe.Equals("cb_einheitInnendurchmesser"))
             {
@@ -91,6 +91,16 @@ namespace Profilrechner
             fehlerprüfungMitFarbe(meinRohrprofil.getInnendurchmesser(), tb_innendurchmesser);
             fehlerprüfungMitFarbe(meinRohrprofil.getAussenradius(), tb_aussenradius);
             fehlerprüfungMitFarbe(meinRohrprofil.getAussendurchmesser(), tb_aussendurchmesser);
+
+            if(meinRohrprofil.getInnendurchmesser() > meinRohrprofil.getAussendurchmesser())
+            {
+                tb_aussendurchmesser.Background = Brushes.IndianRed;
+                tb_innendurchmesser.Background = Brushes.IndianRed;
+                tb_aussenradius.Background = Brushes.IndianRed;
+                tb_innenradius.Background = Brushes.IndianRed;
+
+                ausgebe = 1;
+            }
 
             if (ausgebe == 0)
             {
