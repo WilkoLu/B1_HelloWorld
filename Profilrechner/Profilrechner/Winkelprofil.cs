@@ -22,68 +22,68 @@ namespace Profilrechner
         }
 
 
-        private void setHoehe(string zahl, string einheit)
+        public void setHoehe(string zahl, string einheit)
         {
             hoehe = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
-        private void setBreite(string zahl, string einheit)
+        public void setBreite(string zahl, string einheit)
         {
             breite = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
-        private void setWandstaerke(string zahl, string einheit)
+        public void setWandstaerke(string zahl, string einheit)
         {
             wandstaerke = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
-        private void setLaenge(string zahl, string einheit)
+        public void setLaenge(string zahl, string einheit)
         {
             laenge = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
-        private void setMaterial(string gewaeltesmaterial)
+        public void setMaterial(string gewaeltesmaterial)
         {
             profilmaterial = gewaeltesmaterial;
         }
 
-        private double getHoehe()
+        public double getHoehe()
         {
             return hoehe;
         }
-        private double getBreite()
+        public double getBreite()
         {
             return breite;
         }
-        private double getWandstaerke()
+        public double getWandstaerke()
         {
             return wandstaerke;
         }
-        private double getLaenge()
+        public double getLaenge()
         {
             return laenge;
         }
-        private double getQflaeche()
+        public double getQflaeche()
         {
             return wandstaerke * (hoehe + breite - wandstaerke);
         }
-        private double getschwerpunktX()
+        public double getschwerpunktX()
         {
             return wandstaerke * 0.5 * (breite * breite + hoehe * wandstaerke - wandstaerke * wandstaerke) / getQflaeche();
         }
-        private double getschwerpunktY()
+        public double getschwerpunktY()
         {
             return wandstaerke * 0.5 * (hoehe * hoehe + breite * wandstaerke - wandstaerke * wandstaerke) / getQflaeche();
         }
-        private double getFlaechentraegheitsmomentX()
+        public double getFlaechentraegheitsmomentX()
         {
             return wandstaerke * hoehe * (hoehe * hoehe / 12 + Math.Pow(hoehe / 2 - getschwerpunktY(), 2)) + wandstaerke * (breite - wandstaerke) * (wandstaerke * wandstaerke / 12 + Math.Pow(getschwerpunktY() - wandstaerke / 2, 2));
         }
-        private double getFlaechentraegheitsmomentY()
+        public double getFlaechentraegheitsmomentY()
         {
             return wandstaerke * hoehe * (wandstaerke * wandstaerke / 12 + Math.Pow(getschwerpunktX() - wandstaerke / 2, 2)) + wandstaerke * (breite - wandstaerke) * (Math.Pow(breite - wandstaerke, 2) / 12 + Math.Pow((breite + wandstaerke) / 2 - getschwerpunktX(), 2));
         }
-        private double getVolumen()
+        public double getVolumen()
         {
             return getQflaeche() * laenge;
         }
-        private double getMasse()
+        public double getMasse()
         {
             return getVolumen() * Material.dichte(profilmaterial);
         }

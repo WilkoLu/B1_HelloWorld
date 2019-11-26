@@ -24,7 +24,9 @@
                     <TreeViewItem x:Name="Rohrprofil" Header="Rohrprofil" MouseLeftButtonUp="Rohrprofil_MouseLeftButtonUp"/>
                     <TreeViewItem x:Name="Rechteckrohr" Header="Rechteckrohr"  />
                 </TreeViewItem>
-                <TreeViewItem Header="Sonstige" />
+                <TreeViewItem Header="Sonstige" IsExpanded="True">
+                    <TreeViewItem x:Name="Winkelprofil" Header="Winkelprofil" MouseLeftButtonUp="Winkelprofil_MouseLeftButtonUp"/>
+                </TreeViewItem>
             </TreeView>
         </DockPanel>
 

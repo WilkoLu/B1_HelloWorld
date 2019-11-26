@@ -107,5 +107,13 @@ namespace Profilrechner
             uc_Rohrprofil meinTabRohrprofil = new uc_Rohrprofil();
             newTabItem.Content = meinTabRohrprofil.Content;
         }
+
+        private void Winkelprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClosableTab newTabItem = neuenTab(sender);
+
+            uc_Winkelprofil meinTabWinkelprofil = new uc_Winkelprofil();
+            newTabItem.Content = meinTabWinkelprofil.Content;
+        }
     }
 }

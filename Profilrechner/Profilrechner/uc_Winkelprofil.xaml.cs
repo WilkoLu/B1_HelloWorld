@@ -27,12 +27,70 @@ namespace Profilrechner
 
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
-
+            berechnen(((TextBox)sender).Text);
         }
 
         private void aendernComboBox(object sender, EventArgs e)
         {
-
+            berechnen(((ComboBox)sender).Text);
         }
+
+        private void berechnen(string welcheEingabe)
+        {
+            int ausgabe = 0;
+
+            Winkelprofil meinWikelprofil = new Winkelprofil();
+
+            meinWikelprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
+            meinWikelprofil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
+            meinWikelprofil.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
+            meinWikelprofil.setMaterial(cb_Material.Text);
+
+
+            fehlerprüfungMitFarbe(meinWikelprofil.getLaenge(), tb_Laenge);
+            fehlerprüfungMitFarbe(meinWikelprofil.getBreite(), tb_Breite);
+            fehlerprüfungMitFarbe(meinWikelprofil.getHoehe(), tb_Hoehe);
+
+            if(ausgabe == 0)
+            {
+                tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
+                tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
+
+                lbl_qflaeche.Content = Math.Round(meinWikelprofil.getQflaeche(), 3) + " mm²";
+                tb_flaechentraegheitsmomentX.Text = Math.Round(meinWikelprofil.getFlaechentraegheitsmomentX(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentY.Text = Math.Round(meinWikelprofil.getFlaechentraegheitsmomentY(), 3) + " mm⁴";
+                lbl_SchwerppunktX.Content = Math.Round(meinWikelprofil.getschwerpunktX(), 3) + " mm";
+                lbl_SchwerppunktY.Content = Math.Round(meinWikelprofil.getschwerpunktY(), 3) + " mm";
+                if(meinWikelprofil.getVolumen() > 0)
+                {
+                    lbl_volumen.Content = Math.Round(meinWikelprofil.getVolumen(), 3) + " mm³";
+                    lbl_masse.Content = Math.Round(meinWikelprofil.getMasse(), 3) + " kg";
+                }
+            }
+            
+        }
+
+
+
+        private void fehlerprüfungMitFarbe(double pruefzahl, TextBox eingabebox)
+        {
+            if (pruefzahl == 0)
+            {
+                if (eingabeMitEinheit.Fehlerpruefung(eingabebox.Text))
+                {
+                    FocusManager.SetFocusedElement(this, eingabebox);
+                    eingabebox.SelectAll();
+                    eingabebox.Background = Brushes.IndianRed;
+                }
+
+            }
+            else
+            {
+                eingabebox.Background = Brushes.Transparent;
+            }
+        }
+
+
+
     }
 }
