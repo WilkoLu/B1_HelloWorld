@@ -31,7 +31,7 @@ namespace Profilrechner
             InitializeComponent();
             Width = 193;
             TabControl.Visibility = Visibility.Hidden;
-            MinHeight = 200;
+            MinHeight = 400;
             MinWidth = 193;
 
         }
@@ -58,16 +58,16 @@ namespace Profilrechner
             
             TabControl.Items.Add(newTabItem);
 
-            if (Width < 700)
+            if (Width < 900)
             {
-                Width = 700;
+                Width = 900;
             }
-            if (Height < 475)
+            if (Height < 550)
             {
-                Height = 475;
+                Height = 550;
             }
-            MinWidth = 700;
-            MinHeight = 475;
+            MinWidth = 900;
+            MinHeight = 550;
 
             if (indexVomTab == 0)
             {
@@ -121,6 +121,14 @@ namespace Profilrechner
             ClosableTab newTabItem = neuenTab(sender);
 
             uc_TProfil meinTProfil = new uc_TProfil();
+            newTabItem.Content = meinTProfil.Content;
+        }
+
+        private void DoppelTProfil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClosableTab newTabItem = neuenTab(sender);
+
+            uc_DoppelTProfil meinTProfil = new uc_DoppelTProfil();
             newTabItem.Content = meinTProfil.Content;
         }
     }

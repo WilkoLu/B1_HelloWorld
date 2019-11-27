@@ -114,7 +114,9 @@ namespace Profilrechner
                 
                 if (pflichteingabe == 1)
                 {
-                    bool zahlOderNicht = double.TryParse(eingabe, out double negativ);
+
+                    double negativ;
+                    bool zahlOderNicht = double.TryParse(eingabe, out negativ);
                     if (zahlOderNicht == true)
                     {
                         return true;

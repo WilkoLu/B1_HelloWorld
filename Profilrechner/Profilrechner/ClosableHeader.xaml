@@ -14,7 +14,7 @@
             </Label>
 
             <Button Name="btn_close" Width="14" Height="14" 
-                     ToolTip="Close" FontWeight="Bold" FontFamily="Courier" VerticalAlignment="Center"
+                     ToolTip="Close" FontWeight="Bold" FontFamily="Courier" VerticalAlignment="Center" HorizontalAlignment="Center" 
                     FontSize="9"  Content="X" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="Gray" />
 
         </StackPanel>

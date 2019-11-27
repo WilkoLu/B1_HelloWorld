@@ -20,6 +20,18 @@ namespace Profilrechner
             {
                 return 2.7 * Math.Pow(10, -6);
             }
+            else if (material.Equals("Messing"))
+            {
+                return 8.73 * Math.Pow(10, -6);
+            }
+            else if (material.Equals("Edelstahl"))
+            {
+                return 7.95 * Math.Pow(10, -6);
+            }
+            else if (material.Equals("HARDOX"))
+            {
+                return 8.2 * Math.Pow(10, -6);
+            }
             else
             {
                 return 0;

@@ -20,8 +20,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="LightBlue" Margin="25,25,0,25" Width="20" HorizontalAlignment="Left" Grid.RowSpan="2"/>
-        <Rectangle Fill="LightBlue" Margin="25,0,25,25" Height="20" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
+        <Rectangle Fill="Gray" Margin="25,25,0,25" Width="20" HorizontalAlignment="Left" Grid.RowSpan="2"/>
+        <Rectangle Fill="Gray" Margin="25,0,25,25" Height="20" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
         <Line Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="2"/>
         <Line Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="2"/>
 
@@ -94,33 +94,38 @@
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
                 <ComboBoxItem >Aluminium</ComboBoxItem>
+                <ComboBoxItem >Messing</ComboBoxItem>
+                <ComboBoxItem >Edelstahl</ComboBoxItem>
+                <ComboBoxItem >HARDOX</ComboBoxItem>
             </ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
+            
+
+            <DockPanel LastChildFill="False" >
+                <Label Width="150" HorizontalContentAlignment="Right" >FTM X:</Label>
+                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
+            </DockPanel>
+
+            <DockPanel LastChildFill="False" >
+                <Label Width="150" HorizontalContentAlignment="Right" >FTM Y:</Label>
+                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
+            </DockPanel>
+
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
                 <Label x:Name="lbl_qflaeche"></Label>
             </DockPanel>
-
+            
             <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >FTM Ix:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
-            </DockPanel>
-
-            <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >FTM Iy:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
-            </DockPanel>
-
-            <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt x:</Label>
+                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt X:</Label>
                 <Label x:Name="lbl_SchwerppunktX"></Label>
             </DockPanel>
 
             <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt y:</Label>
+                <Label Width="150" HorizontalContentAlignment="Right" >Schwerpunkt Y:</Label>
                 <Label x:Name="lbl_SchwerppunktY"></Label>
             </DockPanel>
 

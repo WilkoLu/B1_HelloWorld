@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Profilrechner"
         mc:Ignorable="d"
-        Title="" Height="475" Width="700" Name="hauptfenster" Icon="icon.ico">
+        Title="" Height="550" Width="900" Name="hauptfenster" Icon="icon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
@@ -27,6 +27,7 @@
                 <TreeViewItem Header="Sonstige" IsExpanded="True">
                     <TreeViewItem x:Name="Winkelprofil" Header="Winkelprofil" MouseLeftButtonUp="Winkelprofil_MouseLeftButtonUp"/>
                     <TreeViewItem x:Name="TProfil" Header="T-Profil" MouseLeftButtonUp="TProfil_MouseLeftButtonUp"/>
+                    <TreeViewItem x:Name="DoppelTProfil" Header="Doppel T-Profil" MouseLeftButtonUp="DoppelTProfil_MouseLeftButtonUp"/>
                 </TreeViewItem>
             </TreeView>
         </DockPanel>

@@ -21,7 +21,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Ellipse Fill="LightBlue" Margin="30" Grid.RowSpan="4" Stretch="Uniform"/>
+        <Ellipse Fill="Gray" Margin="30" Grid.RowSpan="4" Stretch="Uniform"/>
         <Ellipse Fill="White" Margin="45" Grid.RowSpan="4" Stretch="Uniform"/>
         
 
@@ -118,21 +118,24 @@
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
                 <ComboBoxItem >Aluminium</ComboBoxItem>
+                <ComboBoxItem >Messing</ComboBoxItem>
+                <ComboBoxItem >Edelstahl</ComboBoxItem>
+                <ComboBoxItem >HARDOX</ComboBoxItem>
             </ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
-            <DockPanel>
-                <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
-                <Label x:Name="lbl_qflaeche"></Label>
-            </DockPanel>
+            
 
-            <DockPanel>
+            <DockPanel LastChildFill="False">
                 <Label Width="150" HorizontalContentAlignment="Right" >Flächenträgheitsmoment:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmoment" Margin="5,3,5,3" KeyUp="aendernTextBox"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmoment" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
             </DockPanel>
-
+            <DockPanel LastChildFill="False" >
+                <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
+                <Label x:Name="lbl_qflaeche" Width="165"></Label>
+            </DockPanel>
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Volumen:</Label>
                 <Label x:Name="lbl_volumen"></Label>
