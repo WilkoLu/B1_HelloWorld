@@ -45,7 +45,7 @@ namespace Profilrechner
             }
         }
 
-        private void berechnen()
+        private void berechnen(string welcheEingabe)
         {
             int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
 
@@ -56,7 +56,7 @@ namespace Profilrechner
             meinRechteckprofil.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
             meinRechteckprofil.setMaterial(cb_Material.Text);
 
-            if (meinRechteckprofil.getQflaeche() == 0)
+            if (meinRechteckprofil.getQflaeche() == 0 && welcheEingabe.Equals("Berechnen"))
             {
                 meinRechteckprofil.berechneUnbekannte(tb_flaechentraegheitsmomentX.Text, tb_flaechentraegheitsmomentY.Text);
                 if (meinRechteckprofil.getQflaeche() > 0)
@@ -71,6 +71,10 @@ namespace Profilrechner
                     ausgabe = 1;
                 }
 
+            }
+            else if (meinRechteckprofil.getQflaeche() == 0)
+            {
+                ausgabe = 1;
             }
 
             fehlerprüfungMitFarbe(meinRechteckprofil.getLaenge(), tb_Laenge);
@@ -99,12 +103,17 @@ namespace Profilrechner
 
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
-            berechnen();
+            berechnen(((TextBox)sender).Text);
         }
 
         private void aendernComboBox(object sender, EventArgs e)
         {
-            berechnen();
+            berechnen(((ComboBox)sender).Text);
+        }
+
+        private void Berechnen_Click(object sender, RoutedEventArgs e)
+        {
+            berechnen(((Button)sender).Name);
         }
     }
 }

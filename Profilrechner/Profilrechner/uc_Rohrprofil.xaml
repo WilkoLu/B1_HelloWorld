@@ -13,7 +13,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="125"/>
+            <RowDefinition Height="135"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -126,16 +126,18 @@
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
-            
+            <Button Width="315" Content="Berechnen" HorizontalAlignment="Left" Margin="5,5,0,5" x:Name="Berechnen" Click="Berechnen_Click"/>
 
             <DockPanel LastChildFill="False">
                 <Label Width="150" HorizontalContentAlignment="Right" >Flächenträgheitsmoment:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmoment" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmoment" Margin="5,3,5,3" Width="165"></TextBox>
             </DockPanel>
+            
             <DockPanel LastChildFill="False" >
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
                 <Label x:Name="lbl_qflaeche" Width="165"></Label>
             </DockPanel>
+            
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Volumen:</Label>
                 <Label x:Name="lbl_volumen"></Label>

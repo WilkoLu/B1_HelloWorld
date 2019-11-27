@@ -60,9 +60,9 @@ namespace Profilrechner
             meinRundprofil.setLaenge(tb_Laenge.Text , cb_einheitLaenge.Text);
             meinRundprofil.setMaterial(cb_Material.Text);
 
-            if (meinRundprofil.getQflaeche() == 0)
+            if (meinRundprofil.getQflaeche() == 0 && welcheEingabe.Equals("Berechnen"))
             {
-                //meinRundprofil.berechneUnbekannte();
+                meinRundprofil.berechneUnbekannte(tb_flaechentraegheitsmoment.Text);
 
                 if(meinRundprofil.getQflaeche() > 0)
                 {
@@ -75,6 +75,7 @@ namespace Profilrechner
                 }
             }
 
+            fehlerprüfungMitFarbe(meinRundprofil.getFlaechentraegheitsmoment(), tb_flaechentraegheitsmoment);
             fehlerprüfungMitFarbe(meinRundprofil.getLaenge(), tb_Laenge);
             fehlerprüfungMitFarbe(meinRundprofil.getRadius(), tb_Radius);
             fehlerprüfungMitFarbe(meinRundprofil.getDurchmesser(), tb_Durchmsser);
@@ -111,6 +112,9 @@ namespace Profilrechner
             }
         }
 
-
+        private void Berechnen_Click(object sender, RoutedEventArgs e)
+        {
+            berechnen(((Button)sender).Name);
+        }
     }
 }

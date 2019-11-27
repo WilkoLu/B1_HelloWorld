@@ -80,7 +80,22 @@ namespace Profilrechner
         {
             return getVolumen() * Material.dichte(profilmaterial);
         }
+        public void berechneUnbekannte(string eingabeFTM)
+        {
+            double FTM = eingabeMitEinheit.eingabeMitPruefung(eingabeFTM, "mm");
 
+            if(FTM > 0)
+            {
+                if(aussendurchmesser > 0)
+                {
+                    innendurchmesser = Math.Pow(Math.Pow(aussendurchmesser , 4) - FTM * 64 / Math.PI , 1.0 / 4.0);
+                }
+                else if (innendurchmesser > 0)
+                {
+                    aussendurchmesser = Math.Pow(FTM * 64 / Math.PI + Math.Pow(innendurchmesser, 4), 1.0 / 4.0);
+                }
+            }
+        }
 
     }
 }

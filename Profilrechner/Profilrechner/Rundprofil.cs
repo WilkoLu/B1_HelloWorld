@@ -25,7 +25,7 @@ namespace Profilrechner
         {
             durchmesser = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit) * 2;
         }
-        public void setLaenge(string zahl , string einheit)
+        public void setLaenge(string zahl, string einheit)
         {
             laenge = eingabeMitEinheit.eingabeMitPruefung(zahl, einheit);
         }
@@ -33,7 +33,7 @@ namespace Profilrechner
         {
             material = gewaeltesMaterial;
         }
-        
+
         public double getRadius()
         {
             return durchmesser / 2;
@@ -48,11 +48,11 @@ namespace Profilrechner
         }
         public double getQflaeche()
         {
-            return Math.PI / 4 * Math.Pow(durchmesser , 2);
+            return Math.PI / 4 * Math.Pow(durchmesser, 2);
         }
         public double getFlaechentraegheitsmoment()
         {
-            return Math.PI / 64 * Math.Pow(durchmesser , 4);
+            return Math.PI / 64 * Math.Pow(durchmesser, 4);
         }
         public double getVolumen()
         {
@@ -62,6 +62,14 @@ namespace Profilrechner
         {
             return getVolumen() * Material.dichte(material);
         }
+        public void berechneUnbekannte(string eingabeFTM)
+        {
+            double FTM = eingabeMitEinheit.eingabeMitPruefung(eingabeFTM, "mm");
 
+            if (FTM > 0)
+            {
+                durchmesser = Math.Pow(FTM * 64 / Math.PI, 1.0 / 4.0);
+            }
+        }
     }
 }
