@@ -17,7 +17,7 @@
                      ToolTip="Close" VerticalAlignment="center" HorizontalAlignment="Center" 
                      Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="transparent">
 
-                <Image x:Name="close_button_png" Height="17" Source="C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\Bilder\\close_button2.png" Stretch="Fill" Width="17" VerticalAlignment="center" HorizontalAlignment="Center" Visibility="Visible"  />
+                <Image x:Name="close_button_png" Height="17" Source="Bilder\close_button2.png" Stretch="Fill" Width="17" VerticalAlignment="center" HorizontalAlignment="Center" Visibility="Visible"  />
             </Button>
 
         </StackPanel>
