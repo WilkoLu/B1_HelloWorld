@@ -103,7 +103,7 @@ namespace Profilrechner
             Image red = new Image();
             BitmapImage red2 = new BitmapImage();
             red2.BeginInit();
-            red2.UriSource = new Uri("https://s19.directupload.net/images/191127/2hxvujmz.png");
+            red2.UriSource = new Uri("Bilder/close_button2red.png" , UriKind.Relative);
             red2.EndInit();
             red.Source = red2;
 
@@ -116,7 +116,7 @@ namespace Profilrechner
             Image red = new Image();
             BitmapImage red1 = new BitmapImage();
             red1.BeginInit();
-            red1.UriSource = new Uri("https://s19.directupload.net/images/191127/ndwivx3i.png");
+            red1.UriSource = new Uri("Bilder/close_button2.png" , UriKind.Relative);
             red1.EndInit();
             red.Source = red1;
 
