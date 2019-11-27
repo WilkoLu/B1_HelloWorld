@@ -103,7 +103,7 @@ namespace Profilrechner
             Image red = new Image();
             BitmapImage red2 = new BitmapImage();
             red2.BeginInit();
-            red2.UriSource = new Uri("C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\close_button2red.png");
+            red2.UriSource = new Uri("C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\Bilder\\close_button2red.png");
             red2.EndInit();
             red.Source = red2;
 
@@ -116,7 +116,7 @@ namespace Profilrechner
             Image red = new Image();
             BitmapImage red1 = new BitmapImage();
             red1.BeginInit();
-            red1.UriSource = new Uri("C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\close-button2.png");
+            red1.UriSource = new Uri("C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\Bilder\\close_button2.png");
             red1.EndInit();
             red.Source = red1;
 
