@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Windows.Media.Imaging;
 
 namespace Profilrechner
 {
@@ -100,13 +100,27 @@ namespace Profilrechner
         // Button MouseEnter - When the mouse is over the button - change color to Red
         void btn_close_MouseEnter(object sender, MouseEventArgs e)
         {
-            ((ClosableHeader)this.Header).btn_close.Background = Brushes.Red;
+            Image red = new Image();
+            BitmapImage red2 = new BitmapImage();
+            red2.BeginInit();
+            red2.UriSource = new Uri("C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\close_button2red.png");
+            red2.EndInit();
+            red.Source = red2;
+
+            ((ClosableHeader)this.Header).close_button_png.Source = red2;
         }
 
         // Button MouseLeave - When mouse is no longer over button - change color back to black
         void btn_close_MouseLeave(object sender, MouseEventArgs e)
         {
-            ((ClosableHeader)this.Header).btn_close.Background = Brushes.Transparent;
+            Image red = new Image();
+            BitmapImage red1 = new BitmapImage();
+            red1.BeginInit();
+            red1.UriSource = new Uri("C:\\Users\\wilko\\Source\\Repos\\B1_HelloWorld\\Profilrechner\\Profilrechner\\Profilrechner\\close-button2.png");
+            red1.EndInit();
+            red.Source = red1;
+
+            ((ClosableHeader)this.Header).close_button_png.Source = red1;
         }
 
 
