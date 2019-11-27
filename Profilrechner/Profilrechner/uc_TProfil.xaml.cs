@@ -74,12 +74,12 @@ namespace Profilrechner
 
             if(ausgebe == 0)
             {
-                tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
-                tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
+                //tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
+                //tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
 
                 lbl_qflaeche.Content = Math.Round(meinTProfil.getQflaeche(), 3) + " mm²";
-                tb_flaechentraegheitsmomentX.Text = Math.Round(meinTProfil.getFlaechentraegheitsmomentX(), 3) + " mm⁴";
-                tb_flaechentraegheitsmomentY.Text = Math.Round(meinTProfil.getFlaechentraegheitsmomentY(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentX.Content = Math.Round(meinTProfil.getFlaechentraegheitsmomentX(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentY.Content = Math.Round(meinTProfil.getFlaechentraegheitsmomentY(), 3) + " mm⁴";
                 lbl_SchwerppunktY.Content = Math.Round(meinTProfil.getSchwerpunkt(), 3) + " mm";
                 if(meinTProfil.getVolumen() > 0)
                 {

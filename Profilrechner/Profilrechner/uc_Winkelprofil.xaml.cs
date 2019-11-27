@@ -82,12 +82,12 @@ namespace Profilrechner
 
             if(ausgabe == 0)
             {
-                tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
-                tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
+                //tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
+                //tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
 
                 lbl_qflaeche.Content = Math.Round(meinWikelprofil.getQflaeche(), 3) + " mm²";
-                tb_flaechentraegheitsmomentX.Text = Math.Round(meinWikelprofil.getFlaechentraegheitsmomentX(), 3) + " mm⁴";
-                tb_flaechentraegheitsmomentY.Text = Math.Round(meinWikelprofil.getFlaechentraegheitsmomentY(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentX.Content = Math.Round(meinWikelprofil.getFlaechentraegheitsmomentX(), 3) + " mm⁴";
+                tb_flaechentraegheitsmomentY.Content = Math.Round(meinWikelprofil.getFlaechentraegheitsmomentY(), 3) + " mm⁴";
                 lbl_SchwerppunktX.Content = Math.Round(meinWikelprofil.getschwerpunktX(), 3) + " mm";
                 lbl_SchwerppunktY.Content = Math.Round(meinWikelprofil.getschwerpunktY(), 3) + " mm";
                 if(meinWikelprofil.getVolumen() > 0)

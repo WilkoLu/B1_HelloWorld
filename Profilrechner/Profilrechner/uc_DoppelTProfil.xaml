@@ -105,14 +105,14 @@
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
-            <DockPanel LastChildFill="False" >
+            <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM X:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
+                <Label x:Name="tb_flaechentraegheitsmomentX"></Label>
             </DockPanel>
 
-            <DockPanel LastChildFill="False" >
+            <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM Y:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
+                <Label x:Name="tb_flaechentraegheitsmomentY" ></Label>
             </DockPanel>
             
             <DockPanel>
