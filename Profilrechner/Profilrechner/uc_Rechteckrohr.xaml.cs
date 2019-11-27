@@ -59,21 +59,7 @@ namespace Profilrechner
 
             if (meinRechteckrohr.getQflaeche() == 0)
             {
-                meinRechteckrohr.berechneUnbekannte(tb_flaechentraegheitsmomentX.Text, tb_flaechentraegheitsmomentY.Text);
-                if (meinRechteckrohr.getQflaeche() > 0)
-                {
-                    tb_Breite.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRechteckrohr.getBreite(), cb_einheitBreite.Text), 3));
-                    tb_Hoehe.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRechteckrohr.getHoehe(), cb_einheitHoehe.Text), 3));
-                    tb_Wandstärke.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRechteckrohr.getWandstärke(), cb_einheitWandstärke.Text), 3));
-
-                }
-                else
-                {
-                    fehlerprüfungMitFarbe(eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentX.Text, "mm"), tb_flaechentraegheitsmomentX);
-                    fehlerprüfungMitFarbe(eingabeMitEinheit.eingabeMitPruefung(tb_flaechentraegheitsmomentY.Text, "mm"), tb_flaechentraegheitsmomentY);
-                    ausgabe = 1;
-                }
-
+                ausgabe = 1;
             }
 
             fehlerprüfungMitFarbe(meinRechteckrohr.getLaenge(), tb_Laenge);
@@ -83,12 +69,10 @@ namespace Profilrechner
 
             if (ausgabe == 0)
             {
-                tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
-                tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
 
                 lbl_qflaeche.Content = Math.Round(meinRechteckrohr.getQflaeche(), 3) + " mm²";
-                tb_flaechentraegheitsmomentX.Text = Math.Round(meinRechteckrohr.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
-                tb_flaechentraegheitsmomentY.Text = Math.Round(meinRechteckrohr.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
+                lbl_flaechentraegheitsmomentX.Content = Math.Round(meinRechteckrohr.getFlaechenträgheitsmomentX(), 3) + " mm⁴";
+                lbl_flaechentraegheitsmomentY.Content = Math.Round(meinRechteckrohr.getFlaechenträgheitsmomentY(), 3) + " mm⁴";
 
                 if (meinRechteckrohr.getVolumen() > 0)
                 {
