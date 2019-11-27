@@ -45,6 +45,8 @@ namespace Profilrechner
             newTabItem.Content = meinTabRechteckprofil.Content;
         }
 
+        
+
         public ClosableTab neuenTab(object sender)
         {
             TreeViewItem tvi = (TreeViewItem)trv_Profilauswahl.SelectedItem;
@@ -128,8 +130,16 @@ namespace Profilrechner
         {
             ClosableTab newTabItem = neuenTab(sender);
 
-            uc_DoppelTProfil meinTProfil = new uc_DoppelTProfil();
-            newTabItem.Content = meinTProfil.Content;
+            uc_DoppelTProfil meinDoppelTProfil = new uc_DoppelTProfil();
+            newTabItem.Content = meinDoppelTProfil.Content;
+        }
+
+        private void Rechteckrohr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClosableTab newTabItem = neuenTab(sender);
+
+            uc_Rechteckrohr meinRechteckrohr = new uc_Rechteckrohr();
+            newTabItem.Content = meinRechteckrohr.Content;
         }
     }
 }

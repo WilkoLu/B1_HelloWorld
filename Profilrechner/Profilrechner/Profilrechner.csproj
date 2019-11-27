@@ -59,12 +59,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Rechteckprofil.cs" />
+    <Compile Include="Rechteckrohr.cs" />
     <Compile Include="Rohrprofil.cs" />
     <Compile Include="Rundprofil.cs" />
     <Compile Include="DoppelTProfil.cs" />
     <Compile Include="TProfil.cs" />
     <Compile Include="uc_Rechteckprofil.xaml.cs">
       <DependentUpon>uc_Rechteckprofil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="uc_Rechteckrohr.xaml.cs">
+      <DependentUpon>uc_Rechteckrohr.xaml</DependentUpon>
     </Compile>
     <Compile Include="uc_Rohrprofil.xaml.cs">
       <DependentUpon>uc_Rohrprofil.xaml</DependentUpon>
@@ -104,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="uc_Rechteckprofil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="uc_Rechteckrohr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
