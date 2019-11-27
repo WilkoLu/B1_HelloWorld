@@ -13,7 +13,7 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="160"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -89,17 +89,16 @@
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
 
-
-
+            <Button Width="315" Content="Berechnen" HorizontalAlignment="Left" Margin="5,5,0,5" x:Name="Berechnen" Click="Berechnen_Click"/>
 
             <DockPanel LastChildFill="False">
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM X:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" KeyUp="aendernTextBox" Width=" 165"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmomentX" Margin="5,3,5,3" Width=" 165"></TextBox>
             </DockPanel>
 
             <DockPanel LastChildFill="False">
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM Y:</Label>
-                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" KeyUp="aendernTextBox" Width="165"></TextBox>
+                <TextBox x:Name="tb_flaechentraegheitsmomentY" Margin="5,3,5,3" Width="165"></TextBox>
             </DockPanel>
 
             <DockPanel>
