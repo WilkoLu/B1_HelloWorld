@@ -13,11 +13,14 @@
                 >
             </Label>
 
-            <Button Name="btn_close" Width="14" Height="14" 
-                     ToolTip="Close" FontWeight="Bold" FontFamily="Courier" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                    FontSize="9"  Content="X" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="Gray" />
+            <Button Name="btn_close" Width="23" Height="23" 
+                     ToolTip="Close" VerticalAlignment="center" HorizontalAlignment="Center" 
+                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="transparent">
+                
+                <Image x:Name="close_button_png" Height="17" Source="close-button2.png" Stretch="Fill" Width="17" VerticalAlignment="center" HorizontalAlignment="Center" Visibility="Visible"  />
+            </Button>
 
         </StackPanel>
-        
+
     </Grid>
 </UserControl>

@@ -100,13 +100,13 @@ namespace Profilrechner
         // Button MouseEnter - When the mouse is over the button - change color to Red
         void btn_close_MouseEnter(object sender, MouseEventArgs e)
         {
-            ((ClosableHeader)this.Header).btn_close.Foreground = Brushes.Red;
+            ((ClosableHeader)this.Header).btn_close.Background = Brushes.Red;
         }
 
         // Button MouseLeave - When mouse is no longer over button - change color back to black
         void btn_close_MouseLeave(object sender, MouseEventArgs e)
         {
-            ((ClosableHeader)this.Header).btn_close.Foreground = Brushes.Black;
+            ((ClosableHeader)this.Header).btn_close.Background = Brushes.Transparent;
         }
 
 
