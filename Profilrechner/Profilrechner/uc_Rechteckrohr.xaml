@@ -116,12 +116,12 @@
 
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM X:</Label>
-                <Label x:Name="lbl_flaechentraegheitsmomentX" Margin="5,3,5,3" ></Label>
+                <Label x:Name="lbl_flaechentraegheitsmomentX" ></Label>
             </DockPanel>
 
             <DockPanel >
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM Y:</Label>
-                <Label x:Name="lbl_flaechentraegheitsmomentY" Margin="5,3,5,3" ></Label>
+                <Label x:Name="lbl_flaechentraegheitsmomentY" ></Label>
             </DockPanel>
 
             <DockPanel>

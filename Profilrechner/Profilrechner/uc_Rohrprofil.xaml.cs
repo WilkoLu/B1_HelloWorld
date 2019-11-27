@@ -105,7 +105,16 @@ namespace Profilrechner
                 }
             }
 
-            if(meinRohrprofil.getInnendurchmesser() > meinRohrprofil.getAussendurchmesser())
+            if (meinRohrprofil.getAussendurchmesser() > 0 && welcheEingabe.Equals("Berechnen"))
+            {
+                tb_aussendurchmesser.Background = Brushes.IndianRed;
+            }
+            else if (meinRohrprofil.getInnendurchmesser() > 0 && welcheEingabe.Equals("Berechnen"))
+            {
+                tb_innendurchmesser.Background = Brushes.IndianRed;
+            }
+
+            if (meinRohrprofil.getInnendurchmesser() > meinRohrprofil.getAussendurchmesser())
             {
                 tb_aussendurchmesser.Background = Brushes.IndianRed;
                 tb_innendurchmesser.Background = Brushes.IndianRed;
@@ -117,6 +126,9 @@ namespace Profilrechner
 
             if (ausgebe == 0)
             {
+                tb_aussendurchmesser.Background = Brushes.Transparent;
+                tb_innendurchmesser.Background = Brushes.Transparent;
+
                 tb_flaechentraegheitsmoment.Background = Brushes.White;
                 lbl_qflaeche.Content = Math.Round(meinRohrprofil.getQflaeche(), 3) + " mm²";
                 tb_flaechentraegheitsmoment.Text = Math.Round(meinRohrprofil.getFlaechentraegheitsmoment(), 3) + " mm⁴";
