@@ -67,6 +67,20 @@ namespace Profilrechner
             fehlerprüfungMitFarbe(meinRechteckrohr.getHoehe(), tb_Hoehe);
             fehlerprüfungMitFarbe(meinRechteckrohr.getWandstärke(), tb_Wandstärke);
 
+            if (meinRechteckrohr.getWandstärke() > meinRechteckrohr.getBreite() / 2)
+            {
+                tb_Breite.Background = Brushes.IndianRed;
+                tb_Wandstärke.Background = Brushes.IndianRed;
+                ausgabe = 1;
+            }
+
+            if (meinRechteckrohr.getWandstärke() > meinRechteckrohr.getHoehe() / 2)
+            {
+                tb_Hoehe.Background = Brushes.IndianRed;
+                tb_Wandstärke.Background = Brushes.IndianRed;
+                ausgabe = 1;
+            }
+
             if (ausgabe == 0)
             {
 
@@ -83,20 +97,6 @@ namespace Profilrechner
 
             }
 
-
-            if (meinRechteckrohr.getWandstärke() > meinRechteckrohr.getBreite())
-            {
-                tb_Breite.Background = Brushes.IndianRed;
-                tb_Wandstärke.Background = Brushes.IndianRed;
-                ausgabe = 1;
-            }
-
-            if (meinRechteckrohr.getWandstärke() > meinRechteckrohr.getHoehe())
-            {
-                tb_Hoehe.Background = Brushes.IndianRed;
-                tb_Wandstärke.Background = Brushes.IndianRed;
-                ausgabe = 1;
-            }
 
         }
 
