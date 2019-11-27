@@ -44,11 +44,23 @@ namespace Profilrechner
 
             if (material.Equals("Stahl"))
             {
-                return 20;
+                return 1.5;
             }
             else if (material.Equals("Aluminium"))
             {
-                return 30;
+                return 8.32;
+            }
+            else if (material.Equals("Messing"))
+            {
+                return 2.75;
+            }
+            else if (material.Equals("Edelstahl"))
+            {
+                return 7.5;
+            }
+            else if (material.Equals("HARDOX"))
+            {
+                return 5;
             }
             else
             {

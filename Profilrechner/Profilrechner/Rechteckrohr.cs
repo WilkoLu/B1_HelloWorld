@@ -79,6 +79,10 @@ namespace Profilrechner
         {
             return getVolumen() * Material.dichte(material);
         }
+        public double getPreis()
+        {
+            return getMasse() * Material.preis(material);
+        }
 
         public void berechneUnbekannte(string eingabeFTMX, string eingabeFTMY)
         {

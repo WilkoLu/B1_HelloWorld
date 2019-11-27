@@ -124,6 +124,7 @@ namespace Profilrechner
                 {
                     lbl_volumen.Content = Math.Round(meinRohrprofil.getVolumen(), 3) + " mm³";
                     lbl_masse.Content = Math.Round(meinRohrprofil.getMasse(), 3) + " kg";
+                    lbl_preis.Content = Math.Round(meinRohrprofil.getPreis(), 3) + " €";
                 }
             }
 

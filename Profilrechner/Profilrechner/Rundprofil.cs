@@ -62,6 +62,10 @@ namespace Profilrechner
         {
             return getVolumen() * Material.dichte(material);
         }
+        public double getPreis()
+        {
+            return getMasse() * Material.preis(material);
+        }
         public void berechneUnbekannte(string eingabeFTM)
         {
             double FTM = eingabeMitEinheit.eingabeMitPruefung(eingabeFTM, "mm");

@@ -13,7 +13,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="135"/>
+            <RowDefinition Height="160"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -146,6 +146,11 @@
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Masse:</Label>
                 <Label x:Name="lbl_masse"></Label>
+            </DockPanel>
+
+            <DockPanel>
+                <Label Width="150" HorizontalContentAlignment="Right" >Materialkosten:</Label>
+                <Label x:Name="lbl_preis"></Label>
             </DockPanel>
 
         </StackPanel>

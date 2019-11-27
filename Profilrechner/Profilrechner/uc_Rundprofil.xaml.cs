@@ -89,6 +89,7 @@ namespace Profilrechner
                 {
                     lbl_volumen.Content = Math.Round(meinRundprofil.getVolumen(), 3) + " mm³";
                     lbl_masse.Content = Math.Round(meinRundprofil.getMasse(), 3) + " kg";
+                    lbl_preis.Content = Math.Round(meinRundprofil.getPreis(), 3) + " €";
                 }
             }
 
