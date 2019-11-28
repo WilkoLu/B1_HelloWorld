@@ -49,22 +49,22 @@ namespace Profilrechner
             if (welcheEingabe.Equals("tb_aussendurchmesser") || welcheEingabe.Equals("cb_einheitAussendurchmesser"))
             {
                 meinRohrprofil.setAussendurchmesser(tb_aussendurchmesser.Text, cb_einheitAussendurchmesser.Text);
-                tb_aussenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussenradius() , cb_einheitAussenradius.Text)));
+                tb_aussenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussenradius() , cb_einheitAussenradius.Text),3));
             }
             else if(welcheEingabe.Equals("tb_aussenradius") || welcheEingabe.Equals("cb_einheitAussenradius"))
             {
                 meinRohrprofil.setAussenradius(tb_aussenradius.Text, cb_einheitAussenradius.Text);
-                tb_aussendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussendurchmesser(), cb_einheitAussendurchmesser.Text)));
+                tb_aussendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getAussendurchmesser(), cb_einheitAussendurchmesser.Text),3));
             }
             else if (welcheEingabe.Equals("tb_innendurchmesser") || welcheEingabe.Equals("cb_einheitInnendurchmesser"))
             {
                 meinRohrprofil.setInnendurchmesser(tb_innendurchmesser.Text, cb_einheitInnendurchmesser.Text);
-                tb_innenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitInnenradius.Text)));
+                tb_innenradius.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnenradius(), cb_einheitInnenradius.Text),3));
             }
             else if (welcheEingabe.Equals("tb_innenradius") || welcheEingabe.Equals("cb_einheitInnenradius"))
             {
                 meinRohrprofil.setInnenradius(tb_innenradius.Text, cb_einheitInnenradius.Text);
-                tb_innendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnendurchmesser(), cb_einheitInnendurchmesser.Text)));
+                tb_innendurchmesser.Text = Convert.ToString(Math.Round(eingabeMitEinheit.Einheitenrueckrechner(meinRohrprofil.getInnendurchmesser(), cb_einheitInnendurchmesser.Text),3));
             }
             
             meinRohrprofil.setAussendurchmesser(tb_aussendurchmesser.Text , cb_einheitAussendurchmesser.Text);
