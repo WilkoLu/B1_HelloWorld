@@ -167,16 +167,10 @@
     <Resource Include="Bilder\Rechteckprofil.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Bilder\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\close_button2.png" />
