@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Profilrechner
 {
@@ -123,6 +124,49 @@ namespace Profilrechner
         {
             return laenge;
         }
+
+        
+        public void erzeugeCAD ()
+        {
+            try
+            {
+                CatiaConnection cc = new CatiaConnection();
+
+                //Finde Catia Prozess
+                if(cc.CATIALaeuft() && breite > 0 && hoehe > 0)
+                {
+                    //Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Erstelle eine Skizze
+                    cc.ErstelleLeereSkizze();
+
+                    // Generiere eine skizze vom rechteckprofil
+                    cc.ErzeugeRechteckprofilSkizze(breite, hoehe);
+
+                    if(laenge > 0)
+                    {
+                    // Extrudiere Balken
+                    cc.ErzeugeRechteckprofilVolumen(laenge);
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Keine laufende Catia Application. Bitte Catia starten", "Fehler",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Folgender Fehler ist aufgetreten" + ex, "Fehler",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+            }
+
+        }
+
 
     }
 }

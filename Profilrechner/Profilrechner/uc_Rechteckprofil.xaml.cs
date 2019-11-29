@@ -25,7 +25,7 @@ namespace Profilrechner
             InitializeComponent();
         }
 
-        
+        Rechteckprofil meinRechteckprofil = new Rechteckprofil();
 
         private void fehlerprüfungMitFarbe(double pruefzahl,  TextBox eingabebox)
         {
@@ -49,7 +49,7 @@ namespace Profilrechner
         {
             int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
 
-            Rechteckprofil meinRechteckprofil = new Rechteckprofil();
+            //Rechteckprofil meinRechteckprofil = new Rechteckprofil();
 
             meinRechteckprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
             meinRechteckprofil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
@@ -115,6 +115,11 @@ namespace Profilrechner
         private void Berechnen_Click(object sender, RoutedEventArgs e)
         {
             berechnen(((Button)sender).Name);
+        }
+
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            meinRechteckprofil.erzeugeCAD();
         }
     }
 }
