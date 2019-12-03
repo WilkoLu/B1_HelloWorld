@@ -26,6 +26,8 @@ namespace Profilrechner
 
         }
 
+        Rundprofil meinRundprofil = new Rundprofil();
+
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
             berechnen(((TextBox)sender).Name);
@@ -40,7 +42,7 @@ namespace Profilrechner
         {
             int ausgabe = 0;
 
-            Rundprofil meinRundprofil = new Rundprofil();
+            //Rundprofil meinRundprofil = new Rundprofil();
 
             if (welcheEingabe.Equals("tb_Durchmsser") || welcheEingabe.Equals("cb_einheitDurchmesser"))
             {
@@ -116,6 +118,11 @@ namespace Profilrechner
         private void Berechnen_Click(object sender, RoutedEventArgs e)
         {
             berechnen(((Button)sender).Name);
+        }
+
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            meinRundprofil.erzeugeCAD();
         }
     }
 }
