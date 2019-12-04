@@ -25,6 +25,8 @@ namespace Profilrechner
             InitializeComponent();
         }
 
+        Winkelprofil meinWikelprofil = new Winkelprofil();
+
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
             berechnen(((TextBox)sender).Text);
@@ -39,7 +41,7 @@ namespace Profilrechner
         {
             int ausgabe = 0;
 
-            Winkelprofil meinWikelprofil = new Winkelprofil();
+            //Winkelprofil meinWikelprofil = new Winkelprofil();
 
             meinWikelprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
             meinWikelprofil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
@@ -120,7 +122,9 @@ namespace Profilrechner
             }
         }
 
-
-
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            meinWikelprofil.erzeugeCAD();
+        }
     }
 }
