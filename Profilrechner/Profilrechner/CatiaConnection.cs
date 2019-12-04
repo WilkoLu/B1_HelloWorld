@@ -169,6 +169,66 @@ namespace Profilrechner
             hsp_catiaPart.Part.Update();
         }
 
+        public void ErzeugeTProfilSkizze(Double hb, Double w, Double sp)
+        {
+            // Skizze umbenennen
+            hsp_catiaProfil.set_Name("TProfil");
+
+            // Rechteck in Skizze einzeichnen
+            // Skizze oeffnen
+            Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
+
+            // Rechteck erzeugen
+
+            // erst die Punkte
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-hb / 2, sp);
+            Point2D catPoint2D2 = catFactory2D1.CreatePoint(hb / 2, sp);
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(hb / 2, sp-w);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint(w / 2, sp-w);
+            Point2D catPoint2D5 = catFactory2D1.CreatePoint(w / 2, -(hb-sp));
+            Point2D catPoint2D6 = catFactory2D1.CreatePoint(-w / 2, -(hb-sp));
+            Point2D catPoint2D7 = catFactory2D1.CreatePoint(-w / 2, sp-w);
+            Point2D catPoint2D8 = catFactory2D1.CreatePoint(-hb / 2, sp-w);
+
+            // dann die Linien
+            Line2D catLine2D1 = catFactory2D1.CreateLine(-hb / 2, sp, hb / 2, sp);
+            catLine2D1.StartPoint = catPoint2D1;
+            catLine2D1.EndPoint = catPoint2D2;
+
+            Line2D catLine2D2 = catFactory2D1.CreateLine(hb / 2, sp, hb / 2, sp - w);
+            catLine2D2.StartPoint = catPoint2D2;
+            catLine2D2.EndPoint = catPoint2D3;
+
+            Line2D catLine2D3 = catFactory2D1.CreateLine(hb / 2, sp - w, w / 2, sp - w);
+            catLine2D3.StartPoint = catPoint2D3;
+            catLine2D3.EndPoint = catPoint2D4;
+
+            Line2D catLine2D4 = catFactory2D1.CreateLine(w / 2, sp - w, w / 2, -hb - sp);
+            catLine2D4.StartPoint = catPoint2D4;
+            catLine2D4.EndPoint = catPoint2D5;
+
+            Line2D catLine2D5 = catFactory2D1.CreateLine(w / 2, -hb - sp, -w / 2, -hb - sp);
+            catLine2D5.StartPoint = catPoint2D5;
+            catLine2D5.EndPoint = catPoint2D6;
+
+            Line2D catLine2D6 = catFactory2D1.CreateLine(-w / 2, -hb - sp, -w / 2, sp - w);
+            catLine2D6.StartPoint = catPoint2D6;
+            catLine2D6.EndPoint = catPoint2D7;
+
+            Line2D catLine2D7 = catFactory2D1.CreateLine(-w / 2, sp - w, -hb / 2, sp - w);
+            catLine2D7.StartPoint = catPoint2D7;
+            catLine2D7.EndPoint = catPoint2D8;
+
+            Line2D catLine2D8 = catFactory2D1.CreateLine(-hb / 2, sp - w, -hb / 2, sp);
+            catLine2D8.StartPoint = catPoint2D8;
+            catLine2D8.EndPoint = catPoint2D1;
+
+            // Skizzierer verlassen
+            hsp_catiaProfil.CloseEdition();
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update();
+        }
+
         public void ErzeugeVolumenAusSkizze(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren

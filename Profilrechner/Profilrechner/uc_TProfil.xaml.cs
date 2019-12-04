@@ -25,6 +25,8 @@ namespace Profilrechner
             InitializeComponent();
         }
 
+        TProfil meinTProfil = new TProfil();
+
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
             berechnen(((TextBox)sender).Text);
@@ -40,7 +42,7 @@ namespace Profilrechner
         {
             int ausgebe = 0;
 
-            TProfil meinTProfil = new TProfil();
+            //TProfil meinTProfil = new TProfil();
 
             meinTProfil.setBreiteUndHoehe(tb_BreiteUndHoehe.Text, cb_einheitBreiteUndHoehe.Text);
             meinTProfil.setWandstaerke(tb_Wandstaerke.Text, cb_einheitWandstaerke.Text);
@@ -112,9 +114,9 @@ namespace Profilrechner
             }
         }
 
-
-
-
-
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            meinTProfil.erzeugeCAD();
+        }
     }
 }
