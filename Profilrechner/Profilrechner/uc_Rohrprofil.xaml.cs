@@ -25,6 +25,8 @@ namespace Profilrechner
             InitializeComponent();
         }
 
+        Rohrprofil meinRohrprofil = new Rohrprofil();
+
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
             berechnen(((TextBox)sender).Name);
@@ -44,7 +46,7 @@ namespace Profilrechner
         {
             int ausgebe = 0;
 
-            Rohrprofil meinRohrprofil = new Rohrprofil();
+            //Rohrprofil meinRohrprofil = new Rohrprofil();
 
             if (welcheEingabe.Equals("tb_aussendurchmesser") || welcheEingabe.Equals("cb_einheitAussendurchmesser"))
             {
@@ -162,6 +164,9 @@ namespace Profilrechner
             }
         }
 
-        
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            meinRohrprofil.erzeugeCAD();
+        }
     }
 }

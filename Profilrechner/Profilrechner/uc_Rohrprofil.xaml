@@ -155,5 +155,9 @@
 
         </StackPanel>
 
+        <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" />
+
+
     </Grid>
 </UserControl>

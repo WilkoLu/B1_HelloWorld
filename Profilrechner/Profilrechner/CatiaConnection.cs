@@ -141,7 +141,35 @@ namespace Profilrechner
             hsp_catiaPart.Part.Update();
         }
 
-        public void ErzeugeRechteckprofilVolumen(Double l)
+        public void ErzeugeRohrprofilSkizze(Double aussenR, double innenR)
+        {
+            // Skizze umbenennen
+            hsp_catiaProfil.set_Name("Kreisring");
+
+            // Rechteck in Skizze einzeichnen
+            // Skizze oeffnen
+            Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
+
+            // Rechteck erzeugen
+
+            // erst die Punkte
+            //Point2D catPoint2D1 = catFactory2D1.CreatePoint(0 ,0);
+            //Point2D catPoint2D2 = catFactory2D1.CreatePoint(0,r);
+
+            // dann die Linien
+            Circle2D catCircel2D1 = catFactory2D1.CreateCircle(0, 0, aussenR, 0, 0);
+            Circle2D catCircel2D2 = catFactory2D1.CreateCircle(0, 0, innenR, 0, 0);
+            //catCircel2D1.StartPoint = catPoint2D1;
+            //catCircel2D1.EndPoint = catPoint2D2;
+
+
+            // Skizzierer verlassen
+            hsp_catiaProfil.CloseEdition();
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update();
+        }
+
+        public void ErzeugeVolumenAusSkizze(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;

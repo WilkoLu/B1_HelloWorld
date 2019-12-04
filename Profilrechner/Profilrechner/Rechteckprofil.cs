@@ -147,7 +147,7 @@ namespace Profilrechner
                     if(laenge > 0)
                     {
                     // Extrudiere Balken
-                    cc.ErzeugeRechteckprofilVolumen(laenge);
+                    cc.ErzeugeVolumenAusSkizze(laenge);
                     }
                     
                 }
