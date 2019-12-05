@@ -108,6 +108,22 @@ namespace Profilrechner
             catLine2D4.StartPoint = catPoint2D4;
             catLine2D4.EndPoint = catPoint2D1;
 
+            //referenzen
+
+            //*
+            Reference ref1 = hsp_catiaPart.Part.CreateReferenceFromObject(catLine2D1);
+            Reference ref2 = hsp_catiaPart.Part.CreateReferenceFromObject(catLine2D2);
+            Reference ref3 = hsp_catiaPart.Part.CreateReferenceFromObject(catLine2D3);
+            Reference ref4 = hsp_catiaPart.Part.CreateReferenceFromObject(catLine2D4);
+            Constraints const1 = hsp_catiaProfil.Constraints;
+            const1.AddBiEltCst(CatConstraintType.catCstTypeVerticality,ref2,ref4);
+            CatConstraintMode testen = CatConstraintMode.catCstModeDrivingDimension;
+            //catCstModeDrivingDimension;
+            Constraints const2 = hsp_catiaProfil.Constraints;
+            const2.AddBiEltCst(CatConstraintType.catCstTypeHorizontality, ref1, ref3);
+            //*/
+
+
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();
             // Part aktualisieren

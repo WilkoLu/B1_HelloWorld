@@ -151,6 +151,10 @@ namespace Profilrechner
                     }
                     
                 }
+                else if (cc.CATIALaeuft())
+                {
+                    //erstmal nix
+                }
                 else
                 {
                     MessageBox.Show("Keine laufende Catia Application. Bitte Catia starten", "Fehler",
