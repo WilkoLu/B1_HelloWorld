@@ -124,6 +124,7 @@ namespace Profilrechner
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
+                        cc.Screenshot("Rohrprofil");
                     }
 
                 }

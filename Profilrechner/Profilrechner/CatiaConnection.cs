@@ -314,6 +314,15 @@ namespace Profilrechner
         }
 
 
+        public void Screenshot(string bildname)
+        {
 
+            int [] array = {1,1,1};
+            
+
+            hsp_catiaApp.StartCommand( "CompassDisplayOff");
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(array);
+            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\"+bildname+".bmp");
+        }
     }
 }

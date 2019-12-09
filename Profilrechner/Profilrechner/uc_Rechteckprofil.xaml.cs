@@ -120,6 +120,13 @@ namespace Profilrechner
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
             meinRechteckprofil.erzeugeCAD();
+
+            BitmapImage screenshot = new BitmapImage();
+            screenshot.BeginInit();
+            screenshot.UriSource = new Uri("C:/Temp/"+meinRechteckprofil.getBreite()+meinRechteckprofil.getHoehe()+"Rechteckprofil.bmp", UriKind.Absolute);
+            screenshot.EndInit();
+
+            Rechtekprofil_screenshot.Source = screenshot;
         }
     }
 }

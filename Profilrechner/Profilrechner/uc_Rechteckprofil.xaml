@@ -8,7 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-
+        
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
@@ -25,7 +27,9 @@
         </Rectangle>
         <Line  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
         <Line  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.Row="0" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
-
+        
+        <Image Grid.Column="0" Grid.Row="0" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
+        
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Höhe:</Label>
             <StackPanel Orientation="Horizontal">

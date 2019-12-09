@@ -167,6 +167,13 @@ namespace Profilrechner
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
             meinRohrprofil.erzeugeCAD();
+
+            BitmapImage screenshot = new BitmapImage();
+            screenshot.BeginInit();
+            screenshot.UriSource = new Uri("C:/Temp/screenshot.bmp", UriKind.Absolute);
+            screenshot.EndInit();
+
+            Rohrprofil_screenshot.Source = screenshot;
         }
     }
 }
