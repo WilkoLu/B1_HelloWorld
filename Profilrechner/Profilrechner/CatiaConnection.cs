@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 using INFITF;
 using MECMOD;
 using PARTITF;
@@ -317,12 +319,20 @@ namespace Profilrechner
         public void Screenshot(string bildname)
         {
 
-            int [] array = {1,1,1};
-            
 
-            hsp_catiaApp.StartCommand( "CompassDisplayOff");
-            // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(array);
-            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\"+bildname+".bmp");
+            object[] arr1 = new object[3];
+            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1);
+            Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]);
+
+            object[] arr2 = new object[] { 1, 1, 1 };
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2);
+
+            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe();
+
+            hsp_catiaApp.StartCommand("CompassDisplayOff");
+            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp");
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr1);
+
         }
     }
 }
