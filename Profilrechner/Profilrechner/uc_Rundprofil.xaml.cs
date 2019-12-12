@@ -122,7 +122,18 @@ namespace Profilrechner
 
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            meinRundprofil.erzeugeCAD();
+            if(meinRundprofil.erzeugeCAD() == true)
+            {
+                Kreis.Visibility = Visibility.Hidden;
+
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                screenshot.UriSource = new Uri("C:/Temp/" + "Rundprofil_" + meinRundprofil.getDurchmesser() + "mm_x_" + meinRundprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                screenshot.EndInit();
+
+                Rundprofil_screenshot.Source = screenshot;
+            }
+            
         }
     }
 }

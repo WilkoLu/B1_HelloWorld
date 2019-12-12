@@ -102,7 +102,7 @@ namespace Profilrechner
             }
         }
 
-        public void erzeugeCAD()
+        public bool erzeugeCAD()
         {
             try
             {
@@ -124,19 +124,22 @@ namespace Profilrechner
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
-                        cc.Screenshot("Rohrprofil");
+                        cc.Screenshot("Rohrprofil_" + Convert.ToString(aussendurchmesser) + "mm_x_" + Convert.ToString(innendurchmesser) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        return true;
                     }
-
+                    return false;
                 }
                 else if (cc.CATIALaeuft())
                 {
                     //erstmal nix
+                    return false;
                 }
                 else
                 {
                     MessageBox.Show("Keine laufende Catia Application. Bitte Catia starten", "Fehler",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Information);
+                    return false;
                 }
             }
             catch (Exception ex)
@@ -144,6 +147,7 @@ namespace Profilrechner
                 MessageBox.Show("Folgender Fehler ist aufgetreten" + ex, "Fehler",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Information);
+                return false;
             }
 
         }

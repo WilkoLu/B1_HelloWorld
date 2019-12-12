@@ -151,7 +151,7 @@ namespace Profilrechner
                     cc.Screenshot("Rechteckprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(laenge)+"mm");
                     return true;
                     }
-                    return true;
+                    return false;
                 }
                 else if (cc.CATIALaeuft())
                 {

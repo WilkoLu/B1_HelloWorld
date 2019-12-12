@@ -124,7 +124,20 @@ namespace Profilrechner
 
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            meinWikelprofil.erzeugeCAD();
+            if(meinWikelprofil.erzeugeCAD() == true)
+            {
+                Winkel_senkrecht.Visibility = Visibility.Hidden;
+                Winkel_waagerecht.Visibility = Visibility.Hidden;
+                Linie_senkrecht.Visibility = Visibility.Hidden;
+                Linie_waagerecht.Visibility = Visibility.Hidden;
+
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                screenshot.UriSource = new Uri("C:/Temp/" + "Winkelprofil_" + meinWikelprofil.getBreite() + "mm_x_" + meinWikelprofil.getHoehe() + "mm_x_" + meinWikelprofil.getWandstaerke() + "mm_x_" + meinWikelprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                screenshot.EndInit();
+
+                Rechtekprofil_screenshot.Source = screenshot;
+            }
         }
     }
 }

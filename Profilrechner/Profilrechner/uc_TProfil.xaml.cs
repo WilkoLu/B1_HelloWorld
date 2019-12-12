@@ -116,7 +116,21 @@ namespace Profilrechner
 
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            meinTProfil.erzeugeCAD();
+            if(meinTProfil.erzeugeCAD() == true)
+            {
+                TProfil_senkrecht.Visibility = Visibility.Hidden;
+                TProfil_waagerecht.Visibility = Visibility.Hidden;
+                Linie_senkrecht.Visibility = Visibility.Hidden;
+                Linie_waagerecht.Visibility = Visibility.Hidden;
+
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinTProfil.getBreiteUndHoehe() + "mm_x_" + meinTProfil.getWandstaerke() + "mm_x_" + meinTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                screenshot.EndInit();
+
+                Rechtekprofil_screenshot.Source = screenshot;
+            }
+            
         }
     }
 }

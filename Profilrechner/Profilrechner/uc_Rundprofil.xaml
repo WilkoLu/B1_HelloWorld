@@ -22,8 +22,8 @@
         </Grid.ColumnDefinitions>
 
 
-        <Ellipse Fill="Gray" Grid.RowSpan="4" Stretch="Uniform" Margin="30" />
-        
+        <Ellipse Name="Kreis" Fill="Gray" Grid.RowSpan="4" Stretch="Uniform" Margin="30" />
+        <Image Grid.Column="0" Grid.RowSpan="4" x:Name="Rundprofil_screenshot" Margin="10" Stretch="Uniform" />
 
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Durchmesser:</Label>

@@ -125,9 +125,6 @@ namespace Profilrechner
                 Linie_senkrecht.Visibility = Visibility.Hidden;
                 Linie_waagerecht.Visibility = Visibility.Hidden;
 
-
-                // meinRechteckprofil.erzeugeCAD();
-
                 BitmapImage screenshot = new BitmapImage();
                 screenshot.BeginInit();
                 screenshot.UriSource = new Uri("C:/Temp/" + "Rechteckprofil_" + meinRechteckprofil.getBreite() +"mm_x_" + meinRechteckprofil.getHoehe() + "mm_x_" + meinRechteckprofil.getLaenge() + "mm.bmp", UriKind.Absolute);

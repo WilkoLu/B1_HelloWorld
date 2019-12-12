@@ -167,13 +167,18 @@ namespace Profilrechner
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
             meinRohrprofil.erzeugeCAD();
+            if(meinRohrprofil.erzeugeCAD() == true)
+            {
+                Kreis_aussen.Visibility = Visibility.Hidden;
+                Kreis_innen.Visibility = Visibility.Hidden;
 
-            BitmapImage screenshot = new BitmapImage();
-            screenshot.BeginInit();
-            screenshot.UriSource = new Uri("C:/Temp/screenshot.bmp", UriKind.Absolute);
-            screenshot.EndInit();
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                screenshot.UriSource = new Uri("C:/Temp/" + "Rohrprofil_" + meinRohrprofil.getAussendurchmesser() + "mm_x_" + meinRohrprofil.getInnendurchmesser() + "mm_x_" + meinRohrprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                screenshot.EndInit();
 
-            Rohrprofil_screenshot.Source = screenshot;
+                Rohrprofil_screenshot.Source = screenshot;
+            }
         }
     }
 }

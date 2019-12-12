@@ -21,10 +21,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Ellipse Fill="Gray" Margin="30" Grid.RowSpan="4" Stretch="Uniform"/>
-        <Ellipse Fill="White" Margin="45" Grid.RowSpan="4" Stretch="Uniform"/>
+        <Ellipse Name="Kreis_aussen" Fill="Gray" Margin="30" Grid.RowSpan="4" Stretch="Uniform"/>
+        <Ellipse Name="Kreis_innen" Fill="White" Margin="45" Grid.RowSpan="4" Stretch="Uniform"/>
 
-        <Image Grid.Column="0" Grid.Row="0" x:Name="Rohrprofil_screenshot" Margin="10" Stretch="Uniform" />
+        <Image Grid.Column="0" Grid.RowSpan="4" x:Name="Rohrprofil_screenshot" Margin="10" Stretch="Uniform" />
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
             <StackPanel>
