@@ -130,7 +130,7 @@ namespace Profilrechner
 
                 BitmapImage screenshot = new BitmapImage();
                 screenshot.BeginInit();
-                screenshot.UriSource = new Uri("C:/Temp/" + meinRechteckprofil.getBreite() + meinRechteckprofil.getHoehe() + "Rechteckprofil.bmp", UriKind.Absolute);
+                screenshot.UriSource = new Uri("C:/Temp/" + "Rechteckprofil_" + meinRechteckprofil.getBreite() +"mm_x_" + meinRechteckprofil.getHoehe() + "mm_x_" + meinRechteckprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
                 screenshot.EndInit();
 
                 Rechtekprofil_screenshot.Source = screenshot;

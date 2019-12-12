@@ -148,7 +148,7 @@ namespace Profilrechner
                     {
                     // Extrudiere Balken
                     cc.ErzeugeVolumenAusSkizze(laenge);
-                    cc.Screenshot(Convert.ToString(breite)+Convert.ToString(hoehe)+"Rechteckprofil");
+                    cc.Screenshot("Rechteckprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(laenge)+"mm");
                     return true;
                     }
                     return true;
