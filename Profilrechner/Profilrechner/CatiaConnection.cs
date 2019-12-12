@@ -5,6 +5,7 @@ using System.Windows.Media;
 using INFITF;
 using MECMOD;
 using PARTITF;
+using System.Threading;
 
 
 namespace Profilrechner
@@ -35,6 +36,7 @@ namespace Profilrechner
         {
             INFITF.Documents catDocuments1 = hsp_catiaApp.Documents;
             hsp_catiaPart = catDocuments1.Add("Part") as MECMOD.PartDocument;
+            // hsp_catiaPart.Part.set_Name("Rechteckprofil");
             return true;
         }
 
@@ -80,7 +82,7 @@ namespace Profilrechner
         {
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Rechteck");
-
+            
             // Rechteck in Skizze einzeichnen
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
@@ -329,9 +331,47 @@ namespace Profilrechner
 
             hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe();
 
+            // INFITF.SpecsAndGeomWindow MyWindow = hsp_catiaApp.ActiveWindow;
+
+
+            hsp_catiaApp.StartCommand("* Iso");
+            System.Threading.Thread.Sleep(2000);
             hsp_catiaApp.StartCommand("CompassDisplayOff");
+            
+            MECMOD.PartDocument partDocument1 = hsp_catiaPart.Application.ActiveDocument as MECMOD.PartDocument;
+            partDocument1 = hsp_catiaApp.ActiveDocument as MECMOD.PartDocument;
+
+            INFITF.Selection selection1 = hsp_catiaPart.Selection;
+            selection1 = partDocument1.Selection;
+
+            INFITF.VisPropertySet visPropertySet1;
+            visPropertySet1 = selection1.VisProperties;
+
+            MECMOD.Part part1 = partDocument1.Part;
+            MECMOD.AxisSystems axisSystems1 = part1.AxisSystems;
+
+            MECMOD.AxisSystem axisSystem1;
+            axisSystem1 = axisSystems1.Item("Absolutes Achsensystem");
+
+            axisSystems1 = axisSystem1.Parent as MECMOD.AxisSystems;
+
+            string bSTR1 = axisSystem1.get_Name();
+
+            selection1.Add(axisSystem1);
+
+            string bSTR2 = visPropertySet1.get_Name();
+            string bSTR3 = visPropertySet1.get_Name();
+
+            visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyNoShowAttr);
+
+            
+
+
             hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp");
             hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr1);
+            hsp_catiaApp.StartCommand("CompassDisplayOn");
+            visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
+            selection1.Clear();
 
         }
     }
