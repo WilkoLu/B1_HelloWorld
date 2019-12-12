@@ -119,14 +119,22 @@ namespace Profilrechner
 
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            meinRechteckprofil.erzeugeCAD();
+            if (meinRechteckprofil.erzeugeCAD() == true)
+            {
+                Rechteck.Visibility = Visibility.Hidden;
+                Linie_senkrecht.Visibility = Visibility.Hidden;
+                Linie_waagerecht.Visibility = Visibility.Hidden;
 
-            BitmapImage screenshot = new BitmapImage();
-            screenshot.BeginInit();
-            screenshot.UriSource = new Uri("C:/Temp/"+meinRechteckprofil.getBreite()+meinRechteckprofil.getHoehe()+"Rechteckprofil.bmp", UriKind.Absolute);
-            screenshot.EndInit();
 
-            Rechtekprofil_screenshot.Source = screenshot;
+                // meinRechteckprofil.erzeugeCAD();
+
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                screenshot.UriSource = new Uri("C:/Temp/" + meinRechteckprofil.getBreite() + meinRechteckprofil.getHoehe() + "Rechteckprofil.bmp", UriKind.Absolute);
+                screenshot.EndInit();
+
+                Rechtekprofil_screenshot.Source = screenshot;
+            }
         }
     }
 }

@@ -321,23 +321,20 @@ namespace Profilrechner
         public void Screenshot(string bildname)
         {
 
-
             object[] arr1 = new object[3];
-            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1);
-            Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]);
+            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1); 
+            Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]); // Normale Farbe speichern
 
             object[] arr2 = new object[] { 1, 1, 1 };
-            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2);
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2); // Hintergrund weiß machen
 
-            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe();
+            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe(); // Alles einpassen
+            hsp_catiaApp.StartCommand("* Iso"); // in die ISO drehen
+            System.Threading.Thread.Sleep(2000); //Zeit um in die ISO zu drehen
+            hsp_catiaApp.StartCommand("CompassDisplayOff"); //Kompass ausblenden
+            hsp_catiaApp.StartCommand("Spezifikationen"); //Specification Tree ausblenden
 
-            // INFITF.SpecsAndGeomWindow MyWindow = hsp_catiaApp.ActiveWindow;
-
-
-            hsp_catiaApp.StartCommand("* Iso");
-            System.Threading.Thread.Sleep(2000);
-            hsp_catiaApp.StartCommand("CompassDisplayOff");
-            
+            #region Achsensystem ausblenden
             MECMOD.PartDocument partDocument1 = hsp_catiaPart.Application.ActiveDocument as MECMOD.PartDocument;
             partDocument1 = hsp_catiaApp.ActiveDocument as MECMOD.PartDocument;
 
@@ -355,23 +352,20 @@ namespace Profilrechner
 
             axisSystems1 = axisSystem1.Parent as MECMOD.AxisSystems;
 
-            string bSTR1 = axisSystem1.get_Name();
-
             selection1.Add(axisSystem1);
 
-            string bSTR2 = visPropertySet1.get_Name();
-            string bSTR3 = visPropertySet1.get_Name();
-
             visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyNoShowAttr);
+            #endregion
 
-            
+            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp"); // Screenshot machen
 
-
-            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp");
+            #region Alles wieder einblenden und Hintergrund zurücksetzen
             hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr1);
             hsp_catiaApp.StartCommand("CompassDisplayOn");
+            hsp_catiaApp.StartCommand("Spezifikationen");
             visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
-            selection1.Clear();
+            selection1.Clear(); 
+            #endregion
 
         }
     }
