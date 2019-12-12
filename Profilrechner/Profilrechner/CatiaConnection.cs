@@ -33,7 +33,9 @@ namespace Profilrechner
         {
             INFITF.Documents catDocuments1 = hsp_catiaApp.Documents;
             hsp_catiaPart = catDocuments1.Add("Part") as MECMOD.PartDocument;
+           // hsp_catiaPart.Part.set_Name("Rechteckprofil");
             return true;
+            
         }
 
         public void ErstelleLeereSkizze()
@@ -317,11 +319,26 @@ namespace Profilrechner
         public void Screenshot(string bildname)
         {
 
-            int [] array = {1,1,1};
-            
+            float[] a = new float[] {1,1,1};
+            double[] color0 = new double[3];
+            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(color0);
 
             hsp_catiaApp.StartCommand( "CompassDisplayOff");
-            // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(array);
+            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe();
+
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.Viewpoint3D = INFITF.Viewpoint3D;
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(a);
+            //int[] color = new int[3]; // Hintergundfarbe in Weiß setzen
+            //color[0] = 1;
+            //color[1] = 1;
+            //color[2] = 1;
+            // CATSafeArray color[] = new CATSafeArrayVariant[3];
+
+            INFITF.SettingControllers settingControllers1 = hsp_catiaApp.SettingControllers;
+            //INFITF.VisualizationSettingAtt visualizationSettingAtt1 = settingControllers1.Item("CATVizVisualizationSettingCtrl");
+
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(color);
+
             hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\"+bildname+".bmp");
         }
     }
