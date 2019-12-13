@@ -333,48 +333,48 @@ namespace Profilrechner
             catLine2D1.EndPoint = catPoint2D2;
 
             Line2D catLine2D2 = catFactory2D1.CreateLine(b / 2, -h / 2, b / 2, (-h / 2) + s);
-            catLine2D1.StartPoint = catPoint2D2;
-            catLine2D1.EndPoint = catPoint2D3;
+            catLine2D2.StartPoint = catPoint2D2;
+            catLine2D2.EndPoint = catPoint2D3;
 
             Line2D catLine2D3 = catFactory2D1.CreateLine(b / 2, (-h / 2) + s, s / 2, (-h / 2) + s);
-            catLine2D1.StartPoint = catPoint2D3;
-            catLine2D1.EndPoint = catPoint2D4;
+            catLine2D3.StartPoint = catPoint2D3;
+            catLine2D3.EndPoint = catPoint2D4;
 
             Line2D catLine2D4 = catFactory2D1.CreateLine(s / 2, (-h / 2) + s, s / 2, (h / 2) - s);
-            catLine2D1.StartPoint = catPoint2D4;
-            catLine2D1.EndPoint = catPoint2D5;
+            catLine2D4.StartPoint = catPoint2D4;
+            catLine2D4.EndPoint = catPoint2D5;
 
             Line2D catLine2D5 = catFactory2D1.CreateLine(s / 2, (h / 2) - s, b / 2, (h / 2) - s);
-            catLine2D1.StartPoint = catPoint2D5;
-            catLine2D1.EndPoint = catPoint2D6;
+            catLine2D5.StartPoint = catPoint2D5;
+            catLine2D5.EndPoint = catPoint2D6;
 
             Line2D catLine2D6 = catFactory2D1.CreateLine(b / 2, (h / 2) - s, b / 2, h / 2);
-            catLine2D1.StartPoint = catPoint2D6;
-            catLine2D1.EndPoint = catPoint2D7;
+            catLine2D6.StartPoint = catPoint2D6;
+            catLine2D6.EndPoint = catPoint2D7;
 
             Line2D catLine2D7 = catFactory2D1.CreateLine(b / 2, h / 2, -b / 2, h / 2);
-            catLine2D1.StartPoint = catPoint2D7;
-            catLine2D1.EndPoint = catPoint2D8;
+            catLine2D7.StartPoint = catPoint2D7;
+            catLine2D7.EndPoint = catPoint2D8;
 
             Line2D catLine2D8 = catFactory2D1.CreateLine(-b / 2, h / 2, -b / 2, (h / 2) - s);
-            catLine2D1.StartPoint = catPoint2D8;
-            catLine2D1.EndPoint = catPoint2D9;
+            catLine2D8.StartPoint = catPoint2D8;
+            catLine2D8.EndPoint = catPoint2D9;
 
             Line2D catLine2D9 = catFactory2D1.CreateLine(-b / 2, (h / 2) - s, -s / 2, (h / 2) - s);
-            catLine2D1.StartPoint = catPoint2D9;
-            catLine2D1.EndPoint = catPoint2D10;
+            catLine2D9.StartPoint = catPoint2D9;
+            catLine2D9.EndPoint = catPoint2D10;
 
             Line2D catLine2D10 = catFactory2D1.CreateLine(-s / 2, (h / 2) - s, -s / 2, (-h / 2) + s);
-            catLine2D1.StartPoint = catPoint2D10;
-            catLine2D1.EndPoint = catPoint2D11;
+            catLine2D10.StartPoint = catPoint2D10;
+            catLine2D10.EndPoint = catPoint2D11;
 
             Line2D catLine2D11 = catFactory2D1.CreateLine(-s / 2, (-h / 2) + s, -b / 2, (-h / 2) + s);
-            catLine2D1.StartPoint = catPoint2D11;
-            catLine2D1.EndPoint = catPoint2D12;
+            catLine2D11.StartPoint = catPoint2D11;
+            catLine2D11.EndPoint = catPoint2D12;
 
             Line2D catLine2D12 = catFactory2D1.CreateLine(-b / 2, (-h / 2) + s, -b/2,-h/2 );
-            catLine2D1.StartPoint = catPoint2D12;
-            catLine2D1.EndPoint = catPoint2D1;
+            catLine2D12.StartPoint = catPoint2D12;
+            catLine2D12.EndPoint = catPoint2D1;
 
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();
