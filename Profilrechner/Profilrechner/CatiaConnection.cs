@@ -394,10 +394,64 @@ namespace Profilrechner
             catPad1.IsSymmetric = true;
 
             // Block umbenennen
-            catPad1.set_Name("Balken_" + l);
+            catPad1.set_Name("DoppelTProfil_" + l);
 
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
+        }
+
+        public void Radien(Double s)
+        {
+            #region Radius Doppel T Träger TEST1
+            MECMOD.PartDocument partDocument1 = hsp_catiaApp.ActiveDocument as MECMOD.PartDocument;
+
+            MECMOD.Part part1 = partDocument1.Part;
+
+            PARTITF.ShapeFactory shapeFactory1 = part1.ShapeFactory as PARTITF.ShapeFactory;
+
+            INFITF.Reference reference1 = part1.CreateReferenceFromName("");
+
+            PARTITF.ConstRadEdgeFillet constRadEdgeFillet1 = shapeFactory1.AddNewEdgeFilletWithConstantRadius(reference1, CatFilletEdgePropagation.catTangencyFilletEdgePropagation, 2 * s);
+
+            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
+
+            MECMOD.Bodies bodies1 = part1.Bodies;
+
+            MECMOD.Body body1 = bodies1.Item("Hauptkörper");
+
+            MECMOD.Shapes shapes1 = body1.Shapes;
+
+            PARTITF.Pad pad1 = shapes1.Item("DoppelTProfil_" + 1000) as PARTITF.Pad;
+
+            // Kanten können noch nicht gefunden werden mit dem Code aus dem Makro!
+
+            INFITF.Reference reference2 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 4))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 3))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
+
+            constRadEdgeFillet1.AddObjectToFillet(reference2);
+
+            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
+
+            INFITF.Reference reference3 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 11))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 10))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
+
+            constRadEdgeFillet1.AddObjectToFillet(reference3);
+
+            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
+
+            INFITF.Reference reference4 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 5))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 4))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
+
+            constRadEdgeFillet1.AddObjectToFillet(reference4);
+
+            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
+
+            INFITF.Reference reference5 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 10))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 9))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
+
+            constRadEdgeFillet1.AddObjectToFillet(reference5);
+
+            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
+
+            part1.Update();
+
+            #endregion
         }
 
 
