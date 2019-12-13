@@ -301,6 +301,88 @@ namespace Profilrechner
             hsp_catiaPart.Part.Update();
         }
 
+        public void ErzeugeDoppelTProfilSkizze(Double h, Double b, Double s)
+        {
+            // Skizze umbenennen
+            hsp_catiaProfil.set_Name("DoppelTProfil");
+
+            // Rechteck in Skizze einzeichnen
+            // Skizze oeffnen
+            Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
+
+            // Rechteck erzeugen
+
+            // erst die Punkte
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-b/2,-h/2 );
+            Point2D catPoint2D2 = catFactory2D1.CreatePoint(b / 2, -h / 2);
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(b / 2, (-h / 2) + s);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint(s / 2, (-h / 2) + s);
+            Point2D catPoint2D5 = catFactory2D1.CreatePoint(s / 2, (h / 2) - s);
+            Point2D catPoint2D6 = catFactory2D1.CreatePoint(b / 2, (h / 2) - s);
+            Point2D catPoint2D7 = catFactory2D1.CreatePoint(b / 2, h / 2);
+            Point2D catPoint2D8 = catFactory2D1.CreatePoint(-b / 2, h / 2);
+            Point2D catPoint2D9 = catFactory2D1.CreatePoint(-b / 2, (h / 2) - s);
+            Point2D catPoint2D10 = catFactory2D1.CreatePoint(-s / 2, (h / 2) - s);
+            Point2D catPoint2D11 = catFactory2D1.CreatePoint(-s / 2, (-h / 2) + s);
+            Point2D catPoint2D12 = catFactory2D1.CreatePoint(-b / 2, (-h / 2) + s);
+
+
+            // dann die Linien
+            Line2D catLine2D1 = catFactory2D1.CreateLine(-b / 2, -h / 2, b / 2, -h / 2);
+            catLine2D1.StartPoint = catPoint2D1;
+            catLine2D1.EndPoint = catPoint2D2;
+
+            Line2D catLine2D2 = catFactory2D1.CreateLine(b / 2, -h / 2, b / 2, (-h / 2) + s);
+            catLine2D1.StartPoint = catPoint2D2;
+            catLine2D1.EndPoint = catPoint2D3;
+
+            Line2D catLine2D3 = catFactory2D1.CreateLine(b / 2, (-h / 2) + s, s / 2, (-h / 2) + s);
+            catLine2D1.StartPoint = catPoint2D3;
+            catLine2D1.EndPoint = catPoint2D4;
+
+            Line2D catLine2D4 = catFactory2D1.CreateLine(s / 2, (-h / 2) + s, s / 2, (h / 2) - s);
+            catLine2D1.StartPoint = catPoint2D4;
+            catLine2D1.EndPoint = catPoint2D5;
+
+            Line2D catLine2D5 = catFactory2D1.CreateLine(s / 2, (h / 2) - s, b / 2, (h / 2) - s);
+            catLine2D1.StartPoint = catPoint2D5;
+            catLine2D1.EndPoint = catPoint2D6;
+
+            Line2D catLine2D6 = catFactory2D1.CreateLine(b / 2, (h / 2) - s, b / 2, h / 2);
+            catLine2D1.StartPoint = catPoint2D6;
+            catLine2D1.EndPoint = catPoint2D7;
+
+            Line2D catLine2D7 = catFactory2D1.CreateLine(b / 2, h / 2, -b / 2, h / 2);
+            catLine2D1.StartPoint = catPoint2D7;
+            catLine2D1.EndPoint = catPoint2D8;
+
+            Line2D catLine2D8 = catFactory2D1.CreateLine(-b / 2, h / 2, -b / 2, (h / 2) - s);
+            catLine2D1.StartPoint = catPoint2D8;
+            catLine2D1.EndPoint = catPoint2D9;
+
+            Line2D catLine2D9 = catFactory2D1.CreateLine(-b / 2, (h / 2) - s, -s / 2, (h / 2) - s);
+            catLine2D1.StartPoint = catPoint2D9;
+            catLine2D1.EndPoint = catPoint2D10;
+
+            Line2D catLine2D10 = catFactory2D1.CreateLine(-s / 2, (h / 2) - s, -s / 2, (-h / 2) + s);
+            catLine2D1.StartPoint = catPoint2D10;
+            catLine2D1.EndPoint = catPoint2D11;
+
+            Line2D catLine2D11 = catFactory2D1.CreateLine(-s / 2, (-h / 2) + s, -b / 2, (-h / 2) + s);
+            catLine2D1.StartPoint = catPoint2D11;
+            catLine2D1.EndPoint = catPoint2D12;
+
+            Line2D catLine2D12 = catFactory2D1.CreateLine(-b / 2, (-h / 2) + s, -b/2,-h/2 );
+            catLine2D1.StartPoint = catPoint2D12;
+            catLine2D1.EndPoint = catPoint2D1;
+
+            // Skizzierer verlassen
+            hsp_catiaProfil.CloseEdition();
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update();
+        }
+
+
         public void ErzeugeVolumenAusSkizze(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren

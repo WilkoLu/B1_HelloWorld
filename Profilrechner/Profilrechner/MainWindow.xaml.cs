@@ -226,8 +226,6 @@ namespace Profilrechner
                 Environment.Exit(0);
             }
 
-
-
             void notifyIcon_click(object sender, System.Windows.Forms.MouseEventArgs e)
             {
                 if (e.Button == System.Windows.Forms.MouseButtons.Left)

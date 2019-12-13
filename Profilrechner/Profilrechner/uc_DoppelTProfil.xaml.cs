@@ -25,6 +25,8 @@ namespace Profilrechner
             InitializeComponent();
         }
 
+        DoppelTProfil meinDoppelTProfil = new DoppelTProfil();
+
         private void aendernTextBox(object sender, KeyEventArgs e)
         {
             berechnen(((TextBox)sender).Text);
@@ -39,8 +41,6 @@ namespace Profilrechner
         private void berechnen(string welcheEingabe)
         {
             int ausgebe = 0;
-
-            DoppelTProfil meinDoppelTProfil = new DoppelTProfil();
 
             meinDoppelTProfil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
             meinDoppelTProfil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
@@ -114,9 +114,22 @@ namespace Profilrechner
             }
         }
 
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            if (meinDoppelTProfil.erzeugeCAD() == true)
+            {
+                Rechteck_oben.Visibility = Visibility.Hidden;
+                Rechteck_senkrecht.Visibility = Visibility.Hidden;
+                Rechteck_unten.Visibility = Visibility.Hidden;
+                Linie_waagerecht.Visibility = Visibility.Hidden;
 
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                screenshot.EndInit();
 
-
-
+                Rechtekprofil_screenshot.Source = screenshot;
+            }
+        }
     }
 }
