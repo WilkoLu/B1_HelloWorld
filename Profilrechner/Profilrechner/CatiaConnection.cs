@@ -390,7 +390,8 @@ namespace Profilrechner
 
             // Block(Balken) erzeugen
             ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
-            Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaProfil, l);
+            Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaProfil, l/2);
+            catPad1.IsSymmetric = true;
 
             // Block umbenennen
             catPad1.set_Name("Balken_" + l);
