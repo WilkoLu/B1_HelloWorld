@@ -109,6 +109,7 @@ namespace Profilrechner
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
+                        cc.Radien(steg);
                         cc.Screenshot("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm");
                         return true;
                     }
