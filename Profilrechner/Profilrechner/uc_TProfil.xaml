@@ -43,7 +43,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" >
+        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
             <Label>Wandstärke:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Wandstaerke" Width="65" KeyUp="aendernTextBox"/>
@@ -127,7 +127,7 @@
         </StackPanel>
 
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
-                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" />
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" Width="120" />
 
 
     </Grid>

@@ -122,6 +122,7 @@ namespace Profilrechner
                 Rechteck_senkrecht.Visibility = Visibility.Hidden;
                 Rechteck_unten.Visibility = Visibility.Hidden;
                 Linie_waagerecht.Visibility = Visibility.Hidden;
+                Linie_senkrecht.Visibility = Visibility.Hidden;
 
                 BitmapImage screenshot = new BitmapImage();
                 screenshot.BeginInit();

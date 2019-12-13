@@ -100,10 +100,10 @@
                 <ComboBoxItem >Messing</ComboBoxItem>
                 <ComboBoxItem >Edelstahl</ComboBoxItem>
                 <ComboBoxItem >HARDOX</ComboBoxItem>
-                
+
             </ComboBox>
         </StackPanel>
-        
+
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
@@ -116,12 +116,12 @@
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM Y:</Label>
                 <Label x:Name="tb_flaechentraegheitsmomentY" ></Label>
             </DockPanel>
-            
+
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Querschnittsfläche:</Label>
                 <Label x:Name="lbl_qflaeche"></Label>
             </DockPanel>
-            
+
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Volumen:</Label>
                 <Label x:Name="lbl_volumen"></Label>
@@ -139,7 +139,7 @@
         </StackPanel>
 
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
-                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" />
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120" />
 
 
     </Grid>
