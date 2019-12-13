@@ -252,7 +252,7 @@ namespace Profilrechner
         public void ErzeugeWinkelSkizze(Double h, Double b, Double w)
         {
             // Skizze umbenennen
-            hsp_catiaProfil.set_Name("TProfil");
+            hsp_catiaProfil.set_Name("Winkelprofil");
 
             // Rechteck in Skizze einzeichnen
             // Skizze oeffnen
