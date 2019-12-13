@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,7 +23,7 @@ namespace Profilrechner
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
     /// 
-    
+
 
     public partial class MainWindow : Window
     {
@@ -47,7 +50,7 @@ namespace Profilrechner
             newTabItem.Content = meinTabRechteckprofil.Content;
         }
 
-        
+
 
         public ClosableTab neuenTab(object sender)
         {
@@ -59,7 +62,7 @@ namespace Profilrechner
             };
             index++;
             newTabItem.Title = Convert.ToString(tvi.Header) + " (" + index + ")";
-            
+
             TabControl.Items.Add(newTabItem);
 
             if (Width < 900)
@@ -79,7 +82,7 @@ namespace Profilrechner
             }
 
             newTabItem.Focus();
-            
+
             return newTabItem;
         }
 
@@ -144,6 +147,7 @@ namespace Profilrechner
             newTabItem.Content = meinRechteckrohr.Content;
         }
 
+
         public void notifyIcon()
         {
             System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
@@ -162,76 +166,79 @@ namespace Profilrechner
             notifyIconContextMenue.MenuItems.Add("Doppel T-Profil", new EventHandler(ni_DoppelTProfil_Click));
             notifyIconContextMenue.MenuItems.Add("Beenden", new EventHandler(Beenden));
 
-
             notifyIcon.ContextMenu = notifyIconContextMenue;
 
-        }
 
-        private void ni_Rechteckprofil_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_Rechteckprofil);
-
-            uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-        private void ni_Rundprofil_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_Rundprofil);
-
-            uc_Rundprofil meinTabRechteckprofil = new uc_Rundprofil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-        private void ni_Rohrprofil_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_Rohrprofil);
-
-            uc_Rohrprofil meinTabRechteckprofil = new uc_Rohrprofil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-        private void ni_Rechteckrohr_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_Rechteckrohr);
-
-            uc_Rechteckrohr meinTabRechteckprofil = new uc_Rechteckrohr();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-        private void ni_Winkelprofil_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_Winkelprofil);
-
-            uc_Winkelprofil meinTabRechteckprofil = new uc_Winkelprofil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-        private void ni_TProfil_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_TProfil);
-
-            uc_TProfil meinTabRechteckprofil = new uc_TProfil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-        private void ni_DoppelTProfil_Click(object sender, EventArgs e)
-        {
-            ClosableTab newTabItem = neuenTab(tvi_DoppelTProfil);
-
-            uc_DoppelTProfil meinTabRechteckprofil = new uc_DoppelTProfil();
-            newTabItem.Content = meinTabRechteckprofil.Content;
-        }
-
-        private void Beenden(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void notifyIcon_click(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            void ni_Rechteckprofil_Click(object sender, EventArgs e)
             {
-                //this.Show();
+                ClosableTab newTabItem = neuenTab(tvi_Rechteckprofil);
 
+                uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+            void ni_Rundprofil_Click(object sender, EventArgs e)
+            {
+                ClosableTab newTabItem = neuenTab(tvi_Rundprofil);
+
+                uc_Rundprofil meinTabRechteckprofil = new uc_Rundprofil();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+            void ni_Rohrprofil_Click(object sender, EventArgs e)
+            {
+                ClosableTab newTabItem = neuenTab(tvi_Rohrprofil);
+
+                uc_Rohrprofil meinTabRechteckprofil = new uc_Rohrprofil();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+            void ni_Rechteckrohr_Click(object sender, EventArgs e)
+            {
+                ClosableTab newTabItem = neuenTab(tvi_Rechteckrohr);
+
+                uc_Rechteckrohr meinTabRechteckprofil = new uc_Rechteckrohr();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+            void ni_Winkelprofil_Click(object sender, EventArgs e)
+            {
+                ClosableTab newTabItem = neuenTab(tvi_Winkelprofil);
+
+                uc_Winkelprofil meinTabRechteckprofil = new uc_Winkelprofil();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+            void ni_TProfil_Click(object sender, EventArgs e)
+            {
+                ClosableTab newTabItem = neuenTab(tvi_TProfil);
+
+                uc_TProfil meinTabRechteckprofil = new uc_TProfil();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+            void ni_DoppelTProfil_Click(object sender, EventArgs e)
+            {
+                ClosableTab newTabItem = neuenTab(tvi_DoppelTProfil);
+
+                uc_DoppelTProfil meinTabRechteckprofil = new uc_DoppelTProfil();
+                newTabItem.Content = meinTabRechteckprofil.Content;
+            }
+
+            void Beenden(object sender, EventArgs e)
+            {
+                System.Threading.Timer timer = new System.Threading.Timer(state => notifyIcon.Dispose(), null, 1200, Timeout.Infinite);
+                Thread.Sleep(1000);
+                Environment.Exit(0);
+            }
+
+
+
+            void notifyIcon_click(object sender, System.Windows.Forms.MouseEventArgs e)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    //this.Show();
+
+                }
             }
         }
 
 
-
     }
+
 }

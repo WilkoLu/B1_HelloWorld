@@ -9,10 +9,11 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="20*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DockPanel>
+        <DockPanel Margin="0,0,0,-0.2">
             <Image x:Name="logo_png" Margin="0,-60,0,-25" Source="Bilder\logo.png" Stretch="Fill" HorizontalAlignment="Left" Width="175" Height="178" VerticalAlignment="Top" DockPanel.Dock="Top"/>
 
             <TreeView Name="trv_Profilauswahl" Margin="5" FontSize="14">
@@ -33,7 +34,7 @@
         </DockPanel>
 
 
-        <TabControl Grid.Column="1" Name="TabControl" Margin="6,6" >
+        <TabControl Grid.Column="1" Name="TabControl" Margin="6,6,5.6,5.8" Grid.ColumnSpan="2" >
 
         </TabControl>
 
