@@ -138,7 +138,7 @@
             </DockPanel>
 
         </StackPanel>
-        <CheckBox x:Name="checkBox" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" >
+        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" >
             
         </CheckBox>
         

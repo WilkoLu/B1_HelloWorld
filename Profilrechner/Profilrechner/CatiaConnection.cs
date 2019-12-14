@@ -520,60 +520,6 @@ namespace Profilrechner
             hsp_catiaPart.Part.Update();
         }
 
-        public void Radien(Double s)
-        {
-            #region Radius Doppel T Träger TEST1
-            MECMOD.PartDocument partDocument1 = hsp_catiaApp.ActiveDocument as MECMOD.PartDocument;
-
-            MECMOD.Part part1 = partDocument1.Part;
-
-            PARTITF.ShapeFactory shapeFactory1 = part1.ShapeFactory as PARTITF.ShapeFactory;
-
-            INFITF.Reference reference1 = part1.CreateReferenceFromName("");
-
-            PARTITF.ConstRadEdgeFillet constRadEdgeFillet1 = shapeFactory1.AddNewEdgeFilletWithConstantRadius(reference1, CatFilletEdgePropagation.catTangencyFilletEdgePropagation, 2 * s);
-
-            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
-
-            MECMOD.Bodies bodies1 = part1.Bodies;
-
-            MECMOD.Body body1 = bodies1.Item("Hauptkörper");
-
-            MECMOD.Shapes shapes1 = body1.Shapes;
-
-            PARTITF.Pad pad1 = shapes1.Item("DoppelTProfil_" + 1000) as PARTITF.Pad;
-
-            // Kanten können noch nicht gefunden werden mit dem Code aus dem Makro!
-
-            INFITF.Reference reference2 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 4))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 3))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
-
-            constRadEdgeFillet1.AddObjectToFillet(reference2);
-
-            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
-
-            INFITF.Reference reference3 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 11))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 10))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
-
-            constRadEdgeFillet1.AddObjectToFillet(reference3);
-
-            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
-
-            INFITF.Reference reference4 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 5))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 4))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
-
-            constRadEdgeFillet1.AddObjectToFillet(reference4);
-
-            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
-
-            INFITF.Reference reference5 = part1.CreateReferenceFromBRepName("REdge: (Edge: (Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 10))); None: (); Cf11: ()); Face: (Brp: (Pad.1; 0:(Brp: (Sketch.1; 9))); None: (); Cf11: ()); None: (Limits1: (); Limits2: ()); Cf11: ()); WithTemporaryBody; WithoutBuildError; WithSelectingFeatureSupport; MFBRepVersion_CXR15)", pad1);
-
-            constRadEdgeFillet1.AddObjectToFillet(reference5);
-
-            constRadEdgeFillet1.EdgePropagation = CatFilletEdgePropagation.catTangencyFilletEdgePropagation;
-
-            part1.Update();
-
-            #endregion
-        }
-
 
         public void Screenshot(string bildname)
         {
@@ -626,55 +572,7 @@ namespace Profilrechner
 
         }
 
-        public void ScreenshotRadius(string bildname)
-        {
 
-            object[] arr1 = new object[3];
-            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1);
-            Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]); // Normale Farbe speichern
 
-            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe(); // Alles einpassen
-            hsp_catiaApp.StartCommand("* Iso"); // in die ISO drehen
-            System.Threading.Thread.Sleep(2000); //Zeit um in die ISO zu drehen
-            hsp_catiaApp.StartCommand("CompassDisplayOff"); //Kompass ausblenden
-            hsp_catiaApp.StartCommand("Spezifikationen"); //Specification Tree ausblenden
-
-            #region Achsensystem ausblenden
-            MECMOD.PartDocument partDocument1 = hsp_catiaPart.Application.ActiveDocument as MECMOD.PartDocument;
-            partDocument1 = hsp_catiaApp.ActiveDocument as MECMOD.PartDocument;
-
-            INFITF.Selection selection1 = hsp_catiaPart.Selection;
-            selection1 = partDocument1.Selection;
-
-            INFITF.VisPropertySet visPropertySet1;
-            visPropertySet1 = selection1.VisProperties;
-
-            MECMOD.Part part1 = partDocument1.Part;
-            MECMOD.AxisSystems axisSystems1 = part1.AxisSystems;
-
-            MECMOD.AxisSystem axisSystem1;
-            axisSystem1 = axisSystems1.Item("Absolutes Achsensystem");
-
-            axisSystems1 = axisSystem1.Parent as MECMOD.AxisSystems;
-
-            selection1.Add(axisSystem1);
-
-            visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyNoShowAttr);
-            #endregion
-
-            object[] arr2 = new object[] { 1, 1, 1 };
-            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2); // Hintergrund weiß machen
-
-            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp"); // Screenshot machen
-
-            #region Alles wieder einblenden und Hintergrund zurücksetzen
-            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr1);
-            hsp_catiaApp.StartCommand("CompassDisplayOn");
-            hsp_catiaApp.StartCommand("Spezifikationen");
-            visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
-            selection1.Clear();
-            #endregion
-
-        }
     }
 }

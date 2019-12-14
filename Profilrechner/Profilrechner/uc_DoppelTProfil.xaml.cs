@@ -113,19 +113,10 @@ namespace Profilrechner
                 eingabebox.Background = Brushes.Transparent;
             }
         }
-        bool checkBox1 = false;
-        public void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            checkBox1 = true;
-        }
-
-        public void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            checkBox1 = false;
-        }
+        
         public void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBox1 == false)
+            if (checkBoxRadius.IsChecked == false)
             {
                 if (meinDoppelTProfil.erzeugeCAD() == true)
                 {
