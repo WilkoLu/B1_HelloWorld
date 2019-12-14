@@ -109,8 +109,60 @@ namespace Profilrechner
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
-                       // cc.Radien(steg);
+                        // cc.Radien(steg);
                         cc.Screenshot("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        return true;
+                    }
+                    return false;
+                }
+                else if (cc.CATIALaeuft())
+                {
+                    //erstmal nix
+                    return false;
+                }
+                else
+                {
+                    MessageBox.Show("Keine laufende Catia Application. Bitte Catia starten", "Fehler",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Folgender Fehler ist aufgetreten:" + Environment.NewLine + ex, "Fehler",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+                return false;
+            }
+
+
+
+        }
+        public bool erzeugeCADRadius()
+        {
+            try
+            {
+                CatiaConnection cc = new CatiaConnection();
+
+                //Finde Catia Prozess
+                if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && steg > 0 && breite > steg && hoehe > steg)
+                {
+                    //Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Erstelle eine Skizze
+                    cc.ErstelleLeereSkizze();
+
+                    // Generiere eine skizze vom rechteckprofil
+                    cc.ErzeugeDoppelTProfilmitRadienausSkizze(hoehe, breite, steg);
+
+                    if (laenge > 0)
+                    {
+                        // Extrudiere Balken
+                        cc.ErzeugeVolumenAusSkizze(laenge);
+                       // cc.Radien(steg);
+                        cc.ScreenshotRadius("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm_" +"Radius"+Convert.ToString(steg*2)+"mm");
                         return true;
                     }
                     return false;

@@ -309,8 +309,9 @@ namespace Profilrechner
             hsp_catiaPart.Part.Update();
         }
 
-        public void ErzeugeDoppelTProfilSkizze(Double h, Double b, Double s)
+        public void ErzeugeDoppelTProfilmitRadienausSkizze(Double h, Double b, Double s)
         {
+            #region Profil mit Radien
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("DoppelTProfil");
 
@@ -321,7 +322,117 @@ namespace Profilrechner
             // Rechteck erzeugen
 
             // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-b/2,-h/2 );
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-b / 2, -h / 2);
+            Point2D catPoint2D2 = catFactory2D1.CreatePoint(b / 2, -h / 2);
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(b / 2, (-h / 2) + s);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (-h / 2) + s); //Radiuspunkt 1 Anfang
+            Point2D catPoint2D5 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (-h / 2) + s + s * 2); //Radiuspunkt 1 Mittelpunkt
+            Point2D catPoint2D6 = catFactory2D1.CreatePoint(s / 2, (-h / 2) + s + s * 2); //Radiuspunkt 1 Ende
+            Point2D catPoint2D7 = catFactory2D1.CreatePoint(s / 2, (h / 2) - s - s * 2); //Radiuspunkt 2 Anfang
+            Point2D catPoint2D8 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (h / 2) - s - s * 2); //Radiuspunkt 2 Mittelpunkt
+            Point2D catPoint2D9 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (h / 2) - s); //Radiuspunkt 2 Ende
+            Point2D catPoint2D10 = catFactory2D1.CreatePoint(b / 2, (h / 2) - s);
+            Point2D catPoint2D11 = catFactory2D1.CreatePoint(b / 2, h / 2);
+            Point2D catPoint2D12 = catFactory2D1.CreatePoint(-b / 2, h / 2);
+            Point2D catPoint2D13 = catFactory2D1.CreatePoint(-b / 2, (h / 2) - s);
+            Point2D catPoint2D14 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (h / 2) - s); //Radiuspunkt 3 Anfang
+            Point2D catPoint2D15 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (h / 2) - s - s * 2); //Radiuspunkt 3 Mittelpunkt
+            Point2D catPoint2D16 = catFactory2D1.CreatePoint((-s / 2), (h / 2) - s - s * 2); //Radiuspunkt 3 Ende
+            Point2D catPoint2D17 = catFactory2D1.CreatePoint((-s / 2), (-h / 2) + s + s * 2); //Radiuspunkt 4 Anfang
+            Point2D catPoint2D18 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s + s * 2); //Radiuspunkt 4 Mittelpunkt
+            Point2D catPoint2D19 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s); //Radiuspunkt 4 Ende
+            Point2D catPoint2D20 = catFactory2D1.CreatePoint(-b / 2, (-h / 2) + s);
+
+            // dann die Linien und Kreise
+            Line2D catLine2D1 = catFactory2D1.CreateLine(-b / 2, -h / 2, b / 2, -h / 2);
+            catLine2D1.StartPoint = catPoint2D1;
+            catLine2D1.EndPoint = catPoint2D2;
+
+            Line2D catLine2D2 = catFactory2D1.CreateLine(b / 2, -h / 2, b / 2, (-h / 2) + s);
+            catLine2D2.StartPoint = catPoint2D2;
+            catLine2D2.EndPoint = catPoint2D3;
+
+            Line2D catLine2D3 = catFactory2D1.CreateLine(b / 2, (-h / 2) + s, (b / 2) + (s / 2) + (s * 2), (-h / 2) + s);
+            catLine2D3.StartPoint = catPoint2D3;
+            catLine2D3.EndPoint = catPoint2D4;
+
+            Circle2D circle2D1 = catFactory2D1.CreateCircle((b / 2) - (s / 2) - (s * 2), (-h / 2) + s + s * 2, s * 2, 3.141593, 4.712237);
+            circle2D1.CenterPoint = catPoint2D5;
+            circle2D1.EndPoint = catPoint2D4;
+            circle2D1.StartPoint = catPoint2D6;
+
+            Line2D catLine2D4 = catFactory2D1.CreateLine(s / 2, (-h / 2) + s + s * 2, s / 2, (h / 2) - s - s * 2);
+            catLine2D4.StartPoint = catPoint2D6;
+            catLine2D4.EndPoint = catPoint2D7;
+
+            Circle2D circle2D2 = catFactory2D1.CreateCircle((b / 2) - (s / 2) - (s * 2), (h / 2) - s - s * 2, s * 2, 1.570796, 3.141593);
+            circle2D2.CenterPoint = catPoint2D8;
+            circle2D2.EndPoint = catPoint2D7;
+            circle2D2.StartPoint = catPoint2D9;
+
+            Line2D catLine2D5 = catFactory2D1.CreateLine((b / 2) - (s / 2) - (s * 2), (h / 2) - s, b / 2, (h / 2) - s);
+            catLine2D5.StartPoint = catPoint2D9;
+            catLine2D5.EndPoint = catPoint2D10;
+
+            Line2D catLine2D6 = catFactory2D1.CreateLine(b / 2, (h / 2) - s, b / 2, h / 2);
+            catLine2D6.StartPoint = catPoint2D10;
+            catLine2D6.EndPoint = catPoint2D11;
+
+            Line2D catLine2D7 = catFactory2D1.CreateLine(b / 2, h / 2, -b / 2, h / 2);
+            catLine2D7.StartPoint = catPoint2D11;
+            catLine2D7.EndPoint = catPoint2D12;
+
+            Line2D catLine2D8 = catFactory2D1.CreateLine(-b / 2, h / 2, -b / 2, (h / 2) - s);
+            catLine2D8.StartPoint = catPoint2D12;
+            catLine2D8.EndPoint = catPoint2D13;
+
+            Line2D catLine2D9 = catFactory2D1.CreateLine(-b / 2, (h / 2) - s, (-b / 2) + (s / 2) + (s * 2), (h / 2) - s);
+            catLine2D9.StartPoint = catPoint2D13;
+            catLine2D9.EndPoint = catPoint2D14;
+
+            Circle2D circle2D3 = catFactory2D1.CreateCircle((-b / 2) + (s / 2) + (s * 2), (h / 2) - s - s * 2, s * 2, 0, 1.570796);
+            circle2D3.CenterPoint = catPoint2D15;
+            circle2D3.EndPoint = catPoint2D14;
+            circle2D3.StartPoint = catPoint2D16;
+
+            Line2D catLine2D10 = catFactory2D1.CreateLine((-s / 2), (h / 2) - s - s * 2, (-s / 2), (-h / 2) + s + s * 2);
+            catLine2D10.StartPoint = catPoint2D16;
+            catLine2D10.EndPoint = catPoint2D17;
+
+            Circle2D circle2D4 = catFactory2D1.CreateCircle((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s + s * 2, s * 2, 4.712846, 6.283185);
+            circle2D4.CenterPoint = catPoint2D18;
+            circle2D4.EndPoint = catPoint2D17;
+            circle2D4.StartPoint = catPoint2D19;
+
+            Line2D catLine2D11 = catFactory2D1.CreateLine((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s, -b / 2, (-h / 2) + s);
+            catLine2D11.StartPoint = catPoint2D19;
+            catLine2D11.EndPoint = catPoint2D20;
+
+            Line2D catLine2D12 = catFactory2D1.CreateLine(-b / 2, (-h / 2) + s, -b / 2, -h / 2);
+            catLine2D12.StartPoint = catPoint2D20;
+            catLine2D12.EndPoint = catPoint2D1;
+
+            // Skizzierer verlassen
+            hsp_catiaProfil.CloseEdition();
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update(); 
+            #endregion
+        }
+
+        public void ErzeugeDoppelTProfilSkizze(Double h, Double b, Double s)
+        {
+            #region Ohne Radien
+            // Skizze umbenennen
+            hsp_catiaProfil.set_Name("DoppelTProfil");
+
+            // Rechteck in Skizze einzeichnen
+            // Skizze oeffnen
+            Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
+
+            // Rechteck erzeugen
+
+            // erst die Punkte
+            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-b / 2, -h / 2);
             Point2D catPoint2D2 = catFactory2D1.CreatePoint(b / 2, -h / 2);
             Point2D catPoint2D3 = catFactory2D1.CreatePoint(b / 2, (-h / 2) + s);
             Point2D catPoint2D4 = catFactory2D1.CreatePoint(s / 2, (-h / 2) + s);
@@ -380,14 +491,15 @@ namespace Profilrechner
             catLine2D11.StartPoint = catPoint2D11;
             catLine2D11.EndPoint = catPoint2D12;
 
-            Line2D catLine2D12 = catFactory2D1.CreateLine(-b / 2, (-h / 2) + s, -b/2,-h/2 );
+            Line2D catLine2D12 = catFactory2D1.CreateLine(-b / 2, (-h / 2) + s, -b / 2, -h / 2);
             catLine2D12.StartPoint = catPoint2D12;
             catLine2D12.EndPoint = catPoint2D1;
 
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();
             // Part aktualisieren
-            hsp_catiaPart.Part.Update();
+            hsp_catiaPart.Part.Update(); 
+            #endregion
         }
 
 
@@ -510,6 +622,57 @@ namespace Profilrechner
             hsp_catiaApp.StartCommand("Spezifikationen");
             visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
             selection1.Clear(); 
+            #endregion
+
+        }
+
+        public void ScreenshotRadius(string bildname)
+        {
+
+            object[] arr1 = new object[3];
+            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1);
+            Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]); // Normale Farbe speichern
+
+            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe(); // Alles einpassen
+            hsp_catiaApp.StartCommand("* Iso"); // in die ISO drehen
+            System.Threading.Thread.Sleep(2000); //Zeit um in die ISO zu drehen
+            hsp_catiaApp.StartCommand("CompassDisplayOff"); //Kompass ausblenden
+            hsp_catiaApp.StartCommand("Spezifikationen"); //Specification Tree ausblenden
+
+            #region Achsensystem ausblenden
+            MECMOD.PartDocument partDocument1 = hsp_catiaPart.Application.ActiveDocument as MECMOD.PartDocument;
+            partDocument1 = hsp_catiaApp.ActiveDocument as MECMOD.PartDocument;
+
+            INFITF.Selection selection1 = hsp_catiaPart.Selection;
+            selection1 = partDocument1.Selection;
+
+            INFITF.VisPropertySet visPropertySet1;
+            visPropertySet1 = selection1.VisProperties;
+
+            MECMOD.Part part1 = partDocument1.Part;
+            MECMOD.AxisSystems axisSystems1 = part1.AxisSystems;
+
+            MECMOD.AxisSystem axisSystem1;
+            axisSystem1 = axisSystems1.Item("Absolutes Achsensystem");
+
+            axisSystems1 = axisSystem1.Parent as MECMOD.AxisSystems;
+
+            selection1.Add(axisSystem1);
+
+            visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyNoShowAttr);
+            #endregion
+
+            object[] arr2 = new object[] { 1, 1, 1 };
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2); // Hintergrund weiß machen
+
+            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp"); // Screenshot machen
+
+            #region Alles wieder einblenden und Hintergrund zurücksetzen
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr1);
+            hsp_catiaApp.StartCommand("CompassDisplayOn");
+            hsp_catiaApp.StartCommand("Spezifikationen");
+            visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
+            selection1.Clear();
             #endregion
 
         }

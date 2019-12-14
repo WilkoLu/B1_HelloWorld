@@ -67,7 +67,7 @@ namespace Profilrechner
             fehlerprüfungMitFarbe(meinDoppelTProfil.getBreite(), tb_Breite);
             fehlerprüfungMitFarbe(meinDoppelTProfil.getHoehe(), tb_Hoehe);
 
-            if (meinDoppelTProfil.getSteg() > meinDoppelTProfil.getBreite() || meinDoppelTProfil.getSteg() > meinDoppelTProfil.getHoehe()/2)
+            if (meinDoppelTProfil.getSteg()*3 > meinDoppelTProfil.getBreite()|| meinDoppelTProfil.getSteg()*4 > meinDoppelTProfil.getHoehe())
             {
                 tb_Breite.Background = Brushes.IndianRed;
                 tb_Hoehe.Background = Brushes.IndianRed;
@@ -113,23 +113,54 @@ namespace Profilrechner
                 eingabebox.Background = Brushes.Transparent;
             }
         }
-
-        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        bool checkBox1 = false;
+        public void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (meinDoppelTProfil.erzeugeCAD() == true)
+            checkBox1 = true;
+        }
+
+        public void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            checkBox1 = false;
+        }
+        public void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkBox1 == false)
             {
-                Rechteck_oben.Visibility = Visibility.Hidden;
-                Rechteck_senkrecht.Visibility = Visibility.Hidden;
-                Rechteck_unten.Visibility = Visibility.Hidden;
-                Linie_waagerecht.Visibility = Visibility.Hidden;
-                Linie_senkrecht.Visibility = Visibility.Hidden;
+                if (meinDoppelTProfil.erzeugeCAD() == true)
+                {
+                    Rechteck_oben.Visibility = Visibility.Hidden;
+                    Rechteck_senkrecht.Visibility = Visibility.Hidden;
+                    Rechteck_unten.Visibility = Visibility.Hidden;
+                    Linie_waagerecht.Visibility = Visibility.Hidden;
+                    Linie_senkrecht.Visibility = Visibility.Hidden;
 
-                BitmapImage screenshot = new BitmapImage();
-                screenshot.BeginInit();
-                screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
-                screenshot.EndInit();
+                    BitmapImage screenshot = new BitmapImage();
+                    screenshot.BeginInit();
+                    screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                    screenshot.EndInit();
 
-                Rechtekprofil_screenshot.Source = screenshot;
+                    Rechtekprofil_screenshot.Source = screenshot;
+                }
+
+            }
+            else
+            {
+                if (meinDoppelTProfil.erzeugeCADRadius() == true)
+                {
+                    Rechteck_oben.Visibility = Visibility.Hidden;
+                    Rechteck_senkrecht.Visibility = Visibility.Hidden;
+                    Rechteck_unten.Visibility = Visibility.Hidden;
+                    Linie_waagerecht.Visibility = Visibility.Hidden;
+                    Linie_senkrecht.Visibility = Visibility.Hidden;
+
+                    BitmapImage screenshot = new BitmapImage();
+                    screenshot.BeginInit();
+                    screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm_"+"Radius"+meinDoppelTProfil.getSteg()*2+ "mm.bmp", UriKind.Absolute);
+                    screenshot.EndInit();
+
+                    Rechtekprofil_screenshot.Source = screenshot;
+                }
             }
         }
     }

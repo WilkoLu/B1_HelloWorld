@@ -129,7 +129,8 @@
 
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Masse:</Label>
-                <Label x:Name="lbl_masse"></Label>
+                <Label x:Name="lbl_masse">
+                </Label>
             </DockPanel>
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >Materialkosten:</Label>
@@ -137,9 +138,12 @@
             </DockPanel>
 
         </StackPanel>
-
+        <CheckBox x:Name="checkBox" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" >
+            
+        </CheckBox>
+        
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
-                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120" />
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120" IsEnabled="True"/>
 
 
     </Grid>
