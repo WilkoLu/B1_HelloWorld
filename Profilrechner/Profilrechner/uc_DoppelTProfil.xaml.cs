@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace Profilrechner
 {
     /// <summary>
-    /// Interaktionslogik für uc_TProfil.xaml
+    /// Interaktionslogik für uc_DoppelTProfil.xaml
     /// </summary>
     public partial class uc_DoppelTProfil : UserControl
     {

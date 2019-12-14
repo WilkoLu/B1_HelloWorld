@@ -470,9 +470,6 @@ namespace Profilrechner
             hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1); 
             Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]); // Normale Farbe speichern
 
-            object[] arr2 = new object[] { 1, 1, 1 };
-            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2); // Hintergrund weiß machen
-
             hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe(); // Alles einpassen
             hsp_catiaApp.StartCommand("* Iso"); // in die ISO drehen
             System.Threading.Thread.Sleep(2000); //Zeit um in die ISO zu drehen
@@ -501,6 +498,9 @@ namespace Profilrechner
 
             visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyNoShowAttr);
             #endregion
+
+            object[] arr2 = new object[] { 1, 1, 1 };
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2); // Hintergrund weiß machen
 
             hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp"); // Screenshot machen
 
