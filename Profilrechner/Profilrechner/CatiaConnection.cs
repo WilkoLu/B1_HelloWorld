@@ -311,36 +311,36 @@ namespace Profilrechner
 
         public void ErzeugeDoppelTProfilmitRadienausSkizze(Double h, Double b, Double s)
         {
-            #region Profil mit Radien
+            #region Profil mit Radien 
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("DoppelTProfil");
 
             // Rechteck in Skizze einzeichnen
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
-
+            //Circle2D circle2D1 = catFactory2D1.CreateCircle((b / 2) - (s / 2) - (s * 2), (-h / 2) + s + s * 2, s * 2, 0, Math.PI) ;
             // Rechteck erzeugen
-
+            
             // erst die Punkte
             Point2D catPoint2D1 = catFactory2D1.CreatePoint(-b / 2, -h / 2);
             Point2D catPoint2D2 = catFactory2D1.CreatePoint(b / 2, -h / 2);
             Point2D catPoint2D3 = catFactory2D1.CreatePoint(b / 2, (-h / 2) + s);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (-h / 2) + s); //Radiuspunkt 1 Anfang
-            Point2D catPoint2D5 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (-h / 2) + s + s * 2); //Radiuspunkt 1 Mittelpunkt
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint((s / 2) + (s * 2), (-h / 2) + s); //Radiuspunkt 1 Anfang
+            Point2D catPoint2D5 = catFactory2D1.CreatePoint((s / 2) + (s * 2), (-h / 2) + s + s * 2); //Radiuspunkt 1 Mittelpunkt
             Point2D catPoint2D6 = catFactory2D1.CreatePoint(s / 2, (-h / 2) + s + s * 2); //Radiuspunkt 1 Ende
             Point2D catPoint2D7 = catFactory2D1.CreatePoint(s / 2, (h / 2) - s - s * 2); //Radiuspunkt 2 Anfang
-            Point2D catPoint2D8 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (h / 2) - s - s * 2); //Radiuspunkt 2 Mittelpunkt
-            Point2D catPoint2D9 = catFactory2D1.CreatePoint((b / 2) - (s / 2) - (s * 2), (h / 2) - s); //Radiuspunkt 2 Ende
+            Point2D catPoint2D8 = catFactory2D1.CreatePoint((s / 2) + (s * 2), (h / 2) - s - s * 2); //Radiuspunkt 2 Mittelpunkt
+            Point2D catPoint2D9 = catFactory2D1.CreatePoint((s / 2) + (s * 2), (h / 2) - s); //Radiuspunkt 2 Ende
             Point2D catPoint2D10 = catFactory2D1.CreatePoint(b / 2, (h / 2) - s);
             Point2D catPoint2D11 = catFactory2D1.CreatePoint(b / 2, h / 2);
             Point2D catPoint2D12 = catFactory2D1.CreatePoint(-b / 2, h / 2);
             Point2D catPoint2D13 = catFactory2D1.CreatePoint(-b / 2, (h / 2) - s);
-            Point2D catPoint2D14 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (h / 2) - s); //Radiuspunkt 3 Anfang
-            Point2D catPoint2D15 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (h / 2) - s - s * 2); //Radiuspunkt 3 Mittelpunkt
+            Point2D catPoint2D14 = catFactory2D1.CreatePoint( - (s / 2) - (s * 2), (h / 2) - s); //Radiuspunkt 3 Anfang
+            Point2D catPoint2D15 = catFactory2D1.CreatePoint(-(s / 2) - (s * 2), (h / 2) - s - s * 2); //Radiuspunkt 3 Mittelpunkt
             Point2D catPoint2D16 = catFactory2D1.CreatePoint((-s / 2), (h / 2) - s - s * 2); //Radiuspunkt 3 Ende
             Point2D catPoint2D17 = catFactory2D1.CreatePoint((-s / 2), (-h / 2) + s + s * 2); //Radiuspunkt 4 Anfang
-            Point2D catPoint2D18 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s + s * 2); //Radiuspunkt 4 Mittelpunkt
-            Point2D catPoint2D19 = catFactory2D1.CreatePoint((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s); //Radiuspunkt 4 Ende
+            Point2D catPoint2D18 = catFactory2D1.CreatePoint(-(s / 2) - (s * 2), (-h / 2) + s + s * 2); //Radiuspunkt 4 Mittelpunkt
+            Point2D catPoint2D19 = catFactory2D1.CreatePoint(- (s / 2) - (s * 2), (-h / 2) + s); //Radiuspunkt 4 Ende
             Point2D catPoint2D20 = catFactory2D1.CreatePoint(-b / 2, (-h / 2) + s);
 
             // dann die Linien und Kreise
@@ -352,11 +352,11 @@ namespace Profilrechner
             catLine2D2.StartPoint = catPoint2D2;
             catLine2D2.EndPoint = catPoint2D3;
 
-            Line2D catLine2D3 = catFactory2D1.CreateLine(b / 2, (-h / 2) + s, (b / 2) + (s / 2) + (s * 2), (-h / 2) + s);
+            Line2D catLine2D3 = catFactory2D1.CreateLine(b / 2, (-h / 2) + s, (s / 2) + (s * 2), (-h / 2) + s);
             catLine2D3.StartPoint = catPoint2D3;
             catLine2D3.EndPoint = catPoint2D4;
 
-            Circle2D circle2D1 = catFactory2D1.CreateCircle((b / 2) - (s / 2) - (s * 2), (-h / 2) + s + s * 2, s * 2, 3.141593, 4.712237);
+            Circle2D circle2D1 = catFactory2D1.CreateCircle((s / 2) + (s * 2), (-h / 2) + s + s * 2, s * 2, Math.PI, Math.PI * 3/2);
             circle2D1.CenterPoint = catPoint2D5;
             circle2D1.EndPoint = catPoint2D4;
             circle2D1.StartPoint = catPoint2D6;
@@ -365,12 +365,12 @@ namespace Profilrechner
             catLine2D4.StartPoint = catPoint2D6;
             catLine2D4.EndPoint = catPoint2D7;
 
-            Circle2D circle2D2 = catFactory2D1.CreateCircle((b / 2) - (s / 2) - (s * 2), (h / 2) - s - s * 2, s * 2, 1.570796, 3.141593);
+            Circle2D circle2D2 = catFactory2D1.CreateCircle((s / 2) + (s * 2), (h / 2) - s - s * 2, s * 2, Math.PI/2, Math.PI);
             circle2D2.CenterPoint = catPoint2D8;
             circle2D2.EndPoint = catPoint2D7;
             circle2D2.StartPoint = catPoint2D9;
 
-            Line2D catLine2D5 = catFactory2D1.CreateLine((b / 2) - (s / 2) - (s * 2), (h / 2) - s, b / 2, (h / 2) - s);
+            Line2D catLine2D5 = catFactory2D1.CreateLine((s / 2) + (s * 2), (h / 2) - s, b / 2, (h / 2) - s);
             catLine2D5.StartPoint = catPoint2D9;
             catLine2D5.EndPoint = catPoint2D10;
 
@@ -386,11 +386,11 @@ namespace Profilrechner
             catLine2D8.StartPoint = catPoint2D12;
             catLine2D8.EndPoint = catPoint2D13;
 
-            Line2D catLine2D9 = catFactory2D1.CreateLine(-b / 2, (h / 2) - s, (-b / 2) + (s / 2) + (s * 2), (h / 2) - s);
+            Line2D catLine2D9 = catFactory2D1.CreateLine(-b / 2, (h / 2) - s, -(s / 2) - (s * 2), (h / 2) - s);
             catLine2D9.StartPoint = catPoint2D13;
             catLine2D9.EndPoint = catPoint2D14;
 
-            Circle2D circle2D3 = catFactory2D1.CreateCircle((-b / 2) + (s / 2) + (s * 2), (h / 2) - s - s * 2, s * 2, 0, 1.570796);
+            Circle2D circle2D3 = catFactory2D1.CreateCircle(-(s / 2) - (s * 2), (h / 2) - s - s * 2, s * 2, 0, Math.PI /2);
             circle2D3.CenterPoint = catPoint2D15;
             circle2D3.EndPoint = catPoint2D14;
             circle2D3.StartPoint = catPoint2D16;
@@ -399,19 +399,19 @@ namespace Profilrechner
             catLine2D10.StartPoint = catPoint2D16;
             catLine2D10.EndPoint = catPoint2D17;
 
-            Circle2D circle2D4 = catFactory2D1.CreateCircle((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s + s * 2, s * 2, 4.712846, 6.283185);
+            Circle2D circle2D4 = catFactory2D1.CreateCircle(-(s / 2) - (s * 2), (-h / 2) + s + s * 2, s * 2, Math.PI *3/2, 0);
             circle2D4.CenterPoint = catPoint2D18;
             circle2D4.EndPoint = catPoint2D17;
             circle2D4.StartPoint = catPoint2D19;
 
-            Line2D catLine2D11 = catFactory2D1.CreateLine((-b / 2) + (s / 2) + (s * 2), (-h / 2) + s, -b / 2, (-h / 2) + s);
+            Line2D catLine2D11 = catFactory2D1.CreateLine(-(s / 2) - (s * 2), (-h / 2) + s, -b / 2, (-h / 2) + s);
             catLine2D11.StartPoint = catPoint2D19;
             catLine2D11.EndPoint = catPoint2D20;
 
             Line2D catLine2D12 = catFactory2D1.CreateLine(-b / 2, (-h / 2) + s, -b / 2, -h / 2);
             catLine2D12.StartPoint = catPoint2D20;
             catLine2D12.EndPoint = catPoint2D1;
-
+            
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();
             // Part aktualisieren
