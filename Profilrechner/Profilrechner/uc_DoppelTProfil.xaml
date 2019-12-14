@@ -138,12 +138,14 @@
             </DockPanel>
 
         </StackPanel>
-        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" >
+        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" 
+                  HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
+                  IsEnabled="False" ToolTip="Verhältnis von Höhe bzw. Breite zu Steg ist zu gering">
             
         </CheckBox>
         
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
-                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120" IsEnabled="True"/>
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120"/>
 
 
     </Grid>
