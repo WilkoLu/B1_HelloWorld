@@ -79,11 +79,13 @@ namespace Profilrechner
                 && meinDoppelTProfil.getSteg() * 2 < (meinDoppelTProfil.getHoehe() - meinDoppelTProfil.getSteg()*2) / 2)
             {
                 checkBoxRadius.IsEnabled = true;
+                tooltipFuerCheckbox.Visibility = Visibility.Hidden;
             }
             else
             {
                 checkBoxRadius.IsChecked = false;
                 checkBoxRadius.IsEnabled = false;
+                tooltipFuerCheckbox.Visibility = Visibility.Visible;
             }
 
 
