@@ -144,7 +144,7 @@ namespace Profilrechner
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Folgender Fehler ist aufgetreten" + ex, "Fehler",
+                MessageBox.Show("Folgender Fehler ist aufgetreten:" + Environment.NewLine + ex, "Fehler",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Information);
                 return false;
