@@ -131,9 +131,19 @@ namespace Profilrechner
                 screenshot.UriSource = new Uri("C:/Temp/" + "Rundprofil_" + meinRundprofil.getDurchmesser() + "mm_x_" + meinRundprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
                 screenshot.EndInit();
 
-                Rundprofil_screenshot.Source = screenshot;
+                Rundprofil_screenshot.Source = BildZuschneiden(screenshot);
             }
             
+        }
+
+        public static CroppedBitmap BildZuschneiden(BitmapImage screenshot)
+        {
+            CroppedBitmap cb = new CroppedBitmap();
+            cb.BeginInit();
+            cb.Source = screenshot;
+            cb.SourceRect = new Int32Rect((int)Math.Round(screenshot.Width / 4), 0, (int)Math.Round(screenshot.Width / 2), (int)Math.Round(screenshot.Height / 1.1));
+            cb.EndInit();
+            return cb;
         }
     }
 }

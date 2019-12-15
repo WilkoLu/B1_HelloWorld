@@ -142,8 +142,7 @@ namespace Profilrechner
                     screenshot.BeginInit();
                     screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
                     screenshot.EndInit();
-
-                    Rechtekprofil_screenshot.Source = screenshot;
+                    Rechtekprofil_screenshot.Source = BildZuschneiden(screenshot);
                 }
 
             }
@@ -159,12 +158,21 @@ namespace Profilrechner
 
                     BitmapImage screenshot = new BitmapImage();
                     screenshot.BeginInit();
-                    screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm_"+"Radius"+meinDoppelTProfil.getSteg()*2+ "mm.bmp", UriKind.Absolute);
+                    screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm_" + "Radius" + meinDoppelTProfil.getSteg() * 2 + "mm.bmp", UriKind.Absolute);
                     screenshot.EndInit();
-
-                    Rechtekprofil_screenshot.Source = screenshot;
+                    Rechtekprofil_screenshot.Source = BildZuschneiden(screenshot);
                 }
             }
+        }
+
+        public static CroppedBitmap BildZuschneiden(BitmapImage screenshot)
+        {
+            CroppedBitmap cb = new CroppedBitmap();
+            cb.BeginInit();
+            cb.Source = screenshot;
+            cb.SourceRect = new Int32Rect((int)Math.Round(screenshot.Width / 4), 0, (int)Math.Round(screenshot.Width / 2), (int)Math.Round(screenshot.Height / 1.1));
+            cb.EndInit();
+            return cb;
         }
     }
 }
