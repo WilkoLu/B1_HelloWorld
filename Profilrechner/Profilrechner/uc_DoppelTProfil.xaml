@@ -138,12 +138,16 @@
             </DockPanel>
 
         </StackPanel>
+        
         <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" 
                   HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
-                  IsEnabled="False" ToolTip="Verhältnis von Höhe bzw. Breite zu Steg ist zu gering">
-            
-        </CheckBox>
-        
+                  IsEnabled="False" ToolTip="Doppel-T-Profil wird mit Radien (r=2xSteg) erzeugt"/>
+
+        <Rectangle x:Name="tooltipFuerCheckbox"
+                   Width="120" Margin="10,40" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom" Height="16" Visibility="Hidden" Fill="Transparent"
+                   ToolTip="Verhältnis von Höhe bzw. Breite zu Steg ist zu gering"/>
+
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
                  Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120"/>
 
