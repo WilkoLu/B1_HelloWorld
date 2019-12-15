@@ -156,7 +156,7 @@ namespace Profilrechner
                 }
                 screenshot.EndInit();
 
-                Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                Winkelprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
             }
         }
 

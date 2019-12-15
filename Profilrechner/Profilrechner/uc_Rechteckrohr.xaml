@@ -148,6 +148,19 @@
 
         </StackPanel>
 
+        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="3" 
+                  HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
+                  IsEnabled="False" ToolTip="Rechteckrohr wird mit Radien (ra = Wandstärke * 3) erzeugt"/>
+
+        <Rectangle x:Name="tooltipFuerCheckbox"
+                   Width="120" Margin="10,40" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom" Height="16" Visibility="Hidden" Fill="Transparent"
+                   ToolTip="Verhältnis von Höhe bzw. Breite zu Wandstärke ist zu gering"/>
+
+
+        <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" Width="120" />
+
 
     </Grid>
 </UserControl>

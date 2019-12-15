@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Profilrechner
 {
@@ -102,6 +103,65 @@ namespace Profilrechner
         {
             return wandstaerke;
         }
+
+        public bool erzeugeCAD(bool? radienErzeugen)
+        {
+            try
+            {
+                CatiaConnection cc = new CatiaConnection();
+
+                //Finde Catia Prozess
+                if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && wandstaerke > 0 && breite > wandstaerke*2 && hoehe > wandstaerke*2)
+                {
+                    //Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Erstelle eine Skizze
+                    cc.ErstelleLeereSkizze();
+
+                    // Generiere eine skizze vom rechteckprofil
+                    cc.ErzeugeRechteckrohrSkizze(hoehe, breite, wandstaerke, radienErzeugen);
+
+                    if (laenge > 0)
+                    {
+                        // Extrudiere Balken
+                        cc.ErzeugeVolumenAusSkizze(laenge);
+                        if (radienErzeugen == true)
+                        {
+                            cc.Screenshot("Rechteckrohr_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm_Radius" + Convert.ToString(wandstaerke) + "mm");
+                        }
+                        else
+                        {
+                            cc.Screenshot("Rechteckrohr_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+                else if (cc.CATIALaeuft())
+                {
+                    //erstmal nix
+                    return false;
+                }
+                else
+                {
+                    MessageBox.Show("Keine laufende Catia Application. Bitte Catia starten", "Fehler",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Folgender Fehler ist aufgetreten" + ex, "Fehler",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+                return false;
+            }
+
+        }
+
+
 
     }
 }

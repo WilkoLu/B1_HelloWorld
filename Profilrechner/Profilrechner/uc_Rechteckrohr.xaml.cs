@@ -25,7 +25,7 @@ namespace Profilrechner
             InitializeComponent();
         }
 
-
+        Rechteckrohr meinRechteckrohr = new Rechteckrohr();
 
         private void fehlerprüfungMitFarbe(double pruefzahl, TextBox eingabebox)
         {
@@ -48,8 +48,6 @@ namespace Profilrechner
         private void berechnen()
         {
             int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
-
-            Rechteckrohr meinRechteckrohr = new Rechteckrohr();
 
             meinRechteckrohr.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
             meinRechteckrohr.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
@@ -81,6 +79,19 @@ namespace Profilrechner
                 ausgabe = 1;
             }
 
+            if (meinRechteckrohr.getWandstärke() * 8 < meinRechteckrohr.getBreite() 
+                && meinRechteckrohr.getWandstärke() * 8 < meinRechteckrohr.getHoehe() )//checkbox anklickbar oder nicht
+            {
+                checkBoxRadius.IsEnabled = true;
+                tooltipFuerCheckbox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                checkBoxRadius.IsChecked = false;
+                checkBoxRadius.IsEnabled = false;
+                tooltipFuerCheckbox.Visibility = Visibility.Visible;
+            }
+
             if (ausgabe == 0)
             {
 
@@ -109,5 +120,34 @@ namespace Profilrechner
         {
             berechnen();
         }
+
+
+        private void CADerzeugen_Click(object sender, RoutedEventArgs e)
+        {
+            if (meinRechteckrohr.erzeugeCAD(checkBoxRadius.IsChecked) == true)
+            {
+                Rohr_aussen.Visibility = Visibility.Hidden;
+                Rohr_innen.Visibility = Visibility.Hidden;
+                Linie_senkrecht.Visibility = Visibility.Hidden;
+                Linie_waagerecht.Visibility = Visibility.Hidden;
+
+                BitmapImage screenshot = new BitmapImage();
+                screenshot.BeginInit();
+                if (checkBoxRadius.IsChecked == true)
+                {
+                    screenshot.UriSource = new Uri("C:/Temp/" + "Rechteckrohr_" + meinRechteckrohr.getBreite() + "mm_x_" + meinRechteckrohr.getHoehe() + "mm_x_" + meinRechteckrohr.getWandstärke() + "mm_x_" + meinRechteckrohr.getLaenge() + "mm_Radius" + meinRechteckrohr.getWandstärke() + "mm.bmp", UriKind.Absolute);
+                }
+                else
+                {
+                    screenshot.UriSource = new Uri("C:/Temp/" + "Rechteckrohr_" + meinRechteckrohr.getBreite() + "mm_x_" + meinRechteckrohr.getHoehe() + "mm_x_" + meinRechteckrohr.getWandstärke() + "mm_x_" + meinRechteckrohr.getLaenge() + "mm.bmp", UriKind.Absolute);
+                }
+                screenshot.EndInit();
+
+                Rechtekrohr_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+            }
+        }
+
+
+
     }
 }
