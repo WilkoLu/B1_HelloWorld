@@ -71,8 +71,8 @@ namespace Profilrechner
 
             if(meinWikelprofil.getWandstaerke() > meinWikelprofil.getHoehe() )
             {
-                FocusManager.SetFocusedElement(this, tb_Hoehe);
-                tb_Hoehe.SelectAll();
+                //FocusManager.SetFocusedElement(this, tb_Wandstaerke);
+                //tb_Hoehe.SelectAll();
                 tb_Hoehe.Background = Brushes.IndianRed;
                 tb_Wandstaerke.Background = Brushes.IndianRed;
             }
@@ -82,7 +82,20 @@ namespace Profilrechner
                 tb_Wandstaerke.Background = Brushes.IndianRed;
             }
 
-            if(ausgabe == 0)
+            if (meinWikelprofil.getWandstaerke() * 2.5 < meinWikelprofil.getBreite() 
+                && meinWikelprofil.getWandstaerke() * 2.5 < meinWikelprofil.getHoehe() )//checkbox anklickbar oder nicht
+            {
+                checkBoxRadius.IsEnabled = true;
+                tooltipFuerCheckbox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                checkBoxRadius.IsChecked = false;
+                checkBoxRadius.IsEnabled = false;
+                tooltipFuerCheckbox.Visibility = Visibility.Visible;
+            }
+
+            if (ausgabe == 0)
             {
                 //tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
                 //tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
@@ -124,7 +137,7 @@ namespace Profilrechner
 
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            if(meinWikelprofil.erzeugeCAD() == true)
+            if(meinWikelprofil.erzeugeCAD(checkBoxRadius.IsChecked) == true)
             {
                 Winkel_senkrecht.Visibility = Visibility.Hidden;
                 Winkel_waagerecht.Visibility = Visibility.Hidden;
@@ -133,7 +146,14 @@ namespace Profilrechner
 
                 BitmapImage screenshot = new BitmapImage();
                 screenshot.BeginInit();
-                screenshot.UriSource = new Uri("C:/Temp/" + "Winkelprofil_" + meinWikelprofil.getBreite() + "mm_x_" + meinWikelprofil.getHoehe() + "mm_x_" + meinWikelprofil.getWandstaerke() + "mm_x_" + meinWikelprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                if(checkBoxRadius.IsChecked == true)
+                {
+                    screenshot.UriSource = new Uri("C:/Temp/" + "Winkelprofil_" + meinWikelprofil.getBreite() + "mm_x_" + meinWikelprofil.getHoehe() + "mm_x_" + meinWikelprofil.getWandstaerke() + "mm_x_" + meinWikelprofil.getLaenge() + "mm_Radius" + meinWikelprofil.getWandstaerke() +"mm.bmp", UriKind.Absolute);
+                }
+                else
+                {
+                    screenshot.UriSource = new Uri("C:/Temp/" + "Winkelprofil_" + meinWikelprofil.getBreite() + "mm_x_" + meinWikelprofil.getHoehe() + "mm_x_" + meinWikelprofil.getWandstaerke() + "mm_x_" + meinWikelprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                }
                 screenshot.EndInit();
 
                 Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);

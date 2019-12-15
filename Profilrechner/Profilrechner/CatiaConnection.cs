@@ -257,7 +257,7 @@ namespace Profilrechner
             hsp_catiaPart.Part.Update();
         }
 
-        public void ErzeugeWinkelSkizze(Double h, Double b, Double w)
+        public void ErzeugeWinkelSkizze(Double h, Double b, Double w, bool? radienErzeugen)
         {
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Winkelprofil");
@@ -271,37 +271,91 @@ namespace Profilrechner
             // erst die Punkte
             Point2D catPoint2D1 = catFactory2D1.CreatePoint(0, 0);
             Point2D catPoint2D2 = catFactory2D1.CreatePoint(0 , h);
-            Point2D catPoint2D3 = catFactory2D1.CreatePoint(w , h);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint(w , w);
-            Point2D catPoint2D5 = catFactory2D1.CreatePoint(b , w);
-            Point2D catPoint2D6 = catFactory2D1.CreatePoint(b , 0);
-            
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(b, 0);
 
             // dann die Linien
             Line2D catLine2D1 = catFactory2D1.CreateLine(0, 0, 0, h);
             catLine2D1.StartPoint = catPoint2D1;
             catLine2D1.EndPoint = catPoint2D2;
 
-            Line2D catLine2D2 = catFactory2D1.CreateLine(0, h, w, h);
-            catLine2D2.StartPoint = catPoint2D2;
-            catLine2D2.EndPoint = catPoint2D3;
+            Line2D catLine2D2 = catFactory2D1.CreateLine(b, 0, 0, 0);
+            catLine2D2.StartPoint = catPoint2D3;
+            catLine2D2.EndPoint = catPoint2D1;
 
-            Line2D catLine2D3 = catFactory2D1.CreateLine(w, h, w, w);
-            catLine2D3.StartPoint = catPoint2D3;
-            catLine2D3.EndPoint = catPoint2D4;
+            if (radienErzeugen == true)
+            {
+                double r1 = w;
+                double r2 = w / 2;
 
-            Line2D catLine2D4 = catFactory2D1.CreateLine(w, w, b, w);
-            catLine2D4.StartPoint = catPoint2D4;
-            catLine2D4.EndPoint = catPoint2D5;
+                // erst die Punkte mit radius
+                Point2D catPoint2D4 = catFactory2D1.CreatePoint(w - r2, h);//anfang radius 1
+                Point2D catPoint2D5 = catFactory2D1.CreatePoint(w - r2, h-r2);//mittelpunkt radius 1
+                Point2D catPoint2D6 = catFactory2D1.CreatePoint(w, h-r2);//endounkt radius 1
+                Point2D catPoint2D7 = catFactory2D1.CreatePoint(w, w + r1);//anfang radius 2
+                Point2D catPoint2D8 = catFactory2D1.CreatePoint(w+r1 , w+r1);//mittelpunkt radius 2
+                Point2D catPoint2D9 = catFactory2D1.CreatePoint(w+r1, w);//endounkt radius 2
+                Point2D catPoint2D10 = catFactory2D1.CreatePoint(b-r2, w);//anfang radius 3
+                Point2D catPoint2D11 = catFactory2D1.CreatePoint(b-r2, w-r2);//mittelpunkt radius 3
+                Point2D catPoint2D12 = catFactory2D1.CreatePoint(b, w-r2);//endounkt radius 3
 
-            Line2D catLine2D5 = catFactory2D1.CreateLine(b, w, b, 0);
-            catLine2D5.StartPoint = catPoint2D5;
-            catLine2D5.EndPoint = catPoint2D6;
+                // dann die Linien ohne radius
+                Line2D catLine2D3 = catFactory2D1.CreateLine(0, h, w - r2, h);
+                catLine2D3.StartPoint = catPoint2D2;
+                catLine2D3.EndPoint = catPoint2D4;
 
-            Line2D catLine2D6 = catFactory2D1.CreateLine(b, 0, 0, 0);
-            catLine2D6.StartPoint = catPoint2D6;
-            catLine2D6.EndPoint = catPoint2D1;
+                Circle2D circle2D1 = catFactory2D1.CreateCircle(w - r2, h - r2, r2, 0, Math.PI /2);
+                circle2D1.CenterPoint = catPoint2D5;
+                circle2D1.StartPoint = catPoint2D6;
+                circle2D1.EndPoint = catPoint2D4;
 
+                Line2D catLine2D4 = catFactory2D1.CreateLine(w, h - r2, w, w + r1);
+                catLine2D4.StartPoint = catPoint2D6;
+                catLine2D4.EndPoint = catPoint2D7;
+
+                Circle2D circle2D2 = catFactory2D1.CreateCircle(w + r1, w + r1, r1, Math.PI , Math.PI *3/2);
+                circle2D2.CenterPoint = catPoint2D8;
+                circle2D2.StartPoint = catPoint2D7;
+                circle2D2.EndPoint = catPoint2D9;
+
+                Line2D catLine2D5 = catFactory2D1.CreateLine(w + r1, w, b - r2, w);
+                catLine2D5.StartPoint = catPoint2D9;
+                catLine2D5.EndPoint = catPoint2D10;
+
+                Circle2D circle2D3 = catFactory2D1.CreateCircle(b - r2, w - r2, r2, 0, Math.PI /2);
+                circle2D3.CenterPoint = catPoint2D11;
+                circle2D3.StartPoint = catPoint2D12;
+                circle2D3.EndPoint = catPoint2D10;
+
+                Line2D catLine2D6 = catFactory2D1.CreateLine(b, w - r2, b, 0);
+                catLine2D6.StartPoint = catPoint2D12;
+                catLine2D6.EndPoint = catPoint2D3;
+
+            }
+            else
+            {
+                // erst die Punkte ohne radius
+                Point2D catPoint2D4 = catFactory2D1.CreatePoint(w, h);
+                Point2D catPoint2D5 = catFactory2D1.CreatePoint(w, w);
+                Point2D catPoint2D6 = catFactory2D1.CreatePoint(b, w);
+
+                // dann die Linien ohne radius
+                Line2D catLine2D3 = catFactory2D1.CreateLine(0, h, w, h);
+                catLine2D3.StartPoint = catPoint2D2;
+                catLine2D3.EndPoint = catPoint2D4;
+
+                Line2D catLine2D4 = catFactory2D1.CreateLine(w, h, w, w);
+                catLine2D4.StartPoint = catPoint2D4;
+                catLine2D4.EndPoint = catPoint2D5;
+
+                Line2D catLine2D5 = catFactory2D1.CreateLine(w, w, b, w);
+                catLine2D5.StartPoint = catPoint2D5;
+                catLine2D5.EndPoint = catPoint2D6;
+
+                Line2D catLine2D6 = catFactory2D1.CreateLine(b, w, b, 0);
+                catLine2D6.StartPoint = catPoint2D6;
+                catLine2D6.EndPoint = catPoint2D3;
+            }
+            
 
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();

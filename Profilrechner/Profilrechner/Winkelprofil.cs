@@ -94,7 +94,7 @@ namespace Profilrechner
         }
 
 
-        public bool erzeugeCAD()
+        public bool erzeugeCAD(bool? radienErzeugen)
         {
             try
             {
@@ -110,13 +110,20 @@ namespace Profilrechner
                     cc.ErstelleLeereSkizze();
 
                     // Generiere eine skizze vom rechteckprofil
-                    cc.ErzeugeWinkelSkizze( hoehe, breite, wandstaerke);
+                    cc.ErzeugeWinkelSkizze( hoehe, breite, wandstaerke,radienErzeugen);
 
                     if (laenge > 0)
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
-                        cc.Screenshot("Winkelprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        if (radienErzeugen == true)
+                        {
+                            cc.Screenshot("Winkelprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm_Radius" + Convert.ToString(wandstaerke) + "mm");
+                        }
+                        else
+                        {
+                            cc.Screenshot("Winkelprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        }
                         return true;
                     }
                     return false;
