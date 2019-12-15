@@ -6,7 +6,7 @@ using INFITF;
 using MECMOD;
 using PARTITF;
 using System.Threading;
-
+using System.Windows.Media.Imaging;
 
 namespace Profilrechner
 {
@@ -569,10 +569,17 @@ namespace Profilrechner
             visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
             selection1.Clear(); 
             #endregion
-
         }
 
-
+        public static CroppedBitmap BildZuschneiden(BitmapImage screenshot)
+        {
+            CroppedBitmap cb = new CroppedBitmap();
+            cb.BeginInit();
+            cb.Source = screenshot;
+            cb.SourceRect = new Int32Rect((int)Math.Round(screenshot.Width / 4), 0, (int)Math.Round(screenshot.Width / 2), (int)Math.Round(screenshot.Height / 1.1));
+            cb.EndInit();
+            return cb;
+        }
 
     }
 }

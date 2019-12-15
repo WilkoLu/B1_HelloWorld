@@ -128,17 +128,11 @@ namespace Profilrechner
                 screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinTProfil.getBreiteUndHoehe() + "mm_x_" + meinTProfil.getWandstaerke() + "mm_x_" + meinTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
                 screenshot.EndInit();
 
-                Rechtekprofil_screenshot.Source = BildZuschneiden(screenshot);
+                Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
             }
         }
-        public static CroppedBitmap BildZuschneiden(BitmapImage screenshot)
-        {
-            CroppedBitmap cb = new CroppedBitmap();
-            cb.BeginInit();
-            cb.Source = screenshot;
-            cb.SourceRect = new Int32Rect((int)Math.Round(screenshot.Width / 4), 0, (int)Math.Round(screenshot.Width / 2), (int)Math.Round(screenshot.Height / 1.1));
-            cb.EndInit();
-            return cb;
-        }
+        
+
+
     }
 }
