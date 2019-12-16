@@ -126,6 +126,15 @@
 
         </StackPanel>
 
+        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" 
+                  HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
+                  IsEnabled="False" ToolTip="T-Profil wird mit Radien (r = Wandstärke, r1 = 0,5 x Wandstärke) erzeugt"/>
+
+        <Rectangle x:Name="tooltipFuerCheckbox"
+                   Width="120" Margin="10,40" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom" Height="16" Visibility="Hidden" Fill="Transparent"
+                   ToolTip="Verhältnis von Höhe bzw. Breite zur Wandstärke ist zu gering"/>
+        
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
                  Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" Width="120" />
 

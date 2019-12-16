@@ -80,7 +80,7 @@ namespace Profilrechner
             return getMasse() * Material.preis(profilmaterial);
         }
 
-        public bool erzeugeCAD()
+        public bool erzeugeCAD(bool? radienErzeugen)
         {
             try
             {
@@ -96,13 +96,20 @@ namespace Profilrechner
                     cc.ErstelleLeereSkizze();
 
                     // Generiere eine skizze vom rechteckprofil
-                    cc.ErzeugeTProfilSkizze(breiteUndHoehe,wandstaerke,getSchwerpunkt());
+                    cc.ErzeugeTProfilSkizze(breiteUndHoehe,wandstaerke,getSchwerpunkt(),radienErzeugen);
 
                     if (laenge > 0)
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
-                        cc.Screenshot("TProfil_" + Convert.ToString(breiteUndHoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        if(radienErzeugen == true)
+                        {
+                            cc.Screenshot("TProfil_" + Convert.ToString(breiteUndHoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm_Radius" + Convert.ToString(wandstaerke) + "mm");
+                        }
+                        else
+                        {
+                            cc.Screenshot("TProfil_" + Convert.ToString(breiteUndHoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+                        }
                         return true;
                     }
                     return false;

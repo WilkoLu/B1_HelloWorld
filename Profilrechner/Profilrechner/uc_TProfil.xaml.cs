@@ -74,7 +74,19 @@ namespace Profilrechner
                 ausgebe = 1;
             }
 
-            if(ausgebe == 0)
+            if (meinTProfil.getWandstaerke() * 4 < meinTProfil.getBreiteUndHoehe() )//checkbox anklickbar oder nicht
+            {
+                checkBoxRadius.IsEnabled = true;
+                tooltipFuerCheckbox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                checkBoxRadius.IsChecked = false;
+                checkBoxRadius.IsEnabled = false;
+                tooltipFuerCheckbox.Visibility = Visibility.Visible;
+            }
+
+            if (ausgebe == 0)
             {
                 //tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
                 //tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
@@ -116,7 +128,7 @@ namespace Profilrechner
 
         private void CADerzeugen_Click(object sender, RoutedEventArgs e)
         {
-            if(meinTProfil.erzeugeCAD() == true)
+            if(meinTProfil.erzeugeCAD(checkBoxRadius.IsChecked) == true)
             {
                 TProfil_senkrecht.Visibility = Visibility.Hidden;
                 TProfil_waagerecht.Visibility = Visibility.Hidden;
@@ -125,7 +137,14 @@ namespace Profilrechner
 
                 BitmapImage screenshot = new BitmapImage();
                 screenshot.BeginInit();
-                screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinTProfil.getBreiteUndHoehe() + "mm_x_" + meinTProfil.getWandstaerke() + "mm_x_" + meinTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                if(checkBoxRadius.IsChecked == true)
+                {
+                    screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinTProfil.getBreiteUndHoehe() + "mm_x_" + meinTProfil.getWandstaerke() + "mm_x_" + meinTProfil.getLaenge() + "mm_Radius" + meinTProfil.getWandstaerke() + "mm.bmp", UriKind.Absolute);
+                }
+                else
+                {
+                    screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinTProfil.getBreiteUndHoehe() + "mm_x_" + meinTProfil.getWandstaerke() + "mm_x_" + meinTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
+                }
                 screenshot.EndInit();
 
                 Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
