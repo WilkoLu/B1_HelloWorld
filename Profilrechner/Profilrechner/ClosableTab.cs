@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+
 namespace Profilrechner
 {
     
@@ -17,12 +18,17 @@ namespace Profilrechner
 
     public class ClosableTab : TabItem
     {
+        MainWindow mainWindow;
 
-        
+        TabControl TabPage;
 
         // Constructor
-        public ClosableTab()
+        public ClosableTab(MainWindow mainWindow)
         {
+            // Kommunitkation with MainWindow
+
+            this.mainWindow = mainWindow;
+
             // Create an instance of the usercontrol
             ClosableHeader closableTabHeader = new ClosableHeader();
 
@@ -69,6 +75,7 @@ namespace Profilrechner
         {
             base.OnUnselected(e);
             ((ClosableHeader)this.Header).btn_close.Visibility = Visibility.Hidden;
+            
         }
 
         // Override OnMouseEnter - Show the Close Button
@@ -127,8 +134,16 @@ namespace Profilrechner
         // Button Close Click - Remove the Tab - (or raise an event indicating a "CloseTab" event has occurred)
         void btn_close_Click(object sender, RoutedEventArgs e)
         {
+            TabPage = (TabControl)this.Parent;
             ((TabControl)this.Parent).Items.Remove(this);
-            
+            int ii = (TabPage).Items.Count;
+            if (ii == 0)
+            {
+                mainWindow.MinHeight = 400;
+                mainWindow.MinWidth = 193;
+                mainWindow.Width = 193;
+                mainWindow.Height = 550;
+            }
         }
 
 

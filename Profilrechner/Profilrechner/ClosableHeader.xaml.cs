@@ -23,7 +23,7 @@ namespace Profilrechner
         public ClosableHeader()
         {
             InitializeComponent();
-
+            
         }
 
 

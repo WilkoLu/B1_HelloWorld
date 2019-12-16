@@ -56,7 +56,7 @@ namespace Profilrechner
         {
             TreeViewItem tvi = (TreeViewItem)sender;
 
-            ClosableTab newTabItem = new ClosableTab()
+            ClosableTab newTabItem = new ClosableTab(this)
             {
                 Title = Convert.ToString(tvi.Header)
             };
@@ -186,7 +186,6 @@ namespace Profilrechner
             void ni_Rohrprofil_Click(object sender, EventArgs e)
             {
                 ClosableTab newTabItem = neuenTab(tvi_Rohrprofil);
-
                 uc_Rohrprofil meinTabRechteckprofil = new uc_Rohrprofil();
                 newTabItem.Content = meinTabRechteckprofil.Content;
             }
