@@ -94,14 +94,14 @@ namespace Profilrechner
                 //tb_flaechentraegheitsmomentX.Background = Brushes.Transparent;
                 //tb_flaechentraegheitsmomentY.Background = Brushes.Transparent;
 
-                lbl_qflaeche.Content = Math.Round(meinDoppelTProfil.getQflaeche(), 3) + " mm²";
+                lbl_qflaeche.Content = Math.Round(meinDoppelTProfil.getQflaeche(checkBoxRadius.IsChecked), 3) + " mm²";
                 tb_flaechentraegheitsmomentX.Content = Math.Round(meinDoppelTProfil.getFlaechentraegheitsmomentX(), 3) + " mm⁴";
                 tb_flaechentraegheitsmomentY.Content = Math.Round(meinDoppelTProfil.getFlaechentraegheitsmomentY(), 3) + " mm⁴";
-                if(meinDoppelTProfil.getVolumen() > 0)
+                if(meinDoppelTProfil.getVolumen(checkBoxRadius.IsChecked) > 0)
                 {
-                    lbl_volumen.Content = Math.Round(meinDoppelTProfil.getVolumen(), 3) + " mm³";
-                    lbl_masse.Content = Math.Round(meinDoppelTProfil.getMasse(), 3) + " kg";
-                    lbl_preis.Content = Math.Round(meinDoppelTProfil.getPreis(), 3) + " €";
+                    lbl_volumen.Content = Math.Round(meinDoppelTProfil.getVolumen(checkBoxRadius.IsChecked), 3) + " mm³";
+                    lbl_masse.Content = Math.Round(meinDoppelTProfil.getMasse(checkBoxRadius.IsChecked), 3) + " kg";
+                    lbl_preis.Content = Math.Round(meinDoppelTProfil.getPreis(checkBoxRadius.IsChecked), 3) + " €";
                 }
             }
 
@@ -167,6 +167,9 @@ namespace Profilrechner
             }
         }
 
-        
+        private void checkedChanged(object sender, RoutedEventArgs e)
+        {
+            berechnen("Checkbox");
+        }
     }
 }

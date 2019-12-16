@@ -61,9 +61,17 @@ namespace Profilrechner
         {
             return laenge;
         }
-        public double getQflaeche()
+        public double getQflaeche(bool? radienErzeugen = false)
         {
-            return ((breite * steg) * 2 + steg * (hoehe - 2 * steg));
+            if(radienErzeugen == true)
+            {
+                return ((breite * steg) * 2 + steg * (hoehe - 2 * steg)+steg *steg *16-Math.PI * Math.Pow(steg*2,2));
+            }
+            else
+            {
+                return ((breite * steg) * 2 + steg * (hoehe - 2 * steg));
+            }
+            
         }
 
         public double getFlaechentraegheitsmomentX()
@@ -74,17 +82,17 @@ namespace Profilrechner
         {
             return ((2 * steg * Math.Pow(breite, 3)) + (hoehe - steg * 2) * Math.Pow(steg, 3)) / 12;
         }
-        public double getVolumen()
+        public double getVolumen(bool? radienErzeugen = false)
         {
-            return getQflaeche() * laenge;
+            return getQflaeche(radienErzeugen) * laenge;
         }
-        public double getMasse()
+        public double getMasse(bool? radienErzeugen = false)
         {
-            return getVolumen() * Material.dichte(profilmaterial);
+            return getVolumen(radienErzeugen) * Material.dichte(profilmaterial);
         }
-        public double getPreis()
+        public double getPreis(bool? radienErzeugen = false)
         {
-            return getMasse() * Material.preis(profilmaterial);
+            return getMasse(radienErzeugen) * Material.preis(profilmaterial);
         }
 
         public bool erzeugeCAD()

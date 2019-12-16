@@ -141,7 +141,8 @@
         
         <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" 
                   HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
-                  IsEnabled="False" ToolTip="Doppel-T-Profil wird mit Radien (r = 2 x Steg) erzeugt"/>
+                  IsEnabled="False" ToolTip="Doppel-T-Profil wird mit Radien (r = 2 x Steg) erzeugt" Checked="checkedChanged" Unchecked="checkedChanged"
+                  />
 
         <Rectangle x:Name="tooltipFuerCheckbox"
                    Width="120" Margin="10,40" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right"
