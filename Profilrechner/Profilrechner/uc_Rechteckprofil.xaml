@@ -23,12 +23,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Name="Rechteck" Grid.Row="0"  Grid.Column="0"  Margin="30" Fill="Gray">
+        <Rectangle Name="Rechteck" Grid.RowSpan="2"  Grid.Column="0"  Margin="30" Fill="Gray">
         </Rectangle>
-        <Line Name="Linie_waagerecht"  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
-        <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.Row="0" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
+        <Line Name="Linie_waagerecht"  Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.RowSpan="2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
+        <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.RowSpan="2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
         
-        <Image Grid.Column="0" Grid.Row="0" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
+        <Image Grid.Column="0" Grid.RowSpan="2" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
         
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Höhe:</Label>
@@ -46,7 +46,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
             <Label>Breite:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"></TextBox>
