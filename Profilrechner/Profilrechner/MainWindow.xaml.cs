@@ -45,6 +45,7 @@ namespace Profilrechner
         private void tvi_Rechteckprofil_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ClosableTab newTabItem = neuenTab(sender);
+            Title = "Stabil Profil";
 
             uc_Rechteckprofil meinTabRechteckprofil = new uc_Rechteckprofil();
             newTabItem.Content = meinTabRechteckprofil.Content;

@@ -143,6 +143,8 @@ namespace Profilrechner
                 mainWindow.MinWidth = 193;
                 mainWindow.Width = 193;
                 mainWindow.Height = 550;
+
+                mainWindow.Title = "";
             }
         }
 
