@@ -821,7 +821,7 @@ namespace Profilrechner
             CroppedBitmap cb = new CroppedBitmap();
             cb.BeginInit();
             cb.Source = screenshot;
-            cb.SourceRect = new Int32Rect((int)Math.Round(screenshot.Width / 4), 0, (int)Math.Round(screenshot.Width / 2), (int)Math.Round(screenshot.Height / 1.1));
+            cb.SourceRect = new Int32Rect((int)Math.Round(screenshot.Width / 4), 0, (int)Math.Round(screenshot.Width / 2), (int)Math.Round(screenshot.Height / 1.08));
             cb.EndInit();
             return cb;
         }

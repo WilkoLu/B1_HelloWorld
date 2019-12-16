@@ -21,13 +21,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Name="Rohr_aussen" Grid.Row="0"  Grid.Column="0"  Margin="30" Fill="Gray">
+        <Rectangle Name="Rohr_aussen" Grid.RowSpan="2"  Grid.Column="0"  Margin="30" Fill="Gray">
         </Rectangle>
-        <Rectangle Name="Rohr_innen" Grid.Row="0"  Grid.Column="0"  Margin="40" Fill="White">
+        <Rectangle Name="Rohr_innen" Grid.RowSpan="2"  Grid.Column="0"  Margin="40" Fill="White">
         </Rectangle>
-        <Line Name="Linie_waagerecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
-        <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.Row="0" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
-        <Image Grid.Column="0" Grid.Row="0" x:Name="Rechtekrohr_screenshot" Margin="10" Stretch="Uniform" />
+        <Line Name="Linie_waagerecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Grid.RowSpan="2" Grid.Column="0" X1="10000" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10"/>
+        <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2"    Grid.RowSpan="2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10"></Line>
+        <Image Grid.Column="0" Grid.RowSpan="2" x:Name="Rechtekrohr_screenshot" Margin="10" Stretch="Uniform" />
 
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
             <Label>Höhe:</Label>
@@ -45,7 +45,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="290,0,0,0" >
+        <StackPanel Grid.Row="2" Margin="290,0,0,0" >
             <Label>Breite:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"></TextBox>
@@ -63,7 +63,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="80,0,0,0" >
+        <StackPanel Grid.Row="2" Margin="80,0,0,0" >
             <Label>Wandstärke:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Wandstärke" Width="65" KeyUp="aendernTextBox"></TextBox>
@@ -98,7 +98,7 @@
         </StackPanel>
 
 
-        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"   >
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="top"   >
             <Label>Material:</Label>
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>

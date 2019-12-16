@@ -12,7 +12,6 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="160"/>
         </Grid.RowDefinitions>
 
@@ -28,6 +27,41 @@
         <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="3"/>
 
         <Image Grid.Column="0" Grid.RowSpan="3" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
+        
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel VerticalAlignment="Center">
+                <Label Content="Breite"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitBreite" Width="50" DropDownClosed="aendernComboBox" >
+                        <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                        <ComboBoxItem >cm</ComboBoxItem>
+                        <ComboBoxItem >dm</ComboBoxItem>
+                        <ComboBoxItem >m</ComboBoxItem>
+                        <ComboBoxItem >km</ComboBoxItem>
+                        <ComboBoxItem >Zoll</ComboBoxItem>
+                        <ComboBoxItem >ft</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Margin="20,0,0,0" VerticalAlignment="Center" >
+                <Label>Steg:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_Steg" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitSteg" Width="50" DropDownClosed="aendernComboBox" >
+                        <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                        <ComboBoxItem >cm</ComboBoxItem>
+                        <ComboBoxItem >dm</ComboBoxItem>
+                        <ComboBoxItem >m</ComboBoxItem>
+                        <ComboBoxItem >km</ComboBoxItem>
+                        <ComboBoxItem >Zoll</ComboBoxItem>
+                        <ComboBoxItem >ft</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
             <Label Content="Höhe"/>
@@ -44,39 +78,9 @@
                 </ComboBox>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" >
-            <Label Content="Breite"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Breite" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitBreite" Width="50" DropDownClosed="aendernComboBox" >
-                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
-                    <ComboBoxItem >cm</ComboBoxItem>
-                    <ComboBoxItem >dm</ComboBoxItem>
-                    <ComboBoxItem >m</ComboBoxItem>
-                    <ComboBoxItem >km</ComboBoxItem>
-                    <ComboBoxItem >Zoll</ComboBoxItem>
-                    <ComboBoxItem >ft</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
-        </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
-            <Label>Steg:</Label>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Steg" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitSteg" Width="50" DropDownClosed="aendernComboBox" >
-                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
-                    <ComboBoxItem >cm</ComboBoxItem>
-                    <ComboBoxItem >dm</ComboBoxItem>
-                    <ComboBoxItem >m</ComboBoxItem>
-                    <ComboBoxItem >km</ComboBoxItem>
-                    <ComboBoxItem >Zoll</ComboBoxItem>
-                    <ComboBoxItem >ft</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" >
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+        <StackPanel  VerticalAlignment="Center" >
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"/>
@@ -92,7 +96,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="top" >
+        <StackPanel VerticalAlignment="Center"  Margin="20,0,0,0">
             <Label>Material:</Label>
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
@@ -104,8 +108,9 @@
             </ComboBox>
         </StackPanel>
 
+            </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
 
             <DockPanel>
                 <Label Width="150" HorizontalContentAlignment="Right" >FTM X:</Label>
@@ -139,18 +144,18 @@
 
         </StackPanel>
         
-        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="4" 
+        <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="3" 
                   HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
                   IsEnabled="False" ToolTip="Doppel-T-Profil wird mit Radien (r = 2 x Steg) erzeugt" Checked="checkedChanged" Unchecked="checkedChanged"
                   />
 
         <Rectangle x:Name="tooltipFuerCheckbox"
-                   Width="120" Margin="10,40" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right"
+                   Width="120" Margin="10,40" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right"
                    VerticalAlignment="Bottom" Height="16" Visibility="Hidden" Fill="Transparent"
                    ToolTip="Verhältnis von Höhe bzw. Breite zu Steg ist zu gering"/>
 
         <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
-                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="4" Click="CADerzeugen_Click" Width="120"/>
+                 Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" Width="120"/>
 
 
     </Grid>
