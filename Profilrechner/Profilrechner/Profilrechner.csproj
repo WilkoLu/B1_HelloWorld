@@ -191,5 +191,8 @@
   <ItemGroup>
     <Resource Include="Bilder\close_button2red.png" />
   </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="SplashScreen1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

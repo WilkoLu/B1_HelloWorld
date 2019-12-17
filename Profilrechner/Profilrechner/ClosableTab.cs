@@ -144,7 +144,7 @@ namespace Profilrechner
                 mainWindow.Width = 193;
                 mainWindow.Height = 550;
 
-                mainWindow.Title = "";
+                mainWindow.Title = "  Stabil Profil";
             }
         }
 
