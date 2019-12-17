@@ -76,6 +76,8 @@ namespace Profilrechner
 
         public double getFlaechentraegheitsmomentX()
         {
+            double schwerpunktRadien = Math.Pow(steg * 2, 2) * steg - (Math.PI / 4) * Math.Pow(steg * 2, 2) * (steg * 2 - (0.6002 * (steg * 2) * Math.Cos(45)))/Math.Pow(steg*2,2)-(Math.PI/4)*Math.Pow(steg*2,2);
+
             return (((breite * Math.Pow(hoehe, 3)) - (breite - steg) * Math.Pow(hoehe - steg * 2, 3)) / 12);
         }
         public double getFlaechentraegheitsmomentY()

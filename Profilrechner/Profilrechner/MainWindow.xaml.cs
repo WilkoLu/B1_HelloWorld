@@ -52,7 +52,6 @@ namespace Profilrechner
         }
 
 
-
         public ClosableTab neuenTab(object sender)
         {
             TreeViewItem tvi = (TreeViewItem)sender;
@@ -226,14 +225,6 @@ namespace Profilrechner
                 Environment.Exit(0);
             }
 
-            void notifyIcon_click(object sender, System.Windows.Forms.MouseEventArgs e)
-            {
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                {
-                    //this.Show();
-
-                }
-            }
         }
 
 

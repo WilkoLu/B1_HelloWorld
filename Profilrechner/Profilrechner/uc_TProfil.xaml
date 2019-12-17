@@ -20,14 +20,17 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Name="TProfil_senkrecht" Fill="Gray" Margin="0,25,0,25" Width="20" HorizontalAlignment="Center" Grid.RowSpan="2"/>
-        <Rectangle Name="TProfil_waagerecht" Fill="Gray" Margin="25,25,25,0" Height="20" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Line Name="Linie_waagerecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" Grid.RowSpan="2"/>
-        <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="2"/>
-      
+        <Rectangle Name="TProfil_senkrecht" Fill="Gray" Margin="0,25,0,25" Width="20" HorizontalAlignment="Center" Grid.RowSpan="3"/>
+        <Rectangle Name="TProfil_waagerecht" Fill="Gray" Margin="25,25,25,0" Height="20" VerticalAlignment="Top" Grid.RowSpan="3"/>
+        <Line Name="Linie_waagerecht" Stroke="Black" StrokeThickness="6" StrokeDashArray="4 2,1 2" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15" Grid.Row="1"/>
+        <Line Name="Linie_senkrecht" Stroke="Black" StrokeThickness="3" StrokeDashArray="4 2,1 2" Y1="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.RowSpan="3"/>
+        <Line Name="Linie_Kasten1" Stroke="DarkGray" StrokeThickness="1" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+        <Line Name="Linie_Kasten2" Stroke="DarkGray" StrokeThickness="1" Y1="10000" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Grid.RowSpan="3"/>
+
         <Image Grid.Column="0" Grid.RowSpan="2" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
 
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
+            <StackPanel VerticalAlignment="Center">
             <Label>Höhe/Breite:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_BreiteUndHoehe" Width="65" KeyUp="aendernTextBox"/>
@@ -42,24 +45,24 @@
                 </ComboBox>
             </StackPanel>
         </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
-            <Label>Wandstärke:</Label>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Wandstaerke" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitWandstaerke" Width="50" DropDownClosed="aendernComboBox" >
-                    <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
-                    <ComboBoxItem >cm</ComboBoxItem>
-                    <ComboBoxItem >dm</ComboBoxItem>
-                    <ComboBoxItem >m</ComboBoxItem>
-                    <ComboBoxItem >km</ComboBoxItem>
-                    <ComboBoxItem >Zoll</ComboBoxItem>
-                    <ComboBoxItem >ft</ComboBoxItem>
-                </ComboBox>
+            <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,0,0,0">
+                <Label>Wandstärke:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_Wandstaerke" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitWandstaerke" Width="50" DropDownClosed="aendernComboBox" >
+                        <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                        <ComboBoxItem >cm</ComboBoxItem>
+                        <ComboBoxItem >dm</ComboBoxItem>
+                        <ComboBoxItem >m</ComboBoxItem>
+                        <ComboBoxItem >km</ComboBoxItem>
+                        <ComboBoxItem >Zoll</ComboBoxItem>
+                        <ComboBoxItem >ft</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"/>
@@ -75,7 +78,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
             <Label>Material:</Label>
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>

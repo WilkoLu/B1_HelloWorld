@@ -23,9 +23,12 @@
 
 
         <Ellipse Name="Kreis" Fill="Gray" Grid.RowSpan="4" Stretch="Uniform" Margin="30" />
+        <Line Name="Linie_Kasten1" Stroke="DarkGray" StrokeThickness="1" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0" Grid.RowSpan="4" Grid.ColumnSpan="2"/>
+        <Line Name="Linie_Kasten2" Stroke="DarkGray" StrokeThickness="1" Y1="10000" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Grid.RowSpan="4"/>
+        
         <Image Grid.Column="0" Grid.RowSpan="4" x:Name="Rundprofil_screenshot" Margin="10" Stretch="Uniform" />
 
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" >
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
             <Label>Durchmesser:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Durchmsser" Width="65" KeyUp="aendernTextBox"/>
@@ -41,7 +44,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
             <Label>Radius:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Radius" Width="65" KeyUp="aendernTextBox"/>
@@ -57,7 +60,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" >
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
             <Label>Länge:</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="tb_Laenge" Width="65" KeyUp="aendernTextBox"/>
@@ -73,7 +76,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
             <Label>Material:</Label>
             <ComboBox x:Name="cb_Material"  Width="75" HorizontalAlignment="Left" DropDownClosed="aendernComboBox">
                 <ComboBoxItem IsSelected="True">Stahl</ComboBoxItem>
