@@ -816,6 +816,7 @@ namespace Profilrechner
             visPropertySet1.SetShow(CatVisPropertyShow.catVisPropertyShowAttr);
             selection1.Clear();
             #endregion
+
         }
 
         public static CroppedBitmap BildZuschneiden(BitmapImage screenshot)
@@ -834,9 +835,9 @@ namespace Profilrechner
             saveFileDialog.FileName = filename;
             saveFileDialog.Filter = "CATPart(*.CATPart) |*.CATPart|stp (*.stp)|*.stp|igs (*.igs)|*.igs";
             saveFileDialog.ShowDialog();
-           
+
             string safefilename = saveFileDialog.FileName;
-            if(safefilename.Contains("CATPart"))
+            if (safefilename.Contains("CATPart"))
             {
                 string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.CATPart$", "");
                 hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "CATPart");
@@ -851,9 +852,10 @@ namespace Profilrechner
                 string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.stp$", "");
                 hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "stp");
             }
-            //saveFileDialog.
+            
 
         }
+
 
     }
 }

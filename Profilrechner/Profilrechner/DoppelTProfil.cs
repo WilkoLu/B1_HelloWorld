@@ -103,14 +103,11 @@ namespace Profilrechner
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
                 //Finde Catia Prozess
                 if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && steg > 0 && breite > steg && hoehe > steg)
                 {
                     //Öffne ein neues Part
                     cc.ErzeugePart();
-
                     // Erstelle eine Skizze
                     cc.ErstelleLeereSkizze();
 
