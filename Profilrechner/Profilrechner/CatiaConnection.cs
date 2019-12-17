@@ -8,6 +8,7 @@ using PARTITF;
 using System.Threading;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
 
 namespace Profilrechner
 {
@@ -834,18 +835,21 @@ namespace Profilrechner
             saveFileDialog.Filter = "CATPart(*.CATPart) |*.CATPart|stp (*.stp)|*.stp|igs (*.igs)|*.igs";
             saveFileDialog.ShowDialog();
            
-            string safefilename = saveFileDialog.SafeFileName;
+            string safefilename = saveFileDialog.FileName;
             if(safefilename.Contains("CATPart"))
             {
-                hsp_catiaPart.ExportData(safefilename, "CATPart");
+                string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.CATPart$", "");
+                hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "CATPart");
             }
             else if (safefilename.Contains("igs"))
             {
-                hsp_catiaPart.ExportData(safefilename, "igs");
+                string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.igs$", "");
+                hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "igs");
             }
             else if (safefilename.Contains("stp"))
             {
-                hsp_catiaPart.ExportData(safefilename, "stp");
+                string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.stp$", "");
+                hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "stp");
             }
             //saveFileDialog.
 

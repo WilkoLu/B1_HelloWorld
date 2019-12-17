@@ -48,10 +48,10 @@
             </StackPanel>
 
             <StackPanel Margin="20,0,0,0" VerticalAlignment="Center" >
-                <Label>Steg:</Label>
+                <Label Content="Höhe"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="tb_Steg" Width="65" KeyUp="aendernTextBox"/>
-                    <ComboBox x:Name="cb_einheitSteg" Width="50" DropDownClosed="aendernComboBox" >
+                    <TextBox x:Name="tb_Hoehe" Width="65" KeyUp="aendernTextBox"/>
+                    <ComboBox x:Name="cb_einheitHoehe" Width="50" DropDownClosed="aendernComboBox" >
                         <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                         <ComboBoxItem >cm</ComboBoxItem>
                         <ComboBoxItem >dm</ComboBoxItem>
@@ -61,14 +61,15 @@
                         <ComboBoxItem >ft</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
+                
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
-            <Label Content="Höhe"/>
+            <Label>Steg:</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tb_Hoehe" Width="65" KeyUp="aendernTextBox"/>
-                <ComboBox x:Name="cb_einheitHoehe" Width="50" DropDownClosed="aendernComboBox" >
+                <TextBox x:Name="tb_Steg" Width="65" KeyUp="aendernTextBox"/>
+                <ComboBox x:Name="cb_einheitSteg" Width="50" DropDownClosed="aendernComboBox" >
                     <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
                     <ComboBoxItem >cm</ComboBoxItem>
                     <ComboBoxItem >dm</ComboBoxItem>
