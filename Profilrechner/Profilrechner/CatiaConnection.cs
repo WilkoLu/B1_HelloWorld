@@ -7,6 +7,7 @@ using MECMOD;
 using PARTITF;
 using System.Threading;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 
 namespace Profilrechner
 {
@@ -825,11 +826,16 @@ namespace Profilrechner
             cb.EndInit();
             return cb;
         }
-
-        public void Speichern()
+        public void Speichern(string filename)
         {
-          //  hsp_catiaPart.Part.
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "CATPart";
+            saveFileDialog.FileName = filename;
+            saveFileDialog.Filter = "CATPart(*.CATPart) |*.CATPart|stp (*.stp)|*.stp|igs (*.igs)|*.igs";
+            saveFileDialog.ShowDialog();
+            string safefilename = saveFileDialog.SafeFileName;
+            hsp_catiaPart.ExportData("C:\\Temp\\"+ safefilename, "igs");
         }
+
     }
 }

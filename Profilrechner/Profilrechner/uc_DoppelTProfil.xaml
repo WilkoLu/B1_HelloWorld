@@ -146,17 +146,21 @@
         </StackPanel>
         
         <CheckBox x:Name="checkBoxRadius" Content="Radien erzeugen" Grid.Column="1" Grid.Row="3" 
-                  HorizontalAlignment="Right" Margin="10,40" VerticalAlignment="Bottom" Width="120" 
+                  HorizontalAlignment="Right" Margin="0,0,10,70" VerticalAlignment="Bottom" Width="120" 
                   IsEnabled="False" ToolTip="Doppel-T-Profil wird mit Radien (r = 2 x Steg) erzeugt" Checked="checkedChanged" Unchecked="checkedChanged"
                   />
 
         <Rectangle x:Name="tooltipFuerCheckbox"
-                   Width="120" Margin="10,40" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right"
+                   Width="120" Margin="0,0,10,70" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right"
                    VerticalAlignment="Bottom" Height="16" Visibility="Hidden" Fill="Transparent"
                    ToolTip="Verhältnis von Höhe bzw. Breite zu Steg ist zu gering"/>
 
-        <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
+        <Button x:Name="CADerzeugen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,40" 
                  Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" Width="120"/>
+
+        <Button x:Name="CADexportieren" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
+                 Content="Profil exportieren" Grid.Column="1" Grid.Row="3"  Width="120" Click="CADexportieren_Click"
+                IsEnabled="False" ToolTip="Profil vorher erzeugen!"/>
 
 
     </Grid>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +42,7 @@ namespace Profilrechner
 
         private void berechnen(string welcheEingabe)
         {
+            CADexportieren.IsEnabled = false;
             int ausgebe = 0;
 
             meinDoppelTProfil.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
@@ -145,6 +148,7 @@ namespace Profilrechner
                     screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
                     screenshot.EndInit();
                     Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                    CADexportieren.IsEnabled = true;
                 }
 
             }
@@ -163,6 +167,7 @@ namespace Profilrechner
                     screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm_" + "Radius" + meinDoppelTProfil.getSteg() * 2 + "mm.bmp", UriKind.Absolute);
                     screenshot.EndInit();
                     Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                    CADexportieren.IsEnabled = true;
                 }
             }
         }
@@ -170,6 +175,12 @@ namespace Profilrechner
         private void checkedChanged(object sender, RoutedEventArgs e)
         {
             berechnen("Checkbox");
+        }
+
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
+            
+            meinDoppelTProfil.speichern(checkBoxRadius.IsChecked);
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Profilrechner
         private double steg;
         private string profilmaterial;
 
+        CatiaConnection cc = new CatiaConnection();
+
         public DoppelTProfil()
         {
             breite = 0;
@@ -63,20 +65,20 @@ namespace Profilrechner
         }
         public double getQflaeche(bool? radienErzeugen = false)
         {
-            if(radienErzeugen == true)
+            if (radienErzeugen == true)
             {
-                return ((breite * steg) * 2 + steg * (hoehe - 2 * steg)+steg *steg *16-Math.PI * Math.Pow(steg*2,2));
+                return ((breite * steg) * 2 + steg * (hoehe - 2 * steg) + steg * steg * 16 - Math.PI * Math.Pow(steg * 2, 2));
             }
             else
             {
                 return ((breite * steg) * 2 + steg * (hoehe - 2 * steg));
             }
-            
+
         }
 
         public double getFlaechentraegheitsmomentX()
         {
-            double schwerpunktRadien = Math.Pow(steg * 2, 2) * steg - (Math.PI / 4) * Math.Pow(steg * 2, 2) * (steg * 2 - (0.6002 * (steg * 2) * Math.Cos(45)))/Math.Pow(steg*2,2)-(Math.PI/4)*Math.Pow(steg*2,2);
+            double schwerpunktRadien = Math.Pow(steg * 2, 2) * steg - (Math.PI / 4) * Math.Pow(steg * 2, 2) * (steg * 2 - (0.6002 * (steg * 2) * Math.Cos(45))) / Math.Pow(steg * 2, 2) - (Math.PI / 4) * Math.Pow(steg * 2, 2);
 
             return (((breite * Math.Pow(hoehe, 3)) - (breite - steg) * Math.Pow(hoehe - steg * 2, 3)) / 12);
         }
@@ -145,15 +147,12 @@ namespace Profilrechner
                                  MessageBoxImage.Information);
                 return false;
             }
-
-
-
         }
         public bool erzeugeCADRadius()
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
+                //CatiaConnection cc = new CatiaConnection();
 
                 //Finde Catia Prozess
                 if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && steg > 0 && breite > steg && hoehe > steg)
@@ -171,8 +170,8 @@ namespace Profilrechner
                     {
                         // Extrudiere Balken
                         cc.ErzeugeVolumenAusSkizze(laenge);
-                       // cc.Radien(steg);
-                        cc.Screenshot("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm_" +"Radius"+Convert.ToString(steg*2)+"mm");
+                        // cc.Radien(steg);
+                        cc.Screenshot("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm_" + "Radius" + Convert.ToString(steg * 2) + "mm");
                         return true;
                     }
                     return false;
@@ -198,8 +197,20 @@ namespace Profilrechner
                 return false;
             }
 
-
-
         }
+
+        public void speichern(bool? radienErzeugen)
+        {
+            if(radienErzeugen == true)
+            {
+                cc.Speichern("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm_" + "Radius" + Convert.ToString(steg * 2) + "mm");
+            }
+            else
+            {
+                cc.Speichern("TProfil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(steg) + "mm_x_" + Convert.ToString(laenge) + "mm");
+            }
+            
+        }
+
     }
 }

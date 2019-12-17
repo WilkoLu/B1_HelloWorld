@@ -112,8 +112,6 @@ namespace Profilrechner
                         }
                         return true;
                     }
-
-                    cc.Speichern();
                     return false;
                 }
                 else if (cc.CATIALaeuft())

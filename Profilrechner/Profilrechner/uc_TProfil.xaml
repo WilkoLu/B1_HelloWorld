@@ -27,7 +27,7 @@
         <Line Name="Linie_Kasten1" Stroke="DarkGray" StrokeThickness="1" X1="10000" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
         <Line Name="Linie_Kasten2" Stroke="DarkGray" StrokeThickness="1" Y1="10000" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Grid.RowSpan="3"/>
 
-        <Image Grid.Column="0" Grid.RowSpan="2" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
+        <Image Grid.Column="0" Grid.RowSpan="3" x:Name="Rechtekprofil_screenshot" Margin="10" Stretch="Uniform" />
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
             <StackPanel VerticalAlignment="Center">
