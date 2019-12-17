@@ -833,8 +833,22 @@ namespace Profilrechner
             saveFileDialog.FileName = filename;
             saveFileDialog.Filter = "CATPart(*.CATPart) |*.CATPart|stp (*.stp)|*.stp|igs (*.igs)|*.igs";
             saveFileDialog.ShowDialog();
+           
             string safefilename = saveFileDialog.SafeFileName;
-            hsp_catiaPart.ExportData("C:\\Temp\\"+ safefilename, "igs");
+            if(safefilename.Contains("CATPart"))
+            {
+                hsp_catiaPart.ExportData(safefilename, "CATPart");
+            }
+            else if (safefilename.Contains("igs"))
+            {
+                hsp_catiaPart.ExportData(safefilename, "igs");
+            }
+            else if (safefilename.Contains("stp"))
+            {
+                hsp_catiaPart.ExportData(safefilename, "stp");
+            }
+            //saveFileDialog.
+
         }
 
     }
