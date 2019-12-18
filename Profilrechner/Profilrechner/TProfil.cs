@@ -137,7 +137,10 @@ namespace Profilrechner
                                 catia.Start();
                                 Thread.Sleep(1000);
                                 catia.Kill();
-                                Thread.Sleep(12000);
+                                while (cc.CATIALaeuft() == false)
+                                {
+                                    Thread.Sleep(1000);
+                                }
                                 erzeugeCAD(radienErzeugen);
                                 return true;
                             }

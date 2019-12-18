@@ -139,16 +139,21 @@ namespace Profilrechner
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            Process catia = new Process();
+                            
                             try
                             {
+                                Process catia = new Process();
                                 catia.StartInfo.FileName = "C:\\Program Files\\Dassault Systemes\\B28\\win_b64\\code\\bin\\CATSTART.exe";
                                 catia.Start();
                                 Thread.Sleep(1000);
                                 catia.Kill();
-                                Thread.Sleep(12000);
+                                while(cc.CATIALaeuft()==false)
+                                {
+                                    Thread.Sleep(1000);
+                                }
                                 erzeugeCAD();
                                 return true;
+                                
                             }
                             catch
                             {
@@ -216,7 +221,10 @@ namespace Profilrechner
                                 catia.Start();
                                 Thread.Sleep(1000);
                                 catia.Kill();
-                                Thread.Sleep(12000);
+                                while (cc.CATIALaeuft() == false)
+                                {
+                                    Thread.Sleep(1000);
+                                }
                                 erzeugeCADRadius();
                                 return true;
                             }
