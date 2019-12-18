@@ -33,9 +33,7 @@
         </DockPanel>
 
 
-        <TabControl Grid.Column="1" Name="TabControl" Margin="6" >
-
-        </TabControl>
+        <TabControl Grid.Column="1" Name="TabControl" Margin="6"/>
 
 
     </Grid>
