@@ -104,7 +104,7 @@ namespace Profilrechner
             try
             {
                 //Finde Catia Prozess
-                if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && steg > 0 && breite > steg && hoehe > steg)
+                if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && steg > 0 && breite > steg && hoehe > steg*2)
                 {
                     //Öffne ein neues Part
                     cc.ErzeugePart();

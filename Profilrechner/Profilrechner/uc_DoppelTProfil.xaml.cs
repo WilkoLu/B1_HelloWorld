@@ -70,9 +70,14 @@ namespace Profilrechner
             fehlerprüfungMitFarbe(meinDoppelTProfil.getBreite(), tb_Breite);
             fehlerprüfungMitFarbe(meinDoppelTProfil.getHoehe(), tb_Hoehe);
 
-            if (meinDoppelTProfil.getSteg()*3 > meinDoppelTProfil.getBreite() || meinDoppelTProfil.getSteg()*4 > meinDoppelTProfil.getHoehe())
+            if (meinDoppelTProfil.getSteg() > 0 && meinDoppelTProfil.getSteg() >= meinDoppelTProfil.getBreite() )
             {
                 tb_Breite.Background = Brushes.IndianRed;
+                tb_Steg.Background = Brushes.IndianRed;
+                ausgebe = 1;
+            }
+            else if(meinDoppelTProfil.getSteg() > 0 && meinDoppelTProfil.getSteg() * 2 >= meinDoppelTProfil.getHoehe())
+            {
                 tb_Hoehe.Background = Brushes.IndianRed;
                 tb_Steg.Background = Brushes.IndianRed;
                 ausgebe = 1;
