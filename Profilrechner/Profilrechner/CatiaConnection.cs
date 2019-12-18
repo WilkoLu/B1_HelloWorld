@@ -149,20 +149,13 @@ namespace Profilrechner
             // Skizze umbenennen
             hsp_catiaProfil.set_Name("Kreis");
 
-            // Rechteck in Skizze einzeichnen
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
 
-            // Rechteck erzeugen
-
-            // erst die Punkte
-            //Point2D catPoint2D1 = catFactory2D1.CreatePoint(0 ,0);
-            //Point2D catPoint2D2 = catFactory2D1.CreatePoint(0,r);
+            // kreis erzeugen
 
             // dann die Linien
             Circle2D catCircel2D1 = catFactory2D1.CreateCircle(0, 0, r, 0, 0);
-            //catCircel2D1.StartPoint = catPoint2D1;
-            //catCircel2D1.EndPoint = catPoint2D2;
 
 
             // Skizzierer verlassen
@@ -180,17 +173,12 @@ namespace Profilrechner
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
 
-            // Rechteck erzeugen
-
-            // erst die Punkte
-            //Point2D catPoint2D1 = catFactory2D1.CreatePoint(0 ,0);
-            //Point2D catPoint2D2 = catFactory2D1.CreatePoint(0,r);
+            // rohr erzeugen
 
             // dann die Linien
             Circle2D catCircel2D1 = catFactory2D1.CreateCircle(0, 0, aussenR, 0, 0);
             Circle2D catCircel2D2 = catFactory2D1.CreateCircle(0, 0, innenR, 0, 0);
-            //catCircel2D1.StartPoint = catPoint2D1;
-            //catCircel2D1.EndPoint = catPoint2D2;
+            
 
 
             // Skizzierer verlassen
@@ -218,23 +206,74 @@ namespace Profilrechner
                 Point2D catPoint2D1 = catFactory2D1.CreatePoint(-hb / 2, sp);
                 Point2D catPoint2D2 = catFactory2D1.CreatePoint(hb / 2, sp);
                 Point2D catPoint2D3 = catFactory2D1.CreatePoint(hb / 2, sp - w + r1);
-                Point2D catPoint2D4 = catFactory2D1.CreatePoint(hb / 2 - r1, sp - w + r1);
+                Point2D catPoint2D4 = catFactory2D1.CreatePoint(hb / 2 - r1, sp - w + r1);//mittelpunkt
                 Point2D catPoint2D5 = catFactory2D1.CreatePoint(hb / 2 - r1, sp - w);
                 Point2D catPoint2D6 = catFactory2D1.CreatePoint(w / 2 + r, sp - w);
-                Point2D catPoint2D7 = catFactory2D1.CreatePoint(w / 2 + r, sp - w - r);
+                Point2D catPoint2D7 = catFactory2D1.CreatePoint(w / 2 + r, sp - w - r);//mittelpunkt
                 Point2D catPoint2D8 = catFactory2D1.CreatePoint(w / 2, sp - w - r);
                 Point2D catPoint2D9 = catFactory2D1.CreatePoint(w / 2, -(hb - sp + r1));
-                Point2D catPoint2D10 = catFactory2D1.CreatePoint(0, -(hb - sp + r1));
+                Point2D catPoint2D10 = catFactory2D1.CreatePoint(0, -(hb - sp + r1));//mittelpunkt
                 Point2D catPoint2D11 = catFactory2D1.CreatePoint(-w / 2, -(hb - sp + r1));
                 Point2D catPoint2D12 = catFactory2D1.CreatePoint(-w / 2, sp - w - r);
-                Point2D catPoint2D13 = catFactory2D1.CreatePoint(-w / 2 - r, sp - w - r);
+                Point2D catPoint2D13 = catFactory2D1.CreatePoint(-w / 2 - r, sp - w - r);//mittelpunkt
                 Point2D catPoint2D14 = catFactory2D1.CreatePoint(-w / 2 - r, sp - w);
                 Point2D catPoint2D15 = catFactory2D1.CreatePoint(-hb / 2 + r1, sp - w);
-                Point2D catPoint2D16 = catFactory2D1.CreatePoint(-hb / 2 + r1, sp - w + r1);
+                Point2D catPoint2D16 = catFactory2D1.CreatePoint(-hb / 2 + r1, sp - w + r1);//mittelpunkt
                 Point2D catPoint2D17 = catFactory2D1.CreatePoint(-hb / 2, sp - w + r1);
 
                 // dann die Linien
+                Line2D catLine2D1 = catFactory2D1.CreateLine(-hb / 2, sp, hb / 2, sp);
+                catLine2D1.StartPoint = catPoint2D1;
+                catLine2D1.EndPoint = catPoint2D2;
 
+                Line2D catLine2D2 = catFactory2D1.CreateLine(hb / 2, sp, hb / 2, sp - w + r1);
+                catLine2D2.StartPoint = catPoint2D2;
+                catLine2D2.EndPoint = catPoint2D3;
+
+                Circle2D circle2D1 = catFactory2D1.CreateCircle(hb / 2 - r1, sp - w + r1, r1, Math.PI*3/2, 0);
+                circle2D1.CenterPoint = catPoint2D4;
+                circle2D1.StartPoint = catPoint2D5;
+                circle2D1.EndPoint = catPoint2D3;
+
+                Line2D catLine2D3 = catFactory2D1.CreateLine(hb / 2 - r1, sp - w, w / 2 + r, sp - w);
+                catLine2D3.StartPoint = catPoint2D5;
+                catLine2D3.EndPoint = catPoint2D6;
+
+                Circle2D circle2D2 = catFactory2D1.CreateCircle(w / 2 + r, sp - w - r, r, Math.PI/2, Math.PI);
+                circle2D2.CenterPoint = catPoint2D7;
+                circle2D2.StartPoint = catPoint2D6;
+                circle2D2.EndPoint = catPoint2D8;
+
+                Line2D catLine2D4 = catFactory2D1.CreateLine(w / 2, sp - w - r, w / 2, -(hb - sp + r1));
+                catLine2D4.StartPoint = catPoint2D8;
+                catLine2D4.EndPoint = catPoint2D9;
+
+                Circle2D circle2D3 = catFactory2D1.CreateCircle(0, -(hb - sp + r1), r1, Math.PI , 0);
+                circle2D3.CenterPoint = catPoint2D10;
+                circle2D3.StartPoint = catPoint2D11;
+                circle2D3.EndPoint = catPoint2D9;
+
+                Line2D catLine2D5 = catFactory2D1.CreateLine(-w / 2, -(hb - sp + r1), -w / 2, sp - w - r);
+                catLine2D5.StartPoint = catPoint2D11;
+                catLine2D5.EndPoint = catPoint2D12;
+
+                Circle2D circle2D4 = catFactory2D1.CreateCircle(-w / 2 - r, sp - w - r, r, 0, Math.PI / 2);
+                circle2D4.CenterPoint = catPoint2D13;
+                circle2D4.StartPoint = catPoint2D12;
+                circle2D4.EndPoint = catPoint2D14;
+
+                Line2D catLine2D6 = catFactory2D1.CreateLine(-w / 2 - r, sp - w, -hb / 2 + r1, sp - w);
+                catLine2D6.StartPoint = catPoint2D14;
+                catLine2D6.EndPoint = catPoint2D15;
+
+                Circle2D circle2D5 = catFactory2D1.CreateCircle(-hb / 2 + r1, sp - w + r1, r1, Math.PI, Math.PI *3/ 2);
+                circle2D5.CenterPoint = catPoint2D16;
+                circle2D5.StartPoint = catPoint2D17;
+                circle2D5.EndPoint = catPoint2D15;
+
+                Line2D catLine2D7 = catFactory2D1.CreateLine(-hb / 2, sp - w + r1, -hb / 2, sp);
+                catLine2D7.StartPoint = catPoint2D17;
+                catLine2D7.EndPoint = catPoint2D1;
             }
             else
             {
