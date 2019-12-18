@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -122,9 +124,31 @@ namespace Profilrechner
                 }
                 else
                 {
-                    MessageBox.Show("Keine laufende Catia Application. Bitte Catia starten", "Fehler",
-                                 MessageBoxButton.OK,
+                    MessageBoxResult result = MessageBox.Show("Keine laufende Catia Application. " + Environment.NewLine + "Catia starten?", "Fehler",
+                                 MessageBoxButton.YesNo,
                                  MessageBoxImage.Information);
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            Process catia = new Process();
+                            try
+                            {
+                                catia.StartInfo.FileName = "C:\\Program Files\\Dassault Systemes\\B28\\win_b64\\code\\bin\\CATSTART.exe";
+                                catia.Start();
+                                Thread.Sleep(1000);
+                                catia.Kill();
+                                Thread.Sleep(12000);
+                                erzeugeCAD(radienErzeugen);
+                                return true;
+                            }
+                            catch
+                            {
+                                break;
+                            }
+
+                        case MessageBoxResult.No:
+                            break;
+                    }
                     return false;
                 }
             }

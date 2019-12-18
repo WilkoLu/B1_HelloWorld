@@ -184,7 +184,6 @@ namespace Profilrechner
                                 break;
                             }
                             
-                            break;
                         case MessageBoxResult.No:
                             break;
                     }
