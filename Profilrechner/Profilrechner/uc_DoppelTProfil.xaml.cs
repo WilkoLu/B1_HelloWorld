@@ -42,6 +42,7 @@ namespace Profilrechner
 
         private void berechnen(string welcheEingabe)
         {
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
             CADexportieren.IsEnabled = false;
             int ausgebe = 0;
 
@@ -153,6 +154,7 @@ namespace Profilrechner
                     screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm.bmp", UriKind.Absolute);
                     screenshot.EndInit();
                     Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                    tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
                     CADexportieren.IsEnabled = true;
                 }
 
@@ -172,6 +174,7 @@ namespace Profilrechner
                     screenshot.UriSource = new Uri("C:/Temp/" + "TProfil_" + meinDoppelTProfil.getBreite() + "mm_x_" + meinDoppelTProfil.getHoehe() + "mm_x_" + meinDoppelTProfil.getSteg() + "mm_x_" + meinDoppelTProfil.getLaenge() + "mm_" + "Radius" + meinDoppelTProfil.getSteg() * 2 + "mm.bmp", UriKind.Absolute);
                     screenshot.EndInit();
                     Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                    tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
                     CADexportieren.IsEnabled = true;
                 }
             }

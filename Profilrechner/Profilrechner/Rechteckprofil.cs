@@ -14,6 +14,7 @@ namespace Profilrechner
         private double breite;
         private string material;
 
+        CatiaConnection cc = new CatiaConnection();
 
         public Rechteckprofil()
         {
@@ -130,8 +131,7 @@ namespace Profilrechner
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
+ 
                 //Finde Catia Prozess
                 if(cc.CATIALaeuft() && breite > 0 && hoehe > 0)
                 {
@@ -174,6 +174,10 @@ namespace Profilrechner
                 return false;
             }
 
+        }
+        public void speichern()
+        {
+                cc.Speichern("Rechteckprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(laenge) + "mm");
         }
 
 

@@ -42,6 +42,9 @@ namespace Profilrechner
         {
             int ausgabe = 0;
 
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
+            CADexportieren.IsEnabled = false;
+
             //Rundprofil meinRundprofil = new Rundprofil();
 
             if (welcheEingabe.Equals("tb_Durchmsser") || welcheEingabe.Equals("cb_einheitDurchmesser"))
@@ -132,11 +135,16 @@ namespace Profilrechner
                 screenshot.EndInit();
 
                 Rundprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
+                CADexportieren.IsEnabled = true;
             }
             
         }
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
+            meinRundprofil.speichern();
+        }
 
-        
 
     }
 }

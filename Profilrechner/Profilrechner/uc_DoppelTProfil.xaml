@@ -160,8 +160,13 @@
                  Content="An CAD übertragen" Grid.Column="1" Grid.Row="3" Click="CADerzeugen_Click" Width="120"/>
 
         <Button x:Name="CADexportieren" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" 
-                 Content="Profil exportieren" Grid.Column="1" Grid.Row="3"  Width="120" Click="CADexportieren_Click"
-                IsEnabled="False" ToolTip="Profil vorher erzeugen!"/>
+                 Content="Part exportieren" Grid.Column="1" Grid.Row="3"  Width="120" Click="CADexportieren_Click"
+                IsEnabled="False" />
+        
+        <Rectangle x:Name="tooltipFuerProflExportieren"
+                   Width="120" Margin="0,0,10,10" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom" Height="20" Visibility="Visible" Fill="Transparent"
+                   ToolTip="Profil vorher erzeugen!"/>
 
 
     </Grid>

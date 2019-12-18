@@ -13,6 +13,8 @@ namespace Profilrechner
         private double laenge;
         private string material;
 
+        CatiaConnection cc = new CatiaConnection();
+
         public Rundprofil()
         {
             durchmesser = 0;
@@ -81,8 +83,7 @@ namespace Profilrechner
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
+                
                 //Finde Catia Prozess
                 if (cc.CATIALaeuft() && durchmesser > 0 )
                 {
@@ -127,7 +128,10 @@ namespace Profilrechner
 
         }
 
-
+        public void speichern()
+        {
+            cc.Speichern("Rundprofil_" + Convert.ToString(durchmesser) + "mm_x_" + Convert.ToString(laenge) + "mm");
+        }
 
 
 

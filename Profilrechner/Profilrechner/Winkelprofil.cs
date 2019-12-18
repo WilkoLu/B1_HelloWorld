@@ -15,6 +15,8 @@ namespace Profilrechner
         private double wandstaerke;
         private string profilmaterial;
 
+        CatiaConnection cc = new CatiaConnection();
+
         public Winkelprofil()
         {
             hoehe = 0;
@@ -98,8 +100,7 @@ namespace Profilrechner
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
+                
                 //Finde Catia Prozess
                 if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && wandstaerke > 0 && breite > wandstaerke && hoehe > wandstaerke)
                 {
@@ -151,7 +152,18 @@ namespace Profilrechner
 
         }
 
+        public void speichern(bool? radienErzeugen)
+        {
+            if (radienErzeugen == true)
+            {
+                cc.Speichern("Winkelprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm_Radius" + Convert.ToString(wandstaerke) + "mm");
+            }
+            else
+            {
+                cc.Speichern("Winkelprofil_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+            }
 
+        }
 
 
 

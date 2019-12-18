@@ -14,6 +14,8 @@ namespace Profilrechner
         private double laenge;
         private string profilmaterial;
 
+        CatiaConnection cc = new CatiaConnection();
+
         public Rohrprofil()
         {
             aussendurchmesser = 0;
@@ -106,8 +108,7 @@ namespace Profilrechner
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
+                
                 //Finde Catia Prozess
                 if (cc.CATIALaeuft() && innendurchmesser > 0 && aussendurchmesser > innendurchmesser)
                 {
@@ -152,12 +153,13 @@ namespace Profilrechner
 
         }
 
+        public void speichern()
+        {
+            cc.Speichern("Rohrprofil_" + Convert.ToString(aussendurchmesser) + "mm_x_" + Convert.ToString(innendurchmesser) + "mm_x_" + Convert.ToString(laenge) + "mm");
+        }
 
 
-
-
-
-
+               
 
 
     }

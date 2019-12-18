@@ -49,6 +49,9 @@ namespace Profilrechner
         {
             int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
 
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
+            CADexportieren.IsEnabled = false;
+
             meinRechteckrohr.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
             meinRechteckrohr.setBreite(tb_Breite.Text, cb_einheitBreite.Text);
             meinRechteckrohr.setLaenge(tb_Laenge.Text, cb_einheitLaenge.Text);
@@ -144,9 +147,15 @@ namespace Profilrechner
                 screenshot.EndInit();
 
                 Rechtekrohr_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
+                CADexportieren.IsEnabled = true;
             }
         }
 
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
+            meinRechteckrohr.speichern(checkBoxRadius.IsChecked);
+        }
 
 
     }

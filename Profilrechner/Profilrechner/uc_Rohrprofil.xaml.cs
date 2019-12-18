@@ -45,6 +45,8 @@ namespace Profilrechner
         private void berechnen(string welcheEingabe)
         {
             int ausgebe = 0;
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
+            CADexportieren.IsEnabled = false;
 
             //Rohrprofil meinRohrprofil = new Rohrprofil();
 
@@ -177,12 +179,18 @@ namespace Profilrechner
                 screenshot.UriSource = new Uri("C:/Temp/" + "Rohrprofil_" + meinRohrprofil.getAussendurchmesser() + "mm_x_" + meinRohrprofil.getInnendurchmesser() + "mm_x_" + meinRohrprofil.getLaenge() + "mm.bmp", UriKind.Absolute);
                 screenshot.EndInit();
 
-                
                 Rohrprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
+                CADexportieren.IsEnabled = true;
             }
         }
 
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
 
-        
+            meinRohrprofil.speichern();
+        }
+
+
     }
 }

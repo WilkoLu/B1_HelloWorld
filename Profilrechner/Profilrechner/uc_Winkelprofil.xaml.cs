@@ -41,6 +41,9 @@ namespace Profilrechner
         {
             int ausgabe = 0;
 
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
+            CADexportieren.IsEnabled = false;
+
             //Winkelprofil meinWikelprofil = new Winkelprofil();
 
             meinWikelprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
@@ -157,9 +160,15 @@ namespace Profilrechner
                 screenshot.EndInit();
 
                 Winkelprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+
+                tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
+                CADexportieren.IsEnabled = true;
             }
         }
-
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
+            meinWikelprofil.speichern(checkBoxRadius.IsChecked);
+        }
 
 
     }

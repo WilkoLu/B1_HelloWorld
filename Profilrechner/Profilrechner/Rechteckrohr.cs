@@ -16,6 +16,7 @@ namespace Profilrechner
         private double qflaeche;
         private string material;
 
+        CatiaConnection cc = new CatiaConnection();
 
         public Rechteckrohr()
         {
@@ -108,8 +109,7 @@ namespace Profilrechner
         {
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
+               
                 //Finde Catia Prozess
                 if (cc.CATIALaeuft() && breite > 0 && hoehe > 0 && wandstaerke > 0 && breite > wandstaerke*2 && hoehe > wandstaerke*2)
                 {
@@ -161,6 +161,18 @@ namespace Profilrechner
 
         }
 
+        public void speichern(bool? radienErzeugen)
+        {
+            if (radienErzeugen == true)
+            {
+                cc.Speichern("Rechteckrohr_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm_Radius" + Convert.ToString(wandstaerke) + "mm");
+            }
+            else
+            {
+                cc.Speichern("Rechteckrohr_" + Convert.ToString(breite) + "mm_x_" + Convert.ToString(hoehe) + "mm_x_" + Convert.ToString(wandstaerke) + "mm_x_" + Convert.ToString(laenge) + "mm");
+            }
+
+        }
 
 
     }

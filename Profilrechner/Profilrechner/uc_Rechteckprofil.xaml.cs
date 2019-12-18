@@ -49,6 +49,9 @@ namespace Profilrechner
         {
             int ausgabe = 0; // ausgabe erfolgt nur wenn ausgabe 0 bleibt
 
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
+            CADexportieren.IsEnabled = false;
+
             //Rechteckprofil meinRechteckprofil = new Rechteckprofil();
 
             meinRechteckprofil.setHoehe(tb_Hoehe.Text, cb_einheitHoehe.Text);
@@ -131,9 +134,15 @@ namespace Profilrechner
                 screenshot.EndInit();
 
                 Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
+                CADexportieren.IsEnabled = true;
             }
         }
-        
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
+
+            meinRechteckprofil.speichern();
+        }
 
 
     }

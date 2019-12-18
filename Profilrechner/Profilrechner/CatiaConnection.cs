@@ -776,8 +776,9 @@ namespace Profilrechner
             Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]); // Normale Farbe speichern
 
             hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe(); // Alles einpassen
+            System.Threading.Thread.Sleep(500); //Zeit um alles einzupassen
             hsp_catiaApp.StartCommand("* Iso"); // in die ISO drehen
-            System.Threading.Thread.Sleep(2000); //Zeit um in die ISO zu drehen
+            System.Threading.Thread.Sleep(1500); //Zeit um in die ISO zu drehen
             hsp_catiaApp.StartCommand("CompassDisplayOff"); //Kompass ausblenden
             hsp_catiaApp.StartCommand("Spezifikationen"); //Specification Tree ausblenden
 
@@ -840,16 +841,28 @@ namespace Profilrechner
             if (safefilename.Contains("CATPart"))
             {
                 string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.CATPart$", "");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ü","ue");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ä", "ae");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ö", "oe");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ß", "ss");
                 hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "CATPart");
             }
             else if (safefilename.Contains("igs"))
             {
                 string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.igs$", "");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ü", "ue");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ä", "ae");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ö", "oe");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ß", "ss");
                 hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "igs");
             }
             else if (safefilename.Contains("stp"))
             {
                 string safefilenameOhneDateiEndung = Regex.Replace(safefilename, @"\.stp$", "");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ü", "ue");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ä", "ae");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ö", "oe");
+                safefilenameOhneDateiEndung = safefilenameOhneDateiEndung.Replace("ß", "ss");
                 hsp_catiaPart.ExportData(safefilenameOhneDateiEndung, "stp");
             }
             

@@ -42,6 +42,9 @@ namespace Profilrechner
         {
             int ausgebe = 0;
 
+            tooltipFuerProflExportieren.Visibility = Visibility.Visible;
+            CADexportieren.IsEnabled = false;
+
             //TProfil meinTProfil = new TProfil();
 
             meinTProfil.setBreiteUndHoehe(tb_BreiteUndHoehe.Text, cb_einheitBreiteUndHoehe.Text);
@@ -148,9 +151,14 @@ namespace Profilrechner
                 screenshot.EndInit();
 
                 Rechtekprofil_screenshot.Source = CatiaConnection.BildZuschneiden(screenshot);
+                tooltipFuerProflExportieren.Visibility = Visibility.Hidden;
+                CADexportieren.IsEnabled = true;
             }
         }
-        
+        private void CADexportieren_Click(object sender, RoutedEventArgs e)
+        {
+            meinTProfil.speichern(checkBoxRadius.IsChecked);
+        }
 
 
     }
