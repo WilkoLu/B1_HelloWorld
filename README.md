@@ -1,2 +1,2 @@
-# B1_HelloWorld
-Repository B1
+# Stabil Profil Profilrechner
+- Mit CATIAV5 .NET API Anbindung
