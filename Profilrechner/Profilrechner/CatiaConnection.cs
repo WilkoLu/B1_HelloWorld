@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
+using ProductStructureTypeLib;
 
 namespace Profilrechner
 {
@@ -36,6 +37,7 @@ namespace Profilrechner
 
         public Boolean ErzeugePart()
         {
+
             INFITF.Documents catDocuments1 = hsp_catiaApp.Documents;
             hsp_catiaPart = catDocuments1.Add("Part") as MECMOD.PartDocument;
             // hsp_catiaPart.Part.set_Name("Rechteckprofil");
@@ -136,7 +138,9 @@ namespace Profilrechner
             // length1 = const11.Dimension;
 
             //*/
-
+            PartDocument catiaProduct = (PartDocument)hsp_catiaApp.ActiveDocument;
+            Product partName = (Product)catiaProduct.Product;
+            partName.set_PartNumber("Rechteck");
 
             // Skizzierer verlassen
             hsp_catiaProfil.CloseEdition();
